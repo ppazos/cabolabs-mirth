@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    =======================================================================================
+    EJEMPLO CDA (para encapsular un PDF DE CUIDADOS DE ENFERMERÍA)
+    
+    Versión 1.1    20081106 Alberto Sáez.       
+    Versión 1.0    20080903 Alberto Sáez.    
+    © SACYL, 2008
+    =======================================================================================
+-->
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:v3 file:xsd/CDA.xsd" classCode="DOCCLIN" moodCode="EVN"
+>
+    
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    
+    
+    <!-- Indicador de conformidad para la guía SACYL -->
+    <templateId root="2.16.840.1.113883.2.19.20.17.50.1"/>
+    
+    <!-- Identificador único del documento (en la instancia del HCECYL del complejo hospitalario de Ávila) -->
+    <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.100.2.10.3" extension="2406538"/>
+    
+    <!-- Tipo de documento: CUIDADOS DE ENFERMERÍA  -->
+    <code code="28634-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"  displayName="Informe de cuidados de enfermería"/>
+    <title>INFORME GENERAL DE CUIDADOS DE ENFEMERÍA</title>
+   <!-- Fecha de creación del documento -->
+    <effectiveTime value="200802221240"/>
+    <!-- Nivel de confidencialidad N: Normal -->
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    
+    <languageCode code="es-ES"/>
+    
+    <!-- Paciente al que se refiere el informe -->
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <!-- DNI -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13166779D"/>  
+            <!-- CIP SACYL -->
+            <id root="2.16.840.1.113883.2.19.20.17.10.1" extension="111111111111"/>
+            <!-- NHC en el HNSS de Ávila (se repite aquí por comodidad) -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.10.1" extension="145643"/>
+            
+            <!-- Dirección del paciente -->
+            <addr use="HP">
+                <!-- Provincia.-->
+                <state>Ávila</state>
+                <!-- Municipiov-->
+                <city>Ávila</city>                           
+                <!-- Localidad -->
+                <precinct >Ávila</precinct>                      
+                <!-- País -->                           
+                <country>ESPAÑA</country>
+                <!-- Código Postal-->
+                <postalCode>05003</postalCode>
+                <!-- Tipo de calle (Calle, plaza, etc. )-->
+                <streetNameType>Calle</streetNameType>
+                <!-- Nombre de la calle -->
+                <streetNameBase>De la Trinidad</streetNameBase>                     
+                <!-- Número de portal  -->
+                <houseNumber>28</houseNumber>
+                <!-- NDP del callejero -->
+                <censusTract>NDP</censusTract>
+                <!-- Escalera: si no hay, se omite  -->
+                <unitType>Escalera</unitType>
+                <unitID>2º</unitID>
+                <!-- Bloque: si no hay, va en blanco -->
+                <unitType>Bloque</unitType>
+                <unitID>4º</unitID>
+                <!-- Piso: Si no hay, va en blanco -->
+                <unitType>Piso</unitType>
+                <unitID>3º</unitID>
+                <!-- Puerta: Si no hay, va en blanco -->
+                <unitType>Puerta</unitType>
+                <unitID>B</unitID>
+                <!-- Otros datos de la dirección: Si no hay, se omite o se deja en blanco -->
+                <additionalLocator>Preguntar por Panxo</additionalLocator>
+            </addr>
+            <patient>
+                <name>
+                    <given>ALBERTO</given> <!-- Nombre -->
+                    <family>SÁEZ</family>  <!-- 1º Apellido -->
+                    <family>TORRES</family><!-- 2º Apellido -->
+                </name>
+                <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+                <birthTime value="19571230"/>
+            </patient>
+            
+            <!-- Centro donde está siendo atendido el paciente (hospital o centro de salud -->
+            <providerOrganization>
+                <!-- Identificador del Comlejo hospitalario -->
+                <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101" />
+                <!-- Nombre del centro -->
+                <name>Hospial Nuestra Señora de Sonsoles</name>
+                <!-- Datos de contacto -->
+                <telecom value="tel:920355800"/>
+                <telecom value="tel:920358064"/>
+                <!-- Diereccíon de contacto -->
+                <addr>
+                    <streetAddressLine>Avda. Juan Carlos I, s/n</streetAddressLine>
+                    <!-- Municipio -->
+                    <city>Avila</city>
+                    <!-- Provincia -->
+                    <state>Avila</state>
+                    <!-- Localidad -->
+                    <precinct>Avila</precinct>
+                    <postalCode>05071</postalCode>
+                </addr>
+            </providerOrganization>
+            
+        </patientRole>
+    </recordTarget>
+    
+    <!-- Autor del documento: el médico -->
+    <author typeCode="AUT" contextControlCode="OP">
+        <time value="200802221240"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <!-- DNI del médico -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>Turanga</given>
+                    <family>Leela</family>
+                </name>
+            </assignedPerson>
+            
+            <!-- Departamento y hospital -->
+            <representedOrganization>
+                <!-- Identificador del servicio -->
+                <!-- Servicio en el hospital de ávila -->           
+                <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.30.1" extension="NF1"/>
+                <name>Neforlogía Consultas extenas</name>
+                <asOrganizationPartOf>
+                    <code code="NFR" codeSystem="2.16.840.1.113883.2.19.20.17.30.1" codeSystemName="Clasificación servicios SNS" />
+                    <wholeOrganization>
+                        <!-- Hospital de Ávila -->
+                        <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                        <!-- Nombre del centro hospitalario -->
+                        <name>Hospital Nuestra Señora de Sonsoles</name>
+                        <!-- Ubicación del centro -->
+                        <addr><state>Ávila</state></addr>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </representedOrganization>
+            
+        </assignedAuthor>
+    </author>
+    
+    <!-- Sistema de autoría (si el CDA ha sido generado nativamente)  -->
+    <author>
+        <time value="200802221240"/>
+        <assignedAuthor>
+            <!-- Instancia de HCECyL en el complejo de Ávila -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.100" extension="2"/>
+            <assignedAuthoringDevice>
+                <softwareName>HCECyL del Complejo Hospitalario de Ávila</softwareName>
+            </assignedAuthoringDevice>
+        </assignedAuthor>
+    </author>
+    
+    
+    <!-- Responsable de la custodia del documento (el hospital que la ha generado)-->
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                <name>Hospital Nuestra Señora de Sonsoles</name>
+                <telecom value="tel:920355800"/>
+                <addr><state>Ávila</state><postalCode>05003</postalCode></addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    
+    
+    
+    <!-- Persona que firma el documento (en este caso es el autor humano) -->
+    <legalAuthenticator>
+        <time value="200802221240"/>
+        <signatureCode code="S"/>
+        <assignedEntity>
+            <!-- DNI -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>Turanga</given>
+                    <family>Saez Leeela</family>
+                </name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    
+      
+    <!-- CCAA responsable del paciene -->
+    <participant contextControlCode="OP" typeCode="COV">
+        <associatedEntity classCode="GUAR">
+            <!-- CCAA responable del aseguramiento del paciente -->
+            <code codeSystem="2.16.840.1.113883.2.19.40.4" code="CL"  displayName="Comunidad de Castilla y León"/>
+        </associatedEntity>       
+    </participant>  
+      
+    <!-- Episodio del que informa el CDA -->
+    <componentOf>
+        <encompassingEncounter>
+            <!-- Número de episodio deL his del hospital de Ávila -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.1.26" extension="230"/>
+            <!-- Tipo de episodio -->
+            <code code="IMP" displayName="HOSPITALIZACIÓN" codeSystem="2.16.840.1.113883.5.4"/>
+            
+            <effectiveTime>
+                <low value="20082203"/>
+                <high value="20082105"/>
+            </effectiveTime>
+            <!-- Tipo de alta -->
+            <dischargeDispositionCode code="1" displayName="Domicilio- Fin de cuidados" codeSystem="2.16.840.1.113883.2.19.20.17.40.6"/>
+            <location>
+                <healthCareFacility>
+                    <!--Edificio donde tiene lugar el episodio -->                    
+                    <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                    <!-- Tipo de centro donde tiene lugar el episodio -->
+                    <code code="HOSP" displayName="Hospital" codeSystem="2.16.840.1.113883.5.111" />
+                </healthCareFacility>
+            </location>
+            
+        </encompassingEncounter>
+    </componentOf>
+
+
+
+ <!-- 
+     **********************************************************************************
+      *   CUERPO DEL DOCUMENTO
+      (En este caso se trata de un PDF)
+     **********************************************************************************
+--> 
+     
+    <component typeCode="COMP" contextConductionInd="true">
+        <nonXMLBody>
+            <!-- El PDF se incluye, en base64 -->
+            <text  representation="B64" mediaType="“application/pdf ">
+                ZJKMXCZKLKLJSDFAALSDJFLKSDAJFKLTSADJldk3ei,wettio348356knweg894q5njsdgqusdg
+                asdffkj4tqDDASFASDncvilaLKASDFOLSDFAKLSDFASDFSDA
+                (....)
+                LWKJWERPM,VCWDFFM,.THKLJBVgo=
+            </text>
+        </nonXMLBody>
+    </component>
+</ClinicalDocument>

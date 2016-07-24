@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:v3 file:/D:/Documentos/HL7/HL7_CDA/HL7-CDA-R2_normativewebedition2010/CDA_R2_NormativeWebEdition2010/infrastructure/cda/CDA.xsd" classCode="DOCCLIN" moodCode="EVN">
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <templateId root="2.16.840.1.113883.19.57.7.1.3.1" extension="CCD_RM201201CO01" assigningAuthorityName="HL7CO"/>
+    <id root="2.16.840.1.113883.20.57.2.3.4.1100200001.1.5.2.1" extension="a165eee7-edba-40b6-8306-84d1864b4692"/>
+    <code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Summarization of episode note"/>
+    <title>DOCUMENTO DE CONTINUIDAD ASISTENCIAL</title>
+    <effectiveTime value="20101027102300"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal"/>
+    <languageCode code="es-co"/>
+    <!-- ***** PARTICIPACIÓN: Registro Objetivo ***** -->
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <id root="2.16.840.1.113883.19.57.2.3.4.1100200001.1.1" extension="49354237"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id root="2.16.840.1.113883.19.57.1.1.1.1.1" extension="49354237" assigningAuthorityName="RNEC"/>
+                <name>
+                    <given>Mario</given>
+                    <given>Alfonso</given>
+                    <family>Moreno</family>
+                    <family>Reyes</family>
+                </name>
+                <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" displayName="Masculino"/>
+                <birthTime value="19930420"/>
+            </patient>
+            <providerOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.840.1.113883.19.57.2.1.2.1" extension="1100200001" assigningAuthorityName="MinSalud"/>
+                <name>Hospital Central Jorge H. Uribe</name>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <!-- ***** PARTICIPACIÓN: Autor ***** -->
+    <author typeCode="AUT" contextControlCode="OP">
+        <!-- Fecha y hora de la participación del autor 
+            en el acto de redacción del documento -->
+        <time value="20101027102300"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <!-- Identificación del autor -->
+            <id root="2.16.840.1.113883.19.57.2.1.1.1.1" extension="23776445"/>
+            <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                <!-- Nombre de la persona -->
+                <name>
+                    <!-- Prefijo del nombre -->
+                    <prefix>Dr</prefix>
+                    <!-- Nombres de la persona -->
+                    <given>Carlos Alberto</given>
+                    <!-- Apellidos de la persona -->
+                    <family>Ramírez Castillo</family>
+                </name>
+            </assignedPerson>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id/>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time/>
+        <signatureCode/>
+        <assignedEntity>
+            <id/>
+        </assignedEntity>
+    </legalAuthenticator>
+    
+    <!-- ********************************************************************
+                    CUERPO DE DOCUMENTO ELECTRÓNICO HL7 CDA R2 
+         ******************************************************************** -->
+    <component typeCode="COMP" contextConductionInd="true">
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="11341-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of occupation"/>
+                    <title>HISTORIA OCUPACIONAL</title>
+                    <text>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Ocupación/Oficio</th>
+                                    <th>Periódo de tiempo</th>
+                                </tr>
+                                <tr>
+                                    <td>CREADOR Y ANALISTA DE SISTEMAS INFORMATICOS</td>
+                                    <td>2001-01-03 a 2013-11-28</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </text>
+                    <entry typeCode="DRIV" contextConductionInd="true">
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="21847-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Usual occupation"/>
+                            <effectiveTime>
+                                <low value="20010103" inclusive="true"/>
+                                <high value="20131128" inclusive="true"/>
+                            </effectiveTime>
+                            <value xsi:type="CD" code="2131" codeSystem="2.16.840.1.113883.6.243"  codeSystemName="CIUO" displayName="CREADORES Y ANALISTAS DE SISTEMAS INFORMATICOS"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

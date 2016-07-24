@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CDASINR.xsl"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../schemas/CDA.xsd">
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+	<templateId root="2.16.840.1.113883.3.27.1776"/>
+	<id root="1.2.528.1.1001.100.22.877.2205.36316062498.20040213160821659"/>
+	<code code="18748-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnostic Imaging Report"/>
+	<title>Diagnostic Imaging Report</title>
+	<effectiveTime value="20040213170821"/>
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+	<recordTarget>
+		<patientRole>
+			<id root="2.16.840.1.113883.9876.409.2.10" extension="4030012"/>
+			<patient>
+				<name>
+					<given>George</given>
+					<family>Bainter</family>
+				</name>
+				<administrativeGenderCode codeSystem="2.16.840.1.113883.5.1" code="M"/>
+				<birthTime value="19331201"/>
+			</patient>
+		</patientRole>
+	</recordTarget>
+	<author>
+		<time value="200402131708"/>
+		<assignedAuthor>
+			<id extension="KP00017" root="2.16.840.1.113883.19.5"/>
+			<assignedPerson>
+				<name>
+					<given>Richard</given>
+					<family>Blitz</family>
+					<suffix>MD</suffix>
+				</name>
+			</assignedPerson>
+			<representedOrganization>
+				<id root="2.16.840.1.113883.19.5"/>
+			</representedOrganization>
+		</assignedAuthor>
+	</author>
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id root="2.16.840.1.113883.19.5"/>
+				<name>Ubiquitous General Hospital</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	<legalAuthenticator>
+		<time value="20040213171021"/>
+		<signatureCode code="S"/>
+		<assignedEntity>
+			<id extension="FB000009" root="2.16.840.1.113883.3.933"/>
+			<assignedPerson>
+				<name>
+					<given>Richard</given>
+					<family>Blitz</family>
+					<suffix>MD</suffix>
+				</name>
+			</assignedPerson>
+		</assignedEntity>
+	</legalAuthenticator>
+	<inFulfillmentOf>
+		<order>
+			<id extension=" 68514041"/>                                                                                                      <!-- *       accession number?              *-->
+		</order>
+	</inFulfillmentOf>
+	<component>
+		<structuredBody>
+			<component>
+				<section>
+					<code code="18782-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					<title>RADIOLOGY STUDY OBSERVATION (Findings)</title>
+					<text>There is a large, approximately 3 cm soft tissue mass with poorly defined margins. No calcification is identified in the mass. There is a small degree of elevation of the minor fissure. Given the patient’s history the mass is suspicious for malignancy. Comparison with prior films may be helpful in determining the rate of growth of the mass.
+<paragraph/><paragraph/>
+Otherwise, the lung fields are somewhat over inflated consisted with the patient’s smoking history and this likely represents a component of COPD.
+<paragraph/><paragraph/>
+The cardiomediastinal silhouette is within normal limits. The aorta follows a tortuous course to the abdomen. The lung hila and pulmonary vasculature are normal without evidence of focal mediastinal adenopathy.The bony structures show senescent changes consistent with the patient’s age. The visible chest wall and abdominal soft tissues have a normal radiographic appearance.</text>
+				</section>
+			</component>
+			<component>
+				<section>
+					<!-- <code code="18782-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+					there is no LOINC code for Radiology Study Conclusions -->
+					<code code="121076" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DICOM"/>
+					<title>Conclusions</title>
+					<text>3 cm soft tissue mass in the right upper lobe suspicious for malignancy. Computed tomography would be useful in further evaluating the extent of the lesion and the mediastinum.</text>
+					<!--	 
+**********************************************************************
+                     DICOM Objects sequence
+**********************************************************************
+	-->
+					<!--	
+					<entry>
+						<sequence classCode="ACT" moodCode="EVN">
+							<id/>
+							<code/>
+							<title/>
+							
+	 
+**********************************************************************
+                     Study
+**********************************************************************
+	-->
+					<!--	
+							<component>
+								<study classCode="ACT" moodCode="EVN">
+									<id root="2.16.840.1.113664.3.5.1.3.115864140"/>
+									<code code="113014" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DICOM" displayName="DICOM Study"/>
+									<text/>
+									<effectiveTime/>
+									 
+			 
+			*****************************************************************
+                      Series
+                    *****************************************************************
+ 	-->
+					<!--	
+									<component>
+										<series classCode="ACT" moodCode="EVN">
+											<id root="2.16.840.1.113664.96.601" extension="1"/>
+											<code/>
+											<effectiveTime value="20040920"/>
+												 
+					     *****************************************************************
+                                       SopInstance
+                                       *****************************************************************
+ 	-->
+					<!--	
+											<component>
+												<sopInstance classCode="DGIMG" moodCode="EVN">
+													<id root="2.16.840.1.113664.1.96" extension="1"/>
+													<code code="1.2.840.10008.5.1.4.1.1.88.11"/>
+													<text> href="http://192.168.254.55/ami/bin/IHERetrieveDocument?requestType=DOCUMENT&amp;documentUID=1.113654.5.15.1351&amp;preferredContentType=image%2Fjpeg"</text>
+													<effectiveTime value="20040921"/>
+												</sopInstance>
+											</component>
+										</series>
+									</component>
+								</study>
+							</component>
+						</sequence>
+					</entry>
+					
+**********************************************************************
+                    End of  DICOM Objects sequence
+**********************************************************************
+	-->
+					<!-- 
+**********************************************************************
+                     Quantity Measurement
+**********************************************************************
+	-->
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="50373000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Body height measure"/>
+							<effectiveTime value="200402131708"/>
+							<value xsi:type="PQ" value="0.03" unit="m">
+								<translation value="1.1811" code="[in_I]" codeSystem="2.16.840.1.113883.6.8" codeSystemName="UCUM"/>
+							</value>
+							<!-- 
+**********************************************************************
+                     Quantity Measurement WADO reference
+**********************************************************************
+	
+							<subject>
+								<sopInstance classCode="DGIMG" moodCode="EVN">
+									<id root="2.16.840.1.113664.1.96" extension="1"/>
+									<code code="1.2.840.10008.5.1.4.1.1.88.11"/>
+									<text> href="http://192.168.254.55/ami/bin/IHERetrieveDocument?requestType=DOCUMENT&amp;documentUID=1.113654.5.15.1351&amp;preferredContentType=image%2Fjpeg"</text>
+									<effectiveTime value="20040921"/>
+								</sopInstance>
+							</subject>
+	
+	-->
+							<entryRelationship typeCode="MFST">
+								<observation classCode="DGIMG" moodCode="EVN">
+									<id root="2.16.840.1.113664.1.96" extension="1"/>
+									<code code="1.2.840.10008.5.1.4.1.1.88.11"/>
+									<text> href="http://192.168.254.55/ami/bin/IHERetrieveDocument?requestType=DOCUMENT&amp;documentUID=1.113654.5.15.1351&amp;preferredContentType=image%2Fjpeg"</text>
+									<effectiveTime value="20040921"/>
+								</observation>
+							</entryRelationship>
+							<!-- 
+**********************************************************************
+                    End of  Quantity Measurement
+**********************************************************************
+	-->
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>

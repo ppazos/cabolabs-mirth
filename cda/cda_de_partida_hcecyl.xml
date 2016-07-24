@@ -1,0 +1,118 @@
+<?xml-stylesheet type="text/xsl" href="cda.xsl"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:v3 xsd/CDA.xsd">
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <id root="8694706b-7f87-4928-b190-85ab95ef700a" extension="2406538"/>
+    <code code="28634-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+        displayName="OID de LOINC a nivel mundial"/>
+    <title>INFORME GENERAL DE ALTA</title>
+    <effectiveTime value="200802221240"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    <languageCode code="es-ES"/>
+    <recordTarget>
+        <patientRole>
+            <id root="91e8b514-6eea-48e6-86ce-63cfce67a96a" extension="56865"/>
+            <addr>
+                <streetAddressLine>NAVALPERAL DE PINARES</streetAddressLine>
+                <city>PZA CALVO SOTELO 6</city>
+                <state>AVILA</state>
+                <postalCode>5240</postalCode>
+            </addr>
+            <patient>
+                <realmCode code="5/140665/7" codeSystem="6fdf0743-4fd5-4921-9a34-24298b2941ea"
+                    codeSystemName="OID de la tarjeta sanitaria a nivel comunitario"/>
+                <name>
+                    <given>SONSOLES</given>
+                    <family>ABAD</family>
+                    <family>MARTIN</family>
+                </name>
+                <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1"/>
+                <birthTime value="19571230"/>
+            </patient>
+            <providerOrganization>
+                <id extension="0501" root="aea19799-c1a4-4a6b-a7c6-5ba778e2d29c"/>
+                <name>Complejo Asistencial de Avila</name>
+                <telecom value="920355800"/>
+                <telecom value="920358064"/>
+                <addr>
+                    <streetAddressLine>Avda. Juan Carlos I, s/n</streetAddressLine>
+                    <city>Avila</city>
+                    <state>Avila</state>
+                    <postalCode>05071</postalCode>
+                </addr>
+            </providerOrganization>
+        </patientRole>
+    </recordTarget>
+    <author>
+        <time value="200802221240"/>
+        <assignedAuthor>
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>GuzmÃ¡n</given>
+                    <family>Arce Saez</family>
+                    <family/>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.840.1.113883.6.1"/>
+                <name>Galeno2</name>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id root="aea19799-c1a4-4a6b-a7c6-5ba778e2d29c" extension="0501"/>
+                <name>Complejo Asistencial de Avila</name>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="200802221240"/>
+        <signatureCode code="N"/>
+        <assignedEntity>
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>GuzmÃ¡n</given>
+                    <family>Arce Saez</family>
+                    <family/>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.840.1.113883.6.1"/>
+                <name>Galeno2</name>
+            </representedOrganization>
+        </assignedEntity>
+    </legalAuthenticator>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="yyyyMMddHHmmss" codeSystem="HL7DATE" codeSystemName="Fecha"
+                        displayName="Fecha ingreso"/>
+                    <title>Fecha ingreso</title>
+                    <text>22/02/2008 00:00</text>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="yyyyMMddHHmmss" codeSystem="HL7DATE" codeSystemName="Fecha"
+                        displayName="Fecha alta"/>
+                    <title>Fecha alta</title>
+                    <text>22/02/2008 00:00</text>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="08675-1" codeSystem="LN"
+                        codeSystemName="OID de LOINC a nivel mundial" displayName="Anamnesis"/>
+                    <title>Anamnesis</title>
+                    <text>valor por defecto</text>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>
