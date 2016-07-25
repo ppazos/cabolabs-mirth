@@ -1,0 +1,693 @@
+<channel version="3.4.1">
+  <id>27a3b726-9e18-4931-b370-96e4cc0b06fd</id>
+  <nextMetaDataId>5</nextMetaDataId>
+  <name>0004_http_cda_to_database</name>
+  <description>Recibe un documento CDA por HTTP, extrae algunos datos a variables, y las guarda en la base de datos mirth_tests, en la tabla cda_logs.</description>
+  <enabled>true</enabled>
+  <lastModified>
+    <time>1469423708889</time>
+    <timezone>America/Cayenne</timezone>
+  </lastModified>
+  <revision>19</revision>
+  <sourceConnector version="3.4.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.http.HttpReceiverProperties" version="3.4.1">
+      <pluginProperties>
+        <com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties version="3.4.1">
+  <authType>NONE</authType>
+        </com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties>
+      </pluginProperties>
+      <listenerConnectorProperties version="3.4.1">
+        <host>0.0.0.0</host>
+        <port>1237</port>
+      </listenerConnectorProperties>
+      <sourceConnectorProperties version="3.4.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <xmlBody>true</xmlBody>
+      <parseMultipart>false</parseMultipart>
+      <includeMetadata>true</includeMetadata>
+      <binaryMimeTypes></binaryMimeTypes>
+      <binaryMimeTypesRegex>false</binaryMimeTypesRegex>
+      <responseContentType>text/plain</responseContentType>
+      <responseDataTypeBinary>false</responseDataTypeBinary>
+      <responseStatusCode></responseStatusCode>
+      <responseHeaders class="linked-hash-map">
+        <entry>
+          <string>Access-Control-Allow-Origin</string>
+          <list>
+            <string>*</string>
+          </list>
+        </entry>
+      </responseHeaders>
+      <charset>UTF-8</charset>
+      <contextPath>canalHttpCDA3</contextPath>
+      <timeout>0</timeout>
+      <staticResources/>
+    </properties>
+    <transformer version="3.4.1">
+      <steps>
+        <step>
+          <sequenceNumber>0</sequenceNumber>
+          <name>Extrae XML del request HTML</name>
+          <script>logger.info(&apos;Extrae CDA del Request HTTP ....&apos;);
+
+/*
+logger.info(msg[&apos;Parameters&apos;][&apos;mensaje&apos;]); // es un nodo de texto del XML de tipo xml
+
+// Paso a string el nodo de texto y lo convierto en un objeto XML
+// Desde aquí msg pasa a ser el CDA, permite que el siguiente paso Mapper extraiga el valor de msg
+msg = new XML(msg[&apos;Parameters&apos;][&apos;mensaje&apos;].toString());
+*/
+
+/*
+
+// El cuerpo del Request HTTP en XML viene codificado en base64
+// Esto decodifica y obtiene el objeto XML
+var base64 = msg[&apos;Content&apos;].toString();
+var decoded = FileUtil.decode(base64);
+var decodedAsString = Packages.java.lang.String(decoded);
+var mensajeXML = new XML(decodedAsString);
+
+logger.info(&apos;mensajeXML&apos;);
+logger.info(mensajeXML);
+logger.info(typeof mensajeXML); // xml
+*/
+
+logger.info(&quot;msg &quot; + msg);
+logger.info(&quot;content &quot; + msg[&apos;Content&apos;]);
+
+var mensajeXML = new XML(msg[&apos;Content&apos;].toString());
+
+logger.info(&quot;children &quot; + mensajeXML.children());
+logger.info(&quot;recordTarget &quot; + mensajeXML[&apos;recordTarget&apos;]);
+logger.info(&quot;typeId &quot; + mensajeXML[&apos;typeId&apos;]);
+logger.info(&quot;id &quot; + mensajeXML[&apos;id&apos;][&apos;@root&apos;]);
+
+// La salida del conector de entrada va a ser solo el XML del pedido HTTP
+// Esto es lo que entra a las destinations
+msg = mensajeXML;</script>
+          <type>JavaScript</type>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>logger.info(&apos;Extrae CDA del Request HTTP ....&apos;);
+
+/*
+logger.info(msg[&apos;Parameters&apos;][&apos;mensaje&apos;]); // es un nodo de texto del XML de tipo xml
+
+// Paso a string el nodo de texto y lo convierto en un objeto XML
+// Desde aquí msg pasa a ser el CDA, permite que el siguiente paso Mapper extraiga el valor de msg
+msg = new XML(msg[&apos;Parameters&apos;][&apos;mensaje&apos;].toString());
+*/
+
+/*
+
+// El cuerpo del Request HTTP en XML viene codificado en base64
+// Esto decodifica y obtiene el objeto XML
+var base64 = msg[&apos;Content&apos;].toString();
+var decoded = FileUtil.decode(base64);
+var decodedAsString = Packages.java.lang.String(decoded);
+var mensajeXML = new XML(decodedAsString);
+
+logger.info(&apos;mensajeXML&apos;);
+logger.info(mensajeXML);
+logger.info(typeof mensajeXML); // xml
+*/
+
+logger.info(&quot;msg &quot; + msg);
+logger.info(&quot;content &quot; + msg[&apos;Content&apos;]);
+
+var mensajeXML = new XML(msg[&apos;Content&apos;].toString());
+
+logger.info(&quot;children &quot; + mensajeXML.children());
+logger.info(&quot;recordTarget &quot; + mensajeXML[&apos;recordTarget&apos;]);
+logger.info(&quot;typeId &quot; + mensajeXML[&apos;typeId&apos;]);
+logger.info(&quot;id &quot; + mensajeXML[&apos;id&apos;][&apos;@root&apos;]);
+
+// La salida del conector de entrada va a ser solo el XML del pedido HTTP
+// Esto es lo que entra a las destinations
+msg = mensajeXML;</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>1</sequenceNumber>
+          <name>nombre_paciente</name>
+          <script>var mapping;
+
+try {
+	mapping = msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][0].toString() + ((msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][1]) ? &apos; &apos;+msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][1].toString() : &apos;&apos;); 
+} catch (e) {
+	logger.error(e);
+	mapping = &apos;&apos;;
+}
+
+channelMap.put(&apos;nombre_paciente&apos;, validate( mapping , &apos;&apos;, new Array()));</script>
+          <type>Mapper</type>
+          <data>
+            <entry>
+              <string>Variable</string>
+              <string>nombre_paciente</string>
+            </entry>
+            <entry>
+              <string>Mapping</string>
+              <string>msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][0].toString() + ((msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][1]) ? &apos; &apos;+msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;patient&apos;][&apos;name&apos;][&apos;given&apos;][1].toString() : &apos;&apos;)</string>
+            </entry>
+            <entry>
+              <string>DefaultValue</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>RegularExpressions</string>
+              <list/>
+            </entry>
+            <entry>
+              <string>isGlobal</string>
+              <string>channel</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>2</sequenceNumber>
+          <name>id_paciente</name>
+          <script>var mapping;
+
+try {
+	mapping = msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;id&apos;][&apos;@root&apos;].toString()+&apos;::&apos;+msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;id&apos;][&apos;@extension&apos;].toString(); 
+} catch (e) {
+	logger.error(e);
+	mapping = &apos;&apos;;
+}
+
+channelMap.put(&apos;id_paciente&apos;, validate( mapping , &apos;&apos;, new Array()));</script>
+          <type>Mapper</type>
+          <data>
+            <entry>
+              <string>Variable</string>
+              <string>id_paciente</string>
+            </entry>
+            <entry>
+              <string>Mapping</string>
+              <string>msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;id&apos;][&apos;@root&apos;].toString()+&apos;::&apos;+msg[&apos;recordTarget&apos;][&apos;patientRole&apos;][&apos;id&apos;][&apos;@extension&apos;].toString()</string>
+            </entry>
+            <entry>
+              <string>DefaultValue</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>RegularExpressions</string>
+              <list/>
+            </entry>
+            <entry>
+              <string>isGlobal</string>
+              <string>channel</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>3</sequenceNumber>
+          <name>nombre_medico</name>
+          <script>var mapping;
+
+try {
+	mapping = msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;prefix&apos;].toString() +&quot; &quot;+ msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;given&apos;].toString() +&quot; &quot;+ msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;family&apos;].toString(); 
+} catch (e) {
+	logger.error(e);
+	mapping = &apos;&apos;;
+}
+
+channelMap.put(&apos;nombre_medico&apos;, validate( mapping , &apos;&apos;, new Array()));</script>
+          <type>Mapper</type>
+          <data>
+            <entry>
+              <string>Variable</string>
+              <string>nombre_medico</string>
+            </entry>
+            <entry>
+              <string>Mapping</string>
+              <string>msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;prefix&apos;].toString() +&quot; &quot;+ msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;given&apos;].toString() +&quot; &quot;+ msg[&apos;author&apos;][&apos;assignedAuthor&apos;][&apos;assignedPerson&apos;][&apos;name&apos;][&apos;family&apos;].toString()</string>
+            </entry>
+            <entry>
+              <string>DefaultValue</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>RegularExpressions</string>
+              <list/>
+            </entry>
+            <entry>
+              <string>isGlobal</string>
+              <string>channel</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>4</sequenceNumber>
+          <name>fecha_documento</name>
+          <script>var mapping;
+
+try {
+	mapping = msg[&apos;effectiveTime&apos;][&apos;@value&apos;].toString(); 
+} catch (e) {
+	logger.error(e);
+	mapping = &apos;&apos;;
+}
+
+channelMap.put(&apos;fecha_documento&apos;, validate( mapping , &apos;&apos;, new Array(new Array(&apos;([\\+\\-])&apos;, &apos; $1&apos;),new Array(&apos;(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})&apos;, &apos;$1-$2-$3 $4:$5:$6&apos;))));</script>
+          <type>Mapper</type>
+          <data>
+            <entry>
+              <string>Variable</string>
+              <string>fecha_documento</string>
+            </entry>
+            <entry>
+              <string>Mapping</string>
+              <string>msg[&apos;effectiveTime&apos;][&apos;@value&apos;].toString()</string>
+            </entry>
+            <entry>
+              <string>DefaultValue</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>RegularExpressions</string>
+              <list>
+                <string-array>
+                  <string>&apos;([\\+\\-])&apos;</string>
+                  <string>&apos; $1&apos;</string>
+                </string-array>
+                <string-array>
+                  <string>&apos;(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})&apos;</string>
+                  <string>&apos;$1-$2-$3 $4:$5:$6&apos;</string>
+                </string-array>
+              </list>
+            </entry>
+            <entry>
+              <string>isGlobal</string>
+              <string>channel</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>5</sequenceNumber>
+          <name>log variables</name>
+          <script>// En el paso anterior la variable nombre_paciente se puso en el channelMap
+// Eeste código debería mostar el nombre del paciente en la consola de canales
+logger.info( channelMap.get(&apos;nombre_paciente&apos;) );
+logger.info( channelMap.get(&apos;id_paciente&apos;) );
+logger.info( channelMap.get(&apos;nombre_medico&apos;) );
+logger.info( channelMap.get(&apos;fecha_documento&apos;) );
+
+//channelMap.put(&apos;timestamp&apos;, new Date().toISOString()); // 2014-06-30T04:46:44.612Z
+//logger.info( &quot;ts: &quot;+ channelMap.get(&apos;timestamp&apos;) );
+
+// Parse no tira la fecha correcta porque el String no tiene la zona horaria con GMT-NNNN es solo -NNNN
+/*
+var intDateParsed = Date.parse(channelMap.get(&apos;fecha_documento&apos;)); // Date.parse( 20121224093000-0300 )
+logger.info( new Date(intDateParsed) );
+var dateString = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date(intDateParsed) ); // string, Date
+logger.info( &quot;date mysql: &quot;+ dateString ); // org.mozilla...NativeDate (javascript Date)
+*/
+
+// Transforma el string 2012-06-12 09:59:00 +0300 en un Date de Java:
+var formatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss Z&quot;); 
+var date = formatter.parse( channelMap.get(&apos;fecha_documento&apos;) );
+
+logger.info( &quot;date java: &quot;+ date );
+
+var mySQLFormatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+var fecha_documento = mySQLFormatter.format( date );
+
+logger.info( &quot;date java mysql: &quot;+ fecha_documento );
+
+channelMap.put(&apos;fecha_documento&apos;, fecha_documento); // Ahora con formato aceptado por MySQL
+
+
+// Timestamp con formato MySQL (fecha y horas actuales)
+var timestamp = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date() );
+channelMap.put(&apos;timestamp&apos;, timestamp);</script>
+          <type>JavaScript</type>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>// En el paso anterior la variable nombre_paciente se puso en el channelMap
+// Eeste código debería mostar el nombre del paciente en la consola de canales
+logger.info( channelMap.get(&apos;nombre_paciente&apos;) );
+logger.info( channelMap.get(&apos;id_paciente&apos;) );
+logger.info( channelMap.get(&apos;nombre_medico&apos;) );
+logger.info( channelMap.get(&apos;fecha_documento&apos;) );
+
+//channelMap.put(&apos;timestamp&apos;, new Date().toISOString()); // 2014-06-30T04:46:44.612Z
+//logger.info( &quot;ts: &quot;+ channelMap.get(&apos;timestamp&apos;) );
+
+// Parse no tira la fecha correcta porque el String no tiene la zona horaria con GMT-NNNN es solo -NNNN
+/*
+var intDateParsed = Date.parse(channelMap.get(&apos;fecha_documento&apos;)); // Date.parse( 20121224093000-0300 )
+logger.info( new Date(intDateParsed) );
+var dateString = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date(intDateParsed) ); // string, Date
+logger.info( &quot;date mysql: &quot;+ dateString ); // org.mozilla...NativeDate (javascript Date)
+*/
+
+// Transforma el string 2012-06-12 09:59:00 +0300 en un Date de Java:
+var formatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss Z&quot;); 
+var date = formatter.parse( channelMap.get(&apos;fecha_documento&apos;) );
+
+logger.info( &quot;date java: &quot;+ date );
+
+var mySQLFormatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+var fecha_documento = mySQLFormatter.format( date );
+
+logger.info( &quot;date java mysql: &quot;+ fecha_documento );
+
+channelMap.put(&apos;fecha_documento&apos;, fecha_documento); // Ahora con formato aceptado por MySQL
+
+
+// Timestamp con formato MySQL (fecha y horas actuales)
+var timestamp = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date() );
+channelMap.put(&apos;timestamp&apos;, timestamp);</string>
+            </entry>
+          </data>
+        </step>
+      </steps>
+      <inboundTemplate encoding="base64">PENsaW5pY2FsRG9jdW1lbnQgeG1sbnM9InVybjpobDctb3JnOnYzIiB4bWxuczp2b2M9InVybjpo
+bDctb3JnOnYzL3ZvYyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVt
+YS1pbnN0YW5jZSIgeHNpOnNjaGVtYUxvY2F0aW9uPSJ1cm46aGw3LW9yZzp2MyBDREEueHNkIj4N
+CiA8dHlwZUlkIGV4dGVuc2lvbj0iUE9DRF9IRDAwMDA0MCIgcm9vdD0iMi4xNi44NDAuMS4xMTM4
+ODMuMS4zIi8+DQogPGlkIHJvb3Q9ImRiNzM0NjQ3LWZjOTktNDI0Yy1hODY0LTdlM2NkYTgyZTcw
+MyIvPg0KIDxjb2RlIGNvZGU9IjM0MTMzLTkiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgz
+LjYuMSIgZGlzcGxheU5hbWU9IlN1bW1hcml6YXRpb24gb2YgZXBpc29kZSBub3RlIi8+DQogPHRp
+dGxlPkNhcm7DqSBkZSBTYWx1ZDwvdGl0bGU+DQogPGVmZmVjdGl2ZVRpbWUgdmFsdWU9IjIwMTIx
+MjI0MDkzMDAwLTAzMDAiLz4NCiA8Y29uZmlkZW50aWFsaXR5Q29kZSBjb2RlPSJOIiBjb2RlU3lz
+dGVtPSIyLjE2Ljg0MC4xLjExMzg4My41LjI1Ii8+DQogPGxhbmd1YWdlQ29kZSBjb2RlPSJlcy1V
+WSIvPg0KIDxyZWNvcmRUYXJnZXQ+DQogICA8cGF0aWVudFJvbGU+DQogICAgIDxpZCBleHRlbnNp
+b249IjQxMTYyMzgtMCIgcm9vdD0iMi4xNi44NTguMS44NTguNjg5MDkiIC8+DQogICAgICAgPHBh
+dGllbnQ+DQogICAgICAgICA8bmFtZT4NCiAgICAgICAgICAgPGdpdmVuPlBhYmxvPC9naXZlbj4N
+CiAgICAgICAgICAgPGdpdmVuPkZlZGVyaWNvPC9naXZlbj4NCiAgICAgICAgICAgPGZhbWlseT5Q
+YXpvczwvZmFtaWx5Pg0KICAgICAgICAgICA8ZmFtaWx5Pkd1dGnDqXJyZXo8L2ZhbWlseT4NCiAg
+ICAgICAgIDwvbmFtZT4NCiAgICAgICAgIDxhZG1pbmlzdHJhdGl2ZUdlbmRlckNvZGUgY29kZT0i
+TSIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNS4xIiAvPg0KICAgICAgICAgPGJpcnRo
+VGltZSB2YWx1ZT0iMTk4MTEwMjQiIC8+DQogICAgICAgICA8ZXRobmljR3JvdXBDb2RlIGNvZGU9
+IkJsYW5jYSIgY29kZVN5c3RlbT0iMS4yLjMuNC41LjYuMTExMTEiIC8+DQogICAgICAgPC9wYXRp
+ZW50Pg0KICAgPC9wYXRpZW50Um9sZT4NCiA8L3JlY29yZFRhcmdldD4NCiA8YXV0aG9yPg0KICAg
+PHRpbWUgdmFsdWU9IjIwMDAwNDA3MTMwMDAwKzA1MDAiLz4NCiAgIDxhc3NpZ25lZEF1dGhvcj4N
+CiAgICAgPGlkIHJvb3Q9IjIwY2YxNGZiLWI2NWMtNGM4Yy1hNTRkLWIwY2NhODM0YzE4YyIvPg0K
+ICAgICA8YXNzaWduZWRQZXJzb24+DQogICAgICAgPG5hbWU+PHByZWZpeD5Eci48L3ByZWZpeD48
+Z2l2ZW4+Um9iZXJ0PC9naXZlbj48ZmFtaWx5PkRvbGluPC9mYW1pbHk+PC9uYW1lPg0KICAgICA8
+L2Fzc2lnbmVkUGVyc29uPg0KICAgICA8cmVwcmVzZW50ZWRPcmdhbml6YXRpb24+DQogICAgICAg
+PGlkIHJvb3Q9IjIuMTYuODQwLjEuMTEzODgzLjE5LjUiLz4NCiAgICAgICA8bmFtZT5Hb29kIEhl
+YWx0aCBDbGluaWM8L25hbWU+DQogICAgIDwvcmVwcmVzZW50ZWRPcmdhbml6YXRpb24+DQogICA8
+L2Fzc2lnbmVkQXV0aG9yPg0KIDwvYXV0aG9yPg0KIDxjdXN0b2RpYW4+DQogICA8YXNzaWduZWRD
+dXN0b2RpYW4+DQogICAgIDxyZXByZXNlbnRlZEN1c3RvZGlhbk9yZ2FuaXphdGlvbj4NCiAgICAg
+ICA8aWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMTkuNSIvPg0KICAgICAgIDxuYW1lPkdvb2Qg
+SGVhbHRoIENsaW5pYzwvbmFtZT4NCiAgICAgPC9yZXByZXNlbnRlZEN1c3RvZGlhbk9yZ2FuaXph
+dGlvbj4NCiAgIDwvYXNzaWduZWRDdXN0b2RpYW4+DQogPC9jdXN0b2RpYW4+DQogPGNvbXBvbmVu
+dD4NCiAuLi4NCiA8L2NvbXBvbmVudD4NCjwvQ2xpbmljYWxEb2N1bWVudD4=</inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>XML</inboundDataType>
+      <outboundDataType>XML</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+          <stripNamespaces>true</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+          <stripNamespaces>true</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.4.1">
+      <rules/>
+    </filter>
+    <transportName>HTTP Listener</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.4.1">
+      <metaDataId>3</metaDataId>
+      <name>Destination 2</name>
+      <properties class="com.mirth.connect.connectors.jdbc.DatabaseDispatcherProperties" version="3.4.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.4.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+        </destinationConnectorProperties>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://127.0.0.1:3306/mirth_tests</url>
+        <username>root</username>
+        <password></password>
+        <query>INSERT INTO `cda_logs`
+  (`timestamp`, `fecha_documento`, `paciente`, `identificador_paciente`, `autor`)
+VALUES 
+  (${timestamp},${fecha_documento},${nombre_paciente},${id_paciente},${nombre_medico})
+
+</query>
+        <useScript>false</useScript>
+      </properties>
+      <transformer version="3.4.1">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.4.1">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.4.1">
+        <rules/>
+      </filter>
+      <transportName>Database Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+    <connector version="3.4.1">
+      <metaDataId>4</metaDataId>
+      <name>Destination 1</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.4.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+        </destinationConnectorProperties>
+        <script>logger.info( connectorMessage.getEncodedData() );</script>
+      </properties>
+      <transformer version="3.4.1">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.4.1">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.4.1">
+        <rules/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>false</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.4.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <tags class="linked-hash-set"/>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.4.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <archiveEnabled>true</archiveEnabled>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <codeTemplateLibraries/>
+</channel>
