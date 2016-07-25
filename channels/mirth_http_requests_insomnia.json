@@ -1,0 +1,45 @@
+{
+  "_type": "export",
+  "__export_format": 1,
+  "__export_date": "2016-07-23T07:17:07.659Z",
+  "__export_source": "insomnia.chrome.app:v2.6.10",
+  "items": [
+    {
+      "_type": "request_group",
+      "_id": "grp_1469255523401",
+      "name": "MIRTH",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1469255523401",
+          "url": "http://localhost:1235/canalHttp1235/",
+          "method": "POST",
+          "body": "<mensaje>\n    <persona>\n        <nombre>Pablo</nombre>\n    </persona>\n</mensaje>",
+          "headers": [
+            {
+              "name": "Authorization",
+              "value": "secret"
+            }
+          ],
+          "params": [
+            {
+              "name": "parametro1",
+              "value": "asdf"
+            }
+          ],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "xml",
+            "panel_width": 0.5
+          },
+          "name": "XML custom por HTTP - p1235"
+        }
+      ]
+    }
+  ]
+}
