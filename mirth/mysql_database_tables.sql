@@ -1,0 +1,10 @@
+CREATE TABLE `pacientes` (
+	`id` BIGINT NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(50) NOT NULL DEFAULT '0',
+	`apellido` VARCHAR(50) NOT NULL DEFAULT '0',
+	`nacimiento` DATE NOT NULL DEFAULT '0',
+	`sexo` VARCHAR(50) NOT NULL DEFAULT '0'
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
