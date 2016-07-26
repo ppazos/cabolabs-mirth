@@ -3,13 +3,15 @@
   <nextMetaDataId>2</nextMetaDataId>
   <name>0005_code_templates</name>
   <description>Canal de prueba que muestra la definición y uso de plantillas de código.&#xd;
-El cana recibe MLLP y guarda en un archivo.</description>
+El cana recibe MLLP y guarda en un archivo.&#xd;
+La función definida en la plantilla de código es get_patient_data que crea un objeto javascript con esta estructura {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}&#xd;
+</description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1469425278293</time>
+    <time>1469505872228</time>
     <timezone>America/Cayenne</timezone>
   </lastModified>
-  <revision>23</revision>
+  <revision>27</revision>
   <sourceConnector version="3.4.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -176,23 +178,21 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
           <data>
             <entry>
               <string>Script</string>
-              <string>logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
+              <string>//logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
+//logger.info( $(&apos;myUUID&apos;) );
 
-// this doesnt work: http://www.mirthproject.org/community/forums/showthread.php?p=256097#post256097
-funcion_log(msg);
-
-logger.info( $(&apos;myUUID&apos;) );
+var data = get_patient_data(msg);
+logger.info( JSON.stringify(data) ); // {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}
 
 return true;</string>
             </entry>
           </data>
           <type>JavaScript</type>
-          <script>logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
+          <script>//logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
+//logger.info( $(&apos;myUUID&apos;) );
 
-// this doesnt work: http://www.mirthproject.org/community/forums/showthread.php?p=256097#post256097
-funcion_log(msg);
-
-logger.info( $(&apos;myUUID&apos;) );
+var data = get_patient_data(msg);
+logger.info( JSON.stringify(data) ); // {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}
 
 return true;</script>
           <operator>NONE</operator>
@@ -494,11 +494,11 @@ return;</undeployScript>
           <type>DRAG_AND_DROP_CODE</type>
           <contextSet>
             <delegate>
-              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
               <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
               <contextType>SOURCE_RECEIVER</contextType>
               <contextType>DESTINATION_DISPATCHER</contextType>
-              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
             </delegate>
           </contextSet>
           <code>/**
@@ -511,38 +511,45 @@ logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toSt
         </codeTemplate>
         <codeTemplate version="3.4.1">
           <id>90f1418a-4597-488b-a7cc-ff14fe7d800a</id>
-          <name>una funcion</name>
-          <revision>5</revision>
+          <name>0. obtener datos del paciente de mensajes HL7 v2.x</name>
+          <revision>9</revision>
           <lastModified>
-            <time>1469243782290</time>
+            <time>1469505915781</time>
             <timezone>America/Cayenne</timezone>
           </lastModified>
           <type>FUNCTION</type>
           <contextSet>
             <delegate>
-              <contextType>GLOBAL_POSTPROCESSOR</contextType>
-              <contextType>GLOBAL_DEPLOY</contextType>
-              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
               <contextType>CHANNEL_BATCH</contextType>
-              <contextType>SOURCE_RECEIVER</contextType>
               <contextType>DESTINATION_DISPATCHER</contextType>
-              <contextType>GLOBAL_UNDEPLOY</contextType>
-              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-              <contextType>CHANNEL_POSTPROCESSOR</contextType>
-              <contextType>CHANNEL_PREPROCESSOR</contextType>
-              <contextType>CHANNEL_ATTACHMENT</contextType>
-              <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
               <contextType>CHANNEL_UNDEPLOY</contextType>
               <contextType>GLOBAL_PREPROCESSOR</contextType>
+              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+              <contextType>CHANNEL_ATTACHMENT</contextType>
+              <contextType>GLOBAL_UNDEPLOY</contextType>
+              <contextType>CHANNEL_PREPROCESSOR</contextType>
+              <contextType>GLOBAL_DEPLOY</contextType>
+              <contextType>CHANNEL_POSTPROCESSOR</contextType>
+              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+              <contextType>SOURCE_RECEIVER</contextType>
+              <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+              <contextType>GLOBAL_POSTPROCESSOR</contextType>
               <contextType>CHANNEL_DEPLOY</contextType>
             </delegate>
           </contextSet>
-          <code>
-function funcion_log(msg)
+          <code>/**
+ * Obtiene un objeto con los datos del paciente extraidos de un mensaje HL7 v2.x
+ */
+function get_patient_data(msg)
 {
-	// TODO: Enter code here
-	logger.info( &quot;funcion_log&quot; );
-	logger.info( typeof(msg) );
+    var data = {};
+
+    data.nacimiento = msg[&apos;PID&apos;][&apos;PID.7&apos;][&apos;PID.7.1&apos;].toString();
+    data.nombre = msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString();
+    data.apellido = msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString();
+    data.sexo = msg[&apos;PID&apos;][&apos;PID.8&apos;][&apos;PID.8.1&apos;].toString();
+
+    return data;
 }
 </code>
         </codeTemplate>
