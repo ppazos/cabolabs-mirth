@@ -5,8 +5,7 @@
 // if at least one channel was undeployed
 // You only have access to the globalMap here to persist data
 
-
-logger.info(&quot;Undeploy&quot;);
+logger.info(&quot;Global Undeploy&quot;);
 
 
 return;</string>
@@ -16,7 +15,7 @@ return;</string>
     <string>// This script executes once for each deploy or redeploy task
 // You only have access to the globalMap here to persist data
 
-logger.info(&quot;Deploy&quot;);
+logger.info(&quot;Global Deploy&quot;);
 
 return;</string>
   </entry>
@@ -25,7 +24,7 @@ return;</string>
     <string>// Modify the message variable below to pre process data
 // This script applies across all channels
 
-logger.info(&quot;Preprocessor&quot;);
+logger.info(&quot;Global Preprocessor&quot;);
 
 
 // UUID accessible from channels
@@ -34,10 +33,11 @@ globalMap.put(&apos;myUUID&apos;, &apos;hola_&apos;+uuid);
 
 
 // Generic destination folder for file writers
-globalMap.put(&apos;destination_folder&apos;, &apos;C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\mirth_destinations&apos;);
+globalMap.put(&apos;destination_folder&apos;, &apos;C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\mirth_destinations&apos;);
 
 // Generic source folder for file readers
-globalMap.put(&apos;source_folder&apos;, &apos;C:\Program Files\Apache Software Foundation\Apache2.2\htdocs\mirth_sources&apos;);
+globalMap.put(&apos;source_folder&apos;, &apos;C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\mirth_sources&apos;);
+
 
 return message;</string>
   </entry>
@@ -48,7 +48,7 @@ return message;</string>
 // Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
 // You have access to &quot;response&quot;, if returned from the channel postprocessor
 
-logger.info(&quot;Postprocessor&quot;);
+logger.info(&quot;Global Postprocessor&quot;);
 
 return;</string>
   </entry>
