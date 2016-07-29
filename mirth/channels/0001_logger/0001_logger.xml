@@ -7,10 +7,10 @@ Se hace un log en cada script, transformador y filtro para mostar el orden de ej
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1469326985676</time>
+    <time>1469773026237</time>
     <timezone>America/Cayenne</timezone>
   </lastModified>
-  <revision>5</revision>
+  <revision>11</revision>
   <sourceConnector version="3.4.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -21,7 +21,7 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
         <port>6661</port>
       </listenerConnectorProperties>
       <sourceConnectorProperties version="3.4.1">
-        <responseVariable>Auto-generate (Destinations completed)</responseVariable>
+        <responseVariable>ackresp</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
         <firstResponse>true</firstResponse>
@@ -63,12 +63,12 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
         <step>
           <sequenceNumber>0</sequenceNumber>
           <name>Log</name>
-          <script>logger.info(&quot;Source Transformer&quot;);</script>
+          <script>logger.info(&quot;Source Transformer Step 1&quot;);</script>
           <type>JavaScript</type>
           <data>
             <entry>
               <string>Script</string>
-              <string>logger.info(&quot;Source Transformer&quot;);</string>
+              <string>logger.info(&quot;Source Transformer Step 1&quot;);</string>
             </entry>
           </data>
         </step>
@@ -176,7 +176,7 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
           <data>
             <entry>
               <string>Script</string>
-              <string>logger.info(&quot;Source Filter&quot;);
+              <string>logger.info(&quot;Source Filter Step 1&quot;);
 
 logger.info(msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
 
@@ -184,7 +184,7 @@ return true;</string>
             </entry>
           </data>
           <type>JavaScript</type>
-          <script>logger.info(&quot;Source Filter&quot;);
+          <script>logger.info(&quot;Source Filter Step 1&quot;);
 
 logger.info(msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
 
@@ -240,7 +240,7 @@ return true;</script>
           <queueBufferSize>1000</queueBufferSize>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
-        <host>C:/Program Files/Apache Software Foundation/Apache2.2/htdocs/mirth_destinations/0/salida</host>
+        <host>${destination_folder}</host>
         <outputPattern>${message.messageId}.hl7</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
@@ -261,12 +261,20 @@ return true;</script>
           <step>
             <sequenceNumber>0</sequenceNumber>
             <name>Log</name>
-            <script>logger.info(&quot;Destination 1 Transformer&quot;);</script>
+            <script>logger.info(&quot;Destination 1 Transformer&quot;);
+
+// http://207.38.40.43/community/forums/showthread.php?p=44212
+var ackMessage = ACKGenerator.generateAckResponse(connectorMessage.getRawData(), &quot;AA&quot;, &quot;Message Successfully Received&quot;);
+responseMap.put(&quot;ackresp&quot;, ResponseFactory.getSentResponse(ackMessage));</script>
             <type>JavaScript</type>
             <data>
               <entry>
                 <string>Script</string>
-                <string>logger.info(&quot;Destination 1 Transformer&quot;);</string>
+                <string>logger.info(&quot;Destination 1 Transformer&quot;);
+
+// http://207.38.40.43/community/forums/showthread.php?p=44212
+var ackMessage = ACKGenerator.generateAckResponse(connectorMessage.getRawData(), &quot;AA&quot;, &quot;Message Successfully Received&quot;);
+responseMap.put(&quot;ackresp&quot;, ResponseFactory.getSentResponse(ackMessage));</string>
               </entry>
             </data>
           </step>
@@ -359,12 +367,22 @@ return true;</script>
           <step>
             <sequenceNumber>0</sequenceNumber>
             <name>Log</name>
-            <script>logger.info(&quot;Destination 1 Response Transformer&quot;);</script>
+            <script>logger.info(&quot;Destination 1 Response Transformer&quot;);
+
+/*
+return &quot;MSH|^~\&amp;|IFENG||REGADT|MCM|20160729023454||ACK^A04^ACK|20160729023454|P|2.5\r&quot; +
+       &quot;MSA|AA|&quot;+ connectorMessage.getMessageId() +&quot;\r&quot;;
+*/</script>
             <type>JavaScript</type>
             <data>
               <entry>
                 <string>Script</string>
-                <string>logger.info(&quot;Destination 1 Response Transformer&quot;);</string>
+                <string>logger.info(&quot;Destination 1 Response Transformer&quot;);
+
+/*
+return &quot;MSH|^~\&amp;|IFENG||REGADT|MCM|20160729023454||ACK^A04^ACK|20160729023454|P|2.5\r&quot; +
+       &quot;MSA|AA|&quot;+ connectorMessage.getMessageId() +&quot;\r&quot;;
+*/</string>
               </entry>
             </data>
           </step>
@@ -461,11 +479,13 @@ return true;</script>
               <entry>
                 <string>Script</string>
                 <string>logger.info(&quot;Destination 1 Filter&quot;);
+
 return true;</string>
               </entry>
             </data>
             <type>JavaScript</type>
             <script>logger.info(&quot;Destination 1 Filter&quot;);
+
 return true;</script>
             <operator>NONE</operator>
           </rule>
@@ -479,19 +499,25 @@ return true;</script>
   </destinationConnectors>
   <preprocessingScript>// Modify the message variable below to pre process data
 
-logger.info(&quot;Script Preprocessor&quot;);
+logger.info(&quot;Channel Preprocessor&quot;);
 
 return message;</preprocessingScript>
   <postprocessingScript>// This script executes once after a message has been processed
 // Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
-logger.info(&quot;Script Postprocessor&quot;);
+logger.info(&quot;Channel Postprocessor&quot;);
 
 return;</postprocessingScript>
   <deployScript>// This script executes once when the channel is deployed
 // You only have access to the globalMap and globalChannelMap here to persist data
+
+logger.info(&quot;Channel Deploy&quot;);
+
 return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
 // You only have access to the globalMap and globalChannelMap here to persist data
+
+logger.info(&quot;Channel Undeploy&quot;);
+
 return;</undeployScript>
   <properties version="3.4.1">
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
@@ -527,88 +553,5 @@ return;</undeployScript>
       </entry>
     </resourceIds>
   </properties>
-  <codeTemplateLibraries>
-    <codeTemplateLibrary version="3.4.1">
-      <id>f1c01445-3686-43cb-a275-448e5108c378</id>
-      <name>Library 1</name>
-      <revision>4</revision>
-      <lastModified>
-        <time>1469242719014</time>
-        <timezone>America/Cayenne</timezone>
-      </lastModified>
-      <description></description>
-      <includeNewChannels>false</includeNewChannels>
-      <enabledChannelIds>
-        <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
-      </enabledChannelIds>
-      <disabledChannelIds>
-        <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
-      </disabledChannelIds>
-      <codeTemplates>
-        <codeTemplate version="3.4.1">
-          <id>2f2605a1-60a7-4eb3-997e-0130761b85c7</id>
-          <name>bloque de codigo</name>
-          <revision>3</revision>
-          <lastModified>
-            <time>1469242727186</time>
-            <timezone>America/Cayenne</timezone>
-          </lastModified>
-          <type>DRAG_AND_DROP_CODE</type>
-          <contextSet>
-            <delegate>
-              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-              <contextType>SOURCE_RECEIVER</contextType>
-              <contextType>DESTINATION_DISPATCHER</contextType>
-              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-              <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-            </delegate>
-          </contextSet>
-          <code>/**
-
-log del identificador del mensaje HL7 v2.x
-
-*/
-
-logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );</code>
-        </codeTemplate>
-        <codeTemplate version="3.4.1">
-          <id>90f1418a-4597-488b-a7cc-ff14fe7d800a</id>
-          <name>una funcion</name>
-          <revision>5</revision>
-          <lastModified>
-            <time>1469243782290</time>
-            <timezone>America/Cayenne</timezone>
-          </lastModified>
-          <type>FUNCTION</type>
-          <contextSet>
-            <delegate>
-              <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-              <contextType>SOURCE_RECEIVER</contextType>
-              <contextType>GLOBAL_DEPLOY</contextType>
-              <contextType>CHANNEL_PREPROCESSOR</contextType>
-              <contextType>DESTINATION_DISPATCHER</contextType>
-              <contextType>CHANNEL_POSTPROCESSOR</contextType>
-              <contextType>CHANNEL_UNDEPLOY</contextType>
-              <contextType>CHANNEL_ATTACHMENT</contextType>
-              <contextType>GLOBAL_POSTPROCESSOR</contextType>
-              <contextType>GLOBAL_PREPROCESSOR</contextType>
-              <contextType>GLOBAL_UNDEPLOY</contextType>
-              <contextType>CHANNEL_BATCH</contextType>
-              <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-              <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-              <contextType>CHANNEL_DEPLOY</contextType>
-            </delegate>
-          </contextSet>
-          <code>
-function funcion_log(msg)
-{
-	// TODO: Enter code here
-	logger.info( &quot;funcion_log&quot; );
-	logger.info( typeof(msg) );
-}
-</code>
-        </codeTemplate>
-      </codeTemplates>
-    </codeTemplateLibrary>
-  </codeTemplateLibraries>
+  <codeTemplateLibraries/>
 </channel>
