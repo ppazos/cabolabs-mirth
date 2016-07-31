@@ -31,12 +31,13 @@ CREATE TABLE IF NOT EXISTS `cda_logs` (
 
 -- Dumping structure for table mirth_tests.pacientes
 CREATE TABLE IF NOT EXISTS `pacientes` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(50) NOT NULL DEFAULT '0',
-  `apellido` varchar(50) NOT NULL DEFAULT '0',
-  `nacimiento` date NOT NULL DEFAULT '0000-00-00',
-  `sexo` varchar(50) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+	`id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`nombre` VARCHAR(50) NOT NULL DEFAULT '0',
+	`apellido` VARCHAR(50) NOT NULL DEFAULT '0',
+	`nacimiento` DATE NOT NULL DEFAULT '0000-00-00',
+	`sexo` VARCHAR(50) NOT NULL DEFAULT '0',
+	`procesado` TINYINT(4) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
