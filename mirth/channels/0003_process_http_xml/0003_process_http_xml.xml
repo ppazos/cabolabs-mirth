@@ -21,10 +21,10 @@ Header: Authorization&#xd;
 </description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1469412656307</time>
+    <time>1469943027451</time>
     <timezone>America/Cayenne</timezone>
   </lastModified>
-  <revision>12</revision>
+  <revision>4</revision>
   <sourceConnector version="3.4.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -389,8 +389,8 @@ return true;</script>
           <queueBufferSize>1000</queueBufferSize>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
-        <host>C:/Program Files/Apache Software Foundation/Apache2.2/htdocs/mirth_destinations</host>
-        <outputPattern>${message.messageId}.txt</outputPattern>
+        <host>${destination_folder}</host>
+        <outputPattern>0003_${date.get(&apos;yyyy-M-d H.m.s&apos;)}.txt</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
         <password>anonymous</password>
