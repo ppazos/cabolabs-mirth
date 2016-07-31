@@ -16,15 +16,40 @@ Parametro: parametro1 (si es vacío falla el source filter y retorna un error)&#
 &#xd;
 Header: Authorization&#xd;
 &#xd;
-&#xd;
+&lt;HttpRequest&gt;&#xd;
+   &lt;RemoteAddress&gt;127.0.0.1&lt;/RemoteAddress&gt;&#xd;
+   &lt;RequestUrl&gt;http://localhost:1235/canalHttp1235/&lt;/RequestUrl&gt;&#xd;
+   &lt;Method&gt;POST&lt;/Method&gt;&#xd;
+   &lt;RequestPath&gt;parametro1=aaa&lt;/RequestPath&gt;&#xd;
+   &lt;RequestContextPath&gt;/canalHttp1235/&lt;/RequestContextPath&gt;&#xd;
+   &lt;Parameters&gt;&#xd;
+      &lt;parametro1&gt;aaa&lt;/parametro1&gt;&#xd;
+   &lt;/Parameters&gt;&#xd;
+   &lt;Header&gt;&#xd;
+      &lt;Accept-Language&gt;es,en-US;q=0.8,en;q=0.6&lt;/Accept-Language&gt;&#xd;
+      &lt;Authorization&gt;secret&lt;/Authorization&gt;&#xd;
+      &lt;Host&gt;localhost:1235&lt;/Host&gt;&#xd;
+      &lt;Content-Length&gt;80&lt;/Content-Length&gt;&#xd;
+      &lt;Accept-Encoding&gt;gzip, deflate&lt;/Accept-Encoding&gt;&#xd;
+      &lt;DNT&gt;1&lt;/DNT&gt;&#xd;
+      &lt;User-Agent&gt;Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36&lt;/User-Agent&gt;&#xd;
+      &lt;Origin&gt;chrome-extension://gmodihnfibbjdecbanmpmbmeffnmloel&lt;/Origin&gt;&#xd;
+      &lt;Connection&gt;keep-alive&lt;/Connection&gt;&#xd;
+      &lt;Content-Type&gt;application/xml&lt;/Content-Type&gt;&#xd;
+      &lt;Accept&gt;*/*&lt;/Accept&gt;&#xd;
+   &lt;/Header&gt;&#xd;
+   &lt;Content encoding=&quot;Base64&quot; multipart=&quot;no&quot;&gt;PG1lbnNhamU+CiAgICA8cGVyc29uYT4KICAgICAgICA8bm9tYnJlPlBhYmxvPC9ub21icmU+CiAg&amp;#13;&#xd;
+ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=&amp;#13;&#xd;
+   &lt;/Content&gt;&#xd;
+&lt;/HttpRequest&gt;&#xd;
 &#xd;
 </description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1469943027451</time>
+    <time>1469980641168</time>
     <timezone>America/Cayenne</timezone>
   </lastModified>
-  <revision>4</revision>
+  <revision>5</revision>
   <sourceConnector version="3.4.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
