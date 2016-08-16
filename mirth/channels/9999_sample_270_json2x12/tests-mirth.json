@@ -1,0 +1,54 @@
+{
+  "_type": "export",
+  "__export_format": 1,
+  "__export_date": "2016-08-16T13:55:59.976Z",
+  "__export_source": "insomnia.chrome.app:v2.6.11",
+  "items": [
+    {
+      "_type": "request_group",
+      "_id": "grp_1470846184619",
+      "name": "Tests Mirth",
+      "environments": {},
+      "requests": [
+        {
+          "_type": "request",
+          "_id": "req_1470846184619",
+          "url": "http://localhost:5679/claims/",
+          "method": "POST",
+          "body": "{\r\n    \"id\": 38,\r\n    \"location\": {\r\n        \"id\": 42,\r\n        \"address_line1\": \"123 hello st.\"\r\n    },\r\n    \"provider\": {\r\n        \"id\": 30,\r\n        \"name\": \"Test Clinic\",\r\n        \"type\": \"pep\"\r\n    },\r\n    \"date\": \"2016-04-21T19:54:44.759Z\",\r\n    \"payment_order\": {\r\n        \"id\": 38,\r\n        \"member_payment\": 10,\r\n        \"employer_payment\": 50\r\n    },\r\n    \"transaction_lines\": [\r\n        {\r\n            \"id\": 48,\r\n            \"item\": \"Afo Tib Fx orthotic bigid prfab w/fit & adj\",\r\n            \"price\": \"60.0\"\r\n        }\r\n    ],\r\n    \"total_price\": \"60.0\"\r\n}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "claim"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1470846220761",
+          "url": "http://localhost:4567/eligibility_check/",
+          "method": "POST",
+          "body": "{\r\n    \"id\": 16,\r\n    \"email\": \"pablo+member1@tarmac.io\",\r\n    \"role\": \"member\",\r\n    \"provider_id\": null,\r\n    \"first_name\": \"Pablo\",\r\n    \"last_name\": \"Member1\",\r\n    \"phone_number\": \"\",\r\n    \"dob\": \"1970-01-01\",\r\n    \"number\": \"6346236\",\r\n    \"employer_id\": 1,\r\n    \"subscriber_id\": null,\r\n    \"deleted_at\": null,\r\n    \"image_url\": \"http://s3-sa-east-1.amazonaws.com/solarte-bucket/members/images/000/000/016/original/pablo_pazos_2013.jpg?1449854769\",\r\n    \"square_image_url\": \"http://s3-sa-east-1.amazonaws.com/solarte-bucket/members/images/000/000/016/square/pablo_pazos_2013.jpg?1449854769\",\r\n    \"medium_image_url\": \"http://s3-sa-east-1.amazonaws.com/solarte-bucket/members/images/000/000/016/medium/pablo_pazos_2013.jpg?1449854769\",\r\n    \"thumbnail_image_url\": \"http://s3-sa-east-1.amazonaws.com/solarte-bucket/members/images/000/000/016/thumb/pablo_pazos_2013.jpg?1449854769\",\r\n    \"employer\": {\r\n        \"name\": \"Solarte Health\",\r\n        \"phone_number\": \"\",\r\n        \"email\": \"test@zolartehealth.com\",\r\n        \"ein\": \"01-0012200\"\r\n    },\r\n    \"dependants\": [{\r\n        \"id\": 45,\r\n        \"email\": \"pablo+memberdependant@tarmac.io\",\r\n        \"role\": \"member\",\r\n        \"provider_id\": null,\r\n        \"first_name\": \"Pablo\",\r\n        \"last_name\": \"Dependant\",\r\n        \"phone_number\": \"\",\r\n        \"dob\": \"1970-01-01\",\r\n        \"number\": \"456456\"\r\n    }],\r\n    \"plans\": [{\r\n        \"name\": \"Premium super plan\",\r\n        \"start_date\": \"2015-12-11\",\r\n        \"end_date\": \"2016-12-11\",\r\n        \"contract\": \"http://s3-sa-east-1.amazonaws.com/solarte-bucket/plan_contracts/2/3_Mensajeria_laboratorio_v1_1_2_%281%29.pdf?1449854438\",\r\n        \"part_a\": {\r\n            \"deductible\": {\r\n                \"max\": \"750.00\",\r\n                \"spent\": \"0.00\",\r\n                \"remaining\": \"750.00\"\r\n            },\r\n            \"coinsurance\": {\r\n                \"percent\": 50,\r\n                \"spent\": \"0.00\",\r\n                \"remaining\": \"1750.00\"\r\n            },\r\n            \"total_expenses\": \"0.00\",\r\n            \"member_expenses\": \"0.00\",\r\n            \"max_out_of_pocket\": \"2500.00\",\r\n            \"employer_expenses\": \"0.00\"\r\n        },\r\n        \"part_b\": {\r\n            \"allowance\": {\r\n                \"max\": \"200.00\",\r\n                \"spent\": \"200.00\",\r\n                \"remaining\": \"0.00\"\r\n            },\r\n            \"backend\": {\r\n                \"max\": \"400.00\",\r\n                \"spent\": \"10.00\",\r\n                \"remaining\": \"390.00\"\r\n            },\r\n            \"coinsurance\": {\r\n                \"percent\": 50,\r\n                \"spent\": \"0.00\",\r\n                \"remaining\": \"590.00\"\r\n            },\r\n            \"total_expenses\": \"210.00\",\r\n            \"member_expenses\": \"10.00\",\r\n            \"max_out_of_pocket\": \"600.00\",\r\n            \"employer_expenses\": \"200.00\"\r\n        }\r\n    }]\r\n}\r\n",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "eligibility"
+        }
+      ]
+    }
+  ]
+}
