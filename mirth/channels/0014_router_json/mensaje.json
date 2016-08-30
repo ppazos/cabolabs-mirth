@@ -1,0 +1,8 @@
+{
+    "destination": "H2",
+    "message": {
+        "patient": {
+            "name": "Pablo"
+        }
+    }
+}
