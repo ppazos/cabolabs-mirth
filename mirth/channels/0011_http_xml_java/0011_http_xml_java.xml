@@ -5,10 +5,10 @@
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1472533105148</time>
+    <time>1475174485148</time>
     <timezone>America/Cayenne</timezone>
   </lastModified>
-  <revision>10</revision>
+  <revision>11</revision>
   <sourceConnector version="3.4.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -71,7 +71,7 @@ msg = new XML(msg[&apos;Content&apos;].toString());
 
 logger.info(msg);
 
-var value = msg[&apos;nombre&apos;];
+var value = msg[&apos;persona&apos;][&apos;nombre&apos;];
 
 if (action == &quot;upper&quot;)
   value = Packages.paquete.Servicio.toUpper(value);
@@ -79,19 +79,19 @@ else if (action == &quot;lower&quot;)
   value = Packages.paquete.Servicio.toLower(value);
 
 // Nombre transformado
-msg[&apos;nombre&apos;] = value;
+msg[&apos;persona&apos;][&apos;nombre&apos;] = value;
 
 
 // Usando un servicio para obtener el largo, debe ser igual al largo
-if (msg[&apos;nombre&apos;].toString().length == Packages.paquete.Servicio.size(msg[&apos;nombre&apos;].toString()))
+if (msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length == Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;].toString()))
 {
    logger.info(&apos;OK&apos;);
 }
 else logger.info(&apos;ERROR&apos;);
 
 
-logger.info(&quot;length :&quot;+ msg[&apos;nombre&apos;].toString().length);
-logger.info(&quot;servicio length :&quot;+ Packages.paquete.Servicio.size(msg[&apos;nombre&apos;]));
+logger.info(&quot;length :&quot;+ msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length);
+logger.info(&quot;servicio length :&quot;+ Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;]));
 logger.info(msg);</script>
           <type>JavaScript</type>
           <data>
@@ -106,7 +106,7 @@ msg = new XML(msg[&apos;Content&apos;].toString());
 
 logger.info(msg);
 
-var value = msg[&apos;nombre&apos;];
+var value = msg[&apos;persona&apos;][&apos;nombre&apos;];
 
 if (action == &quot;upper&quot;)
   value = Packages.paquete.Servicio.toUpper(value);
@@ -114,44 +114,44 @@ else if (action == &quot;lower&quot;)
   value = Packages.paquete.Servicio.toLower(value);
 
 // Nombre transformado
-msg[&apos;nombre&apos;] = value;
+msg[&apos;persona&apos;][&apos;nombre&apos;] = value;
 
 
 // Usando un servicio para obtener el largo, debe ser igual al largo
-if (msg[&apos;nombre&apos;].toString().length == Packages.paquete.Servicio.size(msg[&apos;nombre&apos;].toString()))
+if (msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length == Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;].toString()))
 {
    logger.info(&apos;OK&apos;);
 }
 else logger.info(&apos;ERROR&apos;);
 
 
-logger.info(&quot;length :&quot;+ msg[&apos;nombre&apos;].toString().length);
-logger.info(&quot;servicio length :&quot;+ Packages.paquete.Servicio.size(msg[&apos;nombre&apos;]));
+logger.info(&quot;length :&quot;+ msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length);
+logger.info(&quot;servicio length :&quot;+ Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;]));
 logger.info(msg);</string>
             </entry>
           </data>
         </step>
       </steps>
-      <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0Pg0KICAgIDxSZW1vdGVBZGRyZXNzPjEyNy4wLjAuMTwvUmVtb3RlQWRkcmVz
-cz4NCiAgICA8UmVxdWVzdFVybD5odHRwOi8vbG9jYWxob3N0OjY2NzQvamF2YS88L1JlcXVlc3RV
-cmw+DQogICAgPE1ldGhvZD5QT1NUPC9NZXRob2Q+DQogICAgPFJlcXVlc3RQYXRoLz4NCiAgICA8
-UmVxdWVzdENvbnRleHRQYXRoPi9qYXZhLzwvUmVxdWVzdENvbnRleHRQYXRoPg0KICAgIDxQYXJh
-bWV0ZXJzPg0KICAgICAgICA8bWVuc2FqZT4mbHQ7cGVyc29uYSZndDsNCiAgJmx0O25vbWJyZSZn
-dDtQYWJsbyZsdDsvbm9tYnJlJmd0Ow0KJmx0Oy9wZXJzb25hJmd0OzwvbWVuc2FqZT4NCiAgICA8
-L1BhcmFtZXRlcnM+DQogICAgPEhlYWRlcj4NCiAgICAgICAgPEFjY2VwdC1MYW5ndWFnZT5lbi1V
-UyxlbjtxPTAuOCxlcztxPTAuNjwvQWNjZXB0LUxhbmd1YWdlPg0KICAgICAgICA8SG9zdD5sb2Nh
-bGhvc3Q6NjY3NDwvSG9zdD4NCiAgICAgICAgPENvbnRlbnQtTGVuZ3RoPjc3PC9Db250ZW50LUxl
-bmd0aD4NCiAgICAgICAgPEFjY2VwdC1FbmNvZGluZz5nemlwLGRlZmxhdGUsc2RjaDwvQWNjZXB0
-LUVuY29kaW5nPg0KICAgICAgICA8UmVmZXJlcj5odHRwOi8vbG9jYWxob3N0L01pcnRoLVBhcnRl
-XzMtVGFsbGVyLzdfWE1MX3Bvcl9IVFRQX0phdmFfNjY3NC5odG1sPC9SZWZlcmVyPg0KICAgICAg
-ICA8RE5UPjE8L0ROVD4NCiAgICAgICAgPFVzZXItQWdlbnQ+TW96aWxsYS81LjAgKFdpbmRvd3Mg
-TlQgNS4xKSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMzUu
-MC4xOTE2LjE1MyBTYWZhcmkvNTM3LjM2PC9Vc2VyLUFnZW50Pg0KICAgICAgICA8T3JpZ2luPmh0
-dHA6Ly9sb2NhbGhvc3Q8L09yaWdpbj4NCiAgICAgICAgPENvbm5lY3Rpb24+a2VlcC1hbGl2ZTwv
-Q29ubmVjdGlvbj4NCiAgICAgICAgPENvbnRlbnQtVHlwZT5hcHBsaWNhdGlvbi94LXd3dy1mb3Jt
-LXVybGVuY29kZWQ7IGNoYXJzZXQ9VVRGLTg8L0NvbnRlbnQtVHlwZT4NCiAgICAgICAgPEFjY2Vw
-dD4qLyo8L0FjY2VwdD4NCiAgICA8L0hlYWRlcj4NCiAgICA8Q29udGVudCBlbmNvZGluZz0iQmFz
-ZTY0Ii8+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
+      <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0Pg0KICAgIDxSZW1vdGVBZGRyZXNzPjE5Mi4xNjguMS4xMDc8L1JlbW90ZUFk
+ZHJlc3M+DQogICAgPFJlcXVlc3RVcmw+aHR0cDovLzE5Mi4xNjguMS4xMDk6NjY3NC9qYXZhLzwv
+UmVxdWVzdFVybD4NCiAgICA8TWV0aG9kPlBPU1Q8L01ldGhvZD4NCiAgICA8UmVxdWVzdFBhdGg+
+YWN0aW9uPXVwcGVyPC9SZXF1ZXN0UGF0aD4NCiAgICA8UmVxdWVzdENvbnRleHRQYXRoPi9qYXZh
+LzwvUmVxdWVzdENvbnRleHRQYXRoPg0KICAgIDxQYXJhbWV0ZXJzPg0KICAgICAgICA8YWN0aW9u
+PnVwcGVyPC9hY3Rpb24+DQogICAgPC9QYXJhbWV0ZXJzPg0KICAgIDxIZWFkZXI+DQogICAgICAg
+IDxBY2NlcHQtTGFuZ3VhZ2U+ZXMsZW4tVVM7cT0wLjgsZW47cT0wLjY8L0FjY2VwdC1MYW5ndWFn
+ZT4NCiAgICAgICAgPEhvc3Q+MTkyLjE2OC4xLjEwOTo2Njc0PC9Ib3N0Pg0KICAgICAgICA8Q29u
+dGVudC1MZW5ndGg+ODA8L0NvbnRlbnQtTGVuZ3RoPg0KICAgICAgICA8QWNjZXB0LUVuY29kaW5n
+Pmd6aXAsIGRlZmxhdGU8L0FjY2VwdC1FbmNvZGluZz4NCiAgICAgICAgPEROVD4xPC9ETlQ+DQog
+ICAgICAgIDxVc2VyLUFnZW50Pk1vemlsbGEvNS4wIChXaW5kb3dzIE5UIDUuMSkgQXBwbGVXZWJL
+aXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzQ5LjAuMjYyMy4xMTIgU2FmYXJp
+LzUzNy4zNjwvVXNlci1BZ2VudD4NCiAgICAgICAgPE9yaWdpbj5jaHJvbWUtZXh0ZW5zaW9uOi8v
+Z21vZGlobmZpYmJqZGVjYmFubXBtYm1lZmZubWxvZWw8L09yaWdpbj4NCiAgICAgICAgPENvbm5l
+Y3Rpb24+a2VlcC1hbGl2ZTwvQ29ubmVjdGlvbj4NCiAgICAgICAgPENvbnRlbnQtVHlwZT5hcHBs
+aWNhdGlvbi94bWw8L0NvbnRlbnQtVHlwZT4NCiAgICAgICAgPEFjY2VwdD4qLyo8L0FjY2VwdD4N
+CiAgICA8L0hlYWRlcj4NCiAgICA8Q29udGVudCBtdWx0aXBhcnQ9Im5vIj4mbHQ7bWVuc2FqZSZn
+dDsNCiAgICAmbHQ7cGVyc29uYSZndDsNCiAgICAgICAgJmx0O25vbWJyZSZndDtQYWJsbyZsdDsv
+bm9tYnJlJmd0Ow0KICAgICZsdDsvcGVyc29uYSZndDsNCiZsdDsvbWVuc2FqZSZndDs8L0NvbnRl
+bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
       <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>XML</inboundDataType>
       <outboundDataType>XML</outboundDataType>
