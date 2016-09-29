@@ -1,8 +1,8 @@
 {
   "_type": "export",
   "__export_format": 1,
-  "__export_date": "2016-07-25T05:16:00.284Z",
-  "__export_source": "insomnia.chrome.app:v2.6.10",
+  "__export_date": "2016-09-29T18:43:38.571Z",
+  "__export_source": "insomnia.chrome.app:v2.7.0",
   "items": [
     {
       "_type": "request_group",
@@ -37,7 +37,7 @@
             "format": "xml",
             "panel_width": 0.5
           },
-          "name": "XML custom por HTTP - p1235"
+          "name": "0003_process_http_xml"
         },
         {
           "_type": "request",
@@ -56,7 +56,31 @@
             "format": "xml",
             "panel_width": 0.5
           },
-          "name": "CDA por HTTP - p1237"
+          "name": "0004_http_cda_to_database"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1475173377341",
+          "url": "http://localhost:6674/java/",
+          "method": "POST",
+          "body": "<mensaje>\n    <persona>\n        <nombre>Pablo</nombre>\n    </persona>\n</mensaje>",
+          "headers": [],
+          "params": [
+            {
+              "name": "action",
+              "value": "upper"
+            }
+          ],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "xml",
+            "panel_width": 0.5
+          },
+          "name": "0011_http_xml_java"
         }
       ]
     }
