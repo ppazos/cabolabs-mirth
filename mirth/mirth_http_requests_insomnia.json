@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 1,
-  "__export_date": "2016-09-29T18:43:38.571Z",
+  "__export_date": "2016-09-29T19:04:34.220Z",
   "__export_source": "insomnia.chrome.app:v2.7.0",
   "items": [
     {
@@ -81,6 +81,25 @@
             "panel_width": 0.5
           },
           "name": "0011_http_xml_java"
+        },
+        {
+          "_type": "request",
+          "_id": "req_1475175867475",
+          "url": "http://localhost:8686/router/",
+          "method": "POST",
+          "body": "{\n    \"destination\": \"H2\",\n    \"message\": {\n        \"patient\": {\n            \"name\": \"Pablo\"\n        }\n    }\n}",
+          "headers": [],
+          "params": [],
+          "authentication": {
+            "_type": "basic",
+            "username": "",
+            "password": ""
+          },
+          "__insomnia": {
+            "format": "json",
+            "panel_width": 0.5
+          },
+          "name": "0014_router_json"
         }
       ]
     }
