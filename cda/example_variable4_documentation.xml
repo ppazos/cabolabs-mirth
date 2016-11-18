@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!-- ?xml-stylesheet type="text/xsl" href="CDA.xsl"? -->
+
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="urn:hl7-org:v3 ../infrastructure/cda/CDA.xsd">
+    <!-- CDA Header för vård- och omsorgsdokument -->
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    <!-- Fast värde: indikerar att detta är ett CDA-dokumen -->
+    <id extension="dokument-id" root="1.2.752.129.2.1.2.1"/>
+    <!-- Id på vård- och omsorgsdokument. RIV: vård- och omsorgsdokument.dokument-id
+    extension = Unik identifierare för aktuellt informationsobjekt.
+    root = fast värde OID för Icke-nationell identifierare Org+lokalt unikt id.-->
+
+    <code code="R-42BAC" codeSystem="2.16.840.1.113883.6.96"/>
+    <!-- Fast värde; anger att typen är vård- och omsorgsdokumentation, kodsystemet som används är Loinc.
+    Kodsystemet är SNOMED CT (2.16.840.1.113883.6.96)
+    Koden sätts till "Kliniskt dokument" (R-42BAC)
+    Specifik typ av dokument anges nedan-->
+    <effectiveTime value="20000407150000"/>
+    <!-- tidpunkt då dokument skapades, format YYYYMMDDHHMMSS RIV: vård-och omsorgsdokument.registreringstidpunkt -->
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    <!-- Fast värde, anger Normal sekretesshantering-->
+    <!-- Information om patienten -->
+    <recordTarget>
+        <patientRole>
+            <id extension="19121212-1212" root="1.2.752.129.2.1.3.1"/>
+            <!-- Id på patienten. RIV: vård- och omsorgstagare.person-id -->
+            <!-- root sätt till typ av personidentifierare. Bland tillåtna typer finns:
+                personnummer (1.2.752.129.2.1.3.1)
+                nationell reservnummer (1.2.752.129.2.1.3.2)
+                samordningsnummer (1.2.752.129.2.1.3.3)
+                reservnummer SLL (1.2.752.97.3.1.3) -->
+        </patientRole>
+    </recordTarget>
+
+    <!-- Person som skapat vård- och omsorgsdokumentet -->
+    <author>
+        <time value="20000407150000"/>
+        <!-- Tidpunkt då dokumentet skapades, format YYYYMMDDHHMMSS -->
+        <assignedAuthor>
+            <id extension="HSA-id för person" root="1.2.752.129.2.1.4.1"/>
+            <!-- HSA för författare extension = HSA-id för författaren, RIV:vård- och omsorgspersonal.personal-id
+            root= fast värde, OID för HSA (1.2.752.129.2.1.4.1)  -->
+            <code code="lämplig_kod" codeSystem="1.2.752.129.2.2.1.4" displayName="Lämplig befattning"/>
+
+            <representedOrganization>
+                <id extension="HSA-id för organisation" root="1.2.752.129.2.1.4.1"/>
+                <!--  Id för den enhet där den som är författare är uppdragstagare.
+                extension = HSA-id för organisation, RIV: enhet.enhets-id
+                root = fast värde OID för HSA (1.2.752.129.2.1.4.1)-->
+                <telecom value="+46-812345678" />
+                <!-- Optional telefonnummer till enhet. RIV: enhet.telefonnummer, enhet.e-postadress,-->
+                <asOrganizationPartOf>                <!-- Information om vårdgivare -->
+                    <wholeOrganization>
+                        <id extension="HSA för vårdgivare" root="1.2.752.129.2.1.4.1"/>
+                        <!-- Id för vårdgivare
+                        extension = HSA-id för vårdgivare. RIV: Informationsmängd.ägande vårdgivare-id
+                        root = fast värde OID för HSA (1.2.752.129.2.1.4.1) -->
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+
+    <!-- Information om PDL-enhet som har ägandeskap över informationen-->
+    <custodian>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id extension="HSA-id för organisation" root="1.2.752.129.2.1.4.1"/>
+                <!-- 	Ägande PDL-enhet.
+                extension = HSA-id för PDL-enhet. RIV: Informationsmängd.ägande vårdenhets-id
+                root = fast värde OID för HSA (1.2.752.129.2.1.4.1) -->
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+
+    <legalAuthenticator>                                <!-- Information om signering -->
+        <time value="20120408120000"/>
+        <!-- Tidpunkt för signering, format YYYYMMDDHHMMSS. RIV: Vård- och omsorgsdokument.signeringstidpunkt-->
+        <signatureCode code="S"/>
+        <assignedEntity>
+            <id extension="HSA-id för person" root="1.2.752.129.2.1.4.1"/>
+            <!-- HSA id för signerande person. Motsvarighet i RIV saknas
+            extension = HSA-id för signerande person
+            root = fast värde OID för HSA (1.2.752.129.2.1.4.1)-->
+            <representedOrganization>
+                <id extension="HSA-id för organisation" root="1.2.752.129.2.1.4.1"/>
+                <!-- Id för den enhet där den som är signerare är uppdragstagare. Motsvarighet i RIV saknas
+                extension = HSA för organisation
+                root = fast värde OID för HSA (1.2.752.129.2.1.4.1) -->
+            </representedOrganization>
+        </assignedEntity>
+    </legalAuthenticator>
+
+    <authorization>            <!-- Optional: kod för menprövning. <authorization> utesluts helt om information om menprövning inte är tillgänglig-->
+        <consent>
+            <code code="menprövningskod" codeSystem="2.16.840.1.113883.5.25"/>
+            <!-- Kod som anger typ på menprövning. Motsvarighet i RIV saknas
+            code = kod för menprövning/typ av menprövning
+            extensioner = kodverk för menprövningskoder. Här är ej korrekt OID angiven -->
+            <statusCode code="completed"/>
+        </consent>
+    </authorization>
+    <!-- Optional. Information om  Vård- och omsorgskontakt som föranlett vårddokumentation. <componentOf> utesluts helt om Vård- och omsorgskontakt saknas -->
+    <componentOf>
+        <encompassingEncounter>
+            <id extension="KPENC1332" root="1.2.752.129.2.1.2.1"/>
+            <!--Id på vård- och omsorgskontakt.
+            extension = unik identifierare för vård- och omsorgskontakt.
+            RIV: Vård- och omsorgsdokument.skapas vid.Vård- och omsorgskontakt.kontakt-id.
+            root = fast värde OID för Icke-nationell identifierare Org+lokalt unikt id. (1.2.752.129.2.1.2.1) -->
+            <effectiveTime value="20120408120000"/>
+            <!-- Tidpunkt för vård- och omsorgskontakt, format YYYYMMDDHHMMSS.
+            RIV: Vård- och omsorgskontakt.kontakttid -->
+        </encompassingEncounter>
+    </componentOf>
+
+    <!-- CDA Body -->
+    <component>
+        <structuredBody>
+            <!-- Sektion för vårddokumentation -->
+            <!-- I varje CDA skickas ett vård- och omsorgsdokument -->
+            <component>
+                <section>
+                    <code code="ins" codeSystem="1.2.752.129.2.2.2.11"/>
+                    <!-- Typ av vård- och omsorgsdokumentation
+                    code = kod för typ av anteckning. RIV: Vård- och omsorgsdokument.anteckningstyp
+                    CodeSystem = OID för kodverk Anteckningstyp (1.2.752.129.2.2.2.11)
+
+                    Tillåtna värden från KV Anteckningstyp
+                    utr = Utredning
+                    atb = åtgärd/Behandling
+                    sam = Sammanfattning
+                    sao = Samordning
+                    ins = Inskrivning
+                    slu = Slutanteckning
+                    auf = Anteckning utan fysiskt möte
+                    sva = Slutenvårdsanteckning
+                    bes = Besöksanteckning
+                    -->
+                    <title>Namn på dokument</title>
+                    <!-- Optional: Titel på dokument. RIV: Vård- och omsorgsdokument.dokumentnamn -->
+                    <text>
+                        <!-- själva anteckningen, här läggs texten -->
+                        <renderMultiMedia referencedObject="MM1"/>
+                        <!-- Optional, platshållare för bifogad anteckning i mime-format. Används endast om mulitmedia skickas med i dokumentet.
+                        För varje multimediaobjekt i meddelandet skapas en <renderMultiMedia> med tillhörande <observationMedia>,
+                        där referencedObjekt har unik identitet (exempelvis MM1, MM2, MM3 osv) -->
+                        <renderMultiMedia referencedObject="MM2"/>
+                        <renderMultiMedia referencedObject="MM3"/>
+                        <renderMultiMedia referencedObject="MM4"/>
+                    </text>
+
+                    <!-- Optional, sektionen <entry> används endast om multimedia skickas med i dokumentet och <renderMultiMedia> ovan är angiven -->
+                    <entry>
+                        <!-- ID sätts till samma ID som angivits i referencedObject i <renderMultimedia> ovan -->
+                        <observationMedia classCode="OBS" moodCode="EVN" ID="MM1">
+							<!-- mediaType anger lämplig mime-typ representation anger kodningstyp-->
+                            <value xsi:type="ED" mediaType="image/jpeg" representation="B64">
+                                Here is the inline B64 multimedia content MM1
+                            </value>
+                        </observationMedia>
+                    </entry>
+
+                    <entry>
+                        <observationMedia classCode="OBS" moodCode="EVN" ID="MM2">
+                            <value xsi:type="ED" mediaType="image/jpeg" representation="B64">
+                                Here is the inline B64 multimedia content MM2
+                            </value>
+                        </observationMedia>
+                    </entry>
+                    <entry>
+                        <observationMedia classCode="OBS" moodCode="EVN" ID="MM3">
+                            <value xsi:type="ED" mediaType="image/jpeg" representation="B64">
+                                Here is the inline B64 multimedia content MM3
+                            </value>
+                        </observationMedia>
+                    </entry>
+
+                    <entry>
+                        <observationMedia classCode="OBS" moodCode="EVN" ID="MM4">
+                            <value xsi:type="ED" mediaType="image/jpeg" representation="B64">
+                                Here is the inline B64 multimedia content MM4
+                            </value>
+                        </observationMedia>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>
