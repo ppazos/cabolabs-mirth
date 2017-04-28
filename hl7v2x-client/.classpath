@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="con" path="GROOVY_SUPPORT"/>
+	<classpathentry exported="true" kind="con" path="GROOVY_DSL_SUPPORT"/>
+	<classpathentry kind="lib" path="lib/groovy-all-2.4.7.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-base-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-examples-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-hl7overhttp-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v21-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v22-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v23-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v231-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v24-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v25-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v251-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/hapi-structures-v26-2.2.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.6.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.6.6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
