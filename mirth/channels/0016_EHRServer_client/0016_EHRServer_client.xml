@@ -1,20 +1,20 @@
-<channel version="3.4.1">
+<channel version="3.4.2">
   <id>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</id>
   <nextMetaDataId>8</nextMetaDataId>
   <name>0016_EHRServer_client</name>
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1474680636586</time>
-    <timezone>America/Cayenne</timezone>
+    <time>1494221146166</time>
+    <timezone>America/Montevideo</timezone>
   </lastModified>
-  <revision>38</revision>
-  <sourceConnector version="3.4.1">
+  <revision>7</revision>
+  <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
-    <properties class="com.mirth.connect.connectors.js.JavaScriptReceiverProperties" version="3.4.1">
+    <properties class="com.mirth.connect.connectors.js.JavaScriptReceiverProperties" version="3.4.2">
       <pluginProperties/>
-      <pollConnectorProperties version="3.4.1">
+      <pollConnectorProperties version="3.4.2">
         <pollingType>INTERVAL</pollingType>
         <pollOnStart>false</pollOnStart>
         <pollingFrequency>30000</pollingFrequency>
@@ -41,7 +41,7 @@
           <endingMinute>0</endingMinute>
         </pollConnectorPropertiesAdvanced>
       </pollConnectorProperties>
-      <sourceConnectorProperties version="3.4.1">
+      <sourceConnectorProperties version="3.4.2">
         <responseVariable>None</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
@@ -59,24 +59,24 @@
 
 return &quot;nada&quot;;</script>
     </properties>
-    <transformer version="3.4.1">
+    <transformer version="3.4.2">
       <steps/>
       <inboundDataType>RAW</inboundDataType>
       <outboundDataType>RAW</outboundDataType>
-      <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
           <splitType>JavaScript</splitType>
           <batchScript></batchScript>
         </batchProperties>
       </inboundProperties>
-      <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
           <splitType>JavaScript</splitType>
           <batchScript></batchScript>
         </batchProperties>
       </outboundProperties>
     </transformer>
-    <filter version="3.4.1">
+    <filter version="3.4.2">
       <rules/>
     </filter>
     <transportName>JavaScript Reader</transportName>
@@ -85,12 +85,12 @@ return &quot;nada&quot;;</script>
     <waitForPrevious>true</waitForPrevious>
   </sourceConnector>
   <destinationConnectors>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>1</metaDataId>
       <name>login</name>
-      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -109,7 +109,7 @@ return &quot;nada&quot;;</script>
           </resourceIds>
           <queueBufferSize>1000</queueBufferSize>
         </destinationConnectorProperties>
-        <host>http://cabolabs-ehrserver.rhcloud.com/rest/login</host>
+        <host>http://ehrserver-cabolabs2.rhcloud.com/api/v1/login</host>
         <useProxyServer>false</useProxyServer>
         <proxyAddress></proxyAddress>
         <proxyPort></proxyPort>
@@ -131,7 +131,7 @@ return &quot;nada&quot;;</script>
           <entry>
             <string>organization</string>
             <list>
-              <string>6666</string>
+              <string>123456</string>
             </list>
           </entry>
         </parameters>
@@ -152,24 +152,24 @@ return &quot;nada&quot;;</script>
         <charset>UTF-8</charset>
         <socketTimeout>10000</socketTimeout>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps>
           <step>
             <sequenceNumber>0</sequenceNumber>
@@ -196,20 +196,20 @@ channelMap.put(&apos;token&apos;, resp.token);</string>
         <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>HTTP Sender</transportName>
@@ -217,12 +217,12 @@ channelMap.put(&apos;token&apos;, resp.token);</string>
       <enabled>true</enabled>
       <waitForPrevious>true</waitForPrevious>
     </connector>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>6</metaDataId>
-      <name>patients</name>
-      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.1">
+      <name>query data</name>
+      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -241,7 +241,7 @@ channelMap.put(&apos;token&apos;, resp.token);</string>
           </resourceIds>
           <queueBufferSize>1000</queueBufferSize>
         </destinationConnectorProperties>
-        <host>http://cabolabs-ehrserver.rhcloud.com/rest/patients</host>
+        <host>http://ehrserver-cabolabs2.rhcloud.com/api/v1/queries/7d125791-9f16-4b9b-a121-8b1238b59cb5/execute</host>
         <useProxyServer>false</useProxyServer>
         <proxyAddress></proxyAddress>
         <proxyPort></proxyPort>
@@ -259,6 +259,12 @@ channelMap.put(&apos;token&apos;, resp.token);</string>
             <string>format</string>
             <list>
               <string>json</string>
+            </list>
+          </entry>
+          <entry>
+            <string>ehrUid</string>
+            <list>
+              <string>c35dfe02-4ece-465e-9433-0540c6d95f3f</string>
             </list>
           </entry>
         </parameters>
@@ -279,35 +285,36 @@ channelMap.put(&apos;token&apos;, resp.token);</string>
         <charset>UTF-8</charset>
         <socketTimeout>10000</socketTimeout>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps>
           <step>
             <sequenceNumber>0</sequenceNumber>
             <name>New Step</name>
             <script>var resp = JSON.parse(msg);
 
-logger.info(&apos;patients: &apos;+ msg);
+logger.info(&apos;query results: &apos;+ msg);
 
-resp.patients.forEach( function(element, index, array) {
+resp.results.forEach( function(compo, index, array) {
 
-   logger.info(element.uid);
+   logger.info(compo.uid);
+   logger.info(compo.archetypeId);
 } );</script>
             <type>JavaScript</type>
             <data>
@@ -315,11 +322,12 @@ resp.patients.forEach( function(element, index, array) {
                 <string>Script</string>
                 <string>var resp = JSON.parse(msg);
 
-logger.info(&apos;patients: &apos;+ msg);
+logger.info(&apos;query results: &apos;+ msg);
 
-resp.patients.forEach( function(element, index, array) {
+resp.results.forEach( function(compo, index, array) {
 
-   logger.info(element.uid);
+   logger.info(compo.uid);
+   logger.info(compo.archetypeId);
 } );</string>
               </entry>
             </data>
@@ -329,20 +337,20 @@ resp.patients.forEach( function(element, index, array) {
         <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>HTTP Sender</transportName>
@@ -350,12 +358,12 @@ resp.patients.forEach( function(element, index, array) {
       <enabled>true</enabled>
       <waitForPrevious>true</waitForPrevious>
     </connector>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>7</metaDataId>
       <name>ehrs</name>
-      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.http.HttpDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -374,7 +382,7 @@ resp.patients.forEach( function(element, index, array) {
           </resourceIds>
           <queueBufferSize>1000</queueBufferSize>
         </destinationConnectorProperties>
-        <host>http://cabolabs-ehrserver.rhcloud.com/rest/ehrs</host>
+        <host>http://ehrserver-cabolabs2.rhcloud.com/api/v1/ehrs</host>
         <useProxyServer>false</useProxyServer>
         <proxyAddress></proxyAddress>
         <proxyPort></proxyPort>
@@ -412,24 +420,24 @@ resp.patients.forEach( function(element, index, array) {
         <charset>UTF-8</charset>
         <socketTimeout>10000</socketTimeout>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps>
           <step>
             <sequenceNumber>0</sequenceNumber>
@@ -462,20 +470,20 @@ resp.ehrs.forEach( function(element, index, array) {
         <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>RAW</inboundDataType>
         <outboundDataType>RAW</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.1">
-          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.raw.RawDataTypeProperties" version="3.4.2">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.raw.RawBatchProperties" version="3.4.2">
             <splitType>JavaScript</splitType>
             <batchScript></batchScript>
           </batchProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>HTTP Sender</transportName>
@@ -495,7 +503,7 @@ return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
 // You only have access to the globalMap and globalChannelMap here to persist data
 return;</undeployScript>
-  <properties version="3.4.1">
+  <properties version="3.4.2">
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
     <messageStorageMode>DEVELOPMENT</messageStorageMode>
     <encryptData>false</encryptData>
@@ -517,7 +525,7 @@ return;</undeployScript>
         <mappingName>mirth_type</mappingName>
       </metaDataColumn>
     </metaDataColumns>
-    <attachmentProperties version="3.4.1">
+    <attachmentProperties version="3.4.2">
       <type>None</type>
       <properties/>
     </attachmentProperties>

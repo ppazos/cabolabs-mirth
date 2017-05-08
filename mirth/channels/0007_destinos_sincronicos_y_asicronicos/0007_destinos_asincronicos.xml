@@ -1,24 +1,24 @@
-<channel version="3.4.1">
+<channel version="3.4.2">
   <id>375900e8-4214-4c96-a46f-2b4046514e9a</id>
   <nextMetaDataId>4</nextMetaDataId>
   <name>0007_destinos_asincronicos</name>
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1469946708182</time>
-    <timezone>America/Cayenne</timezone>
+    <time>1494213886259</time>
+    <timezone>America/Montevideo</timezone>
   </lastModified>
-  <revision>2</revision>
-  <sourceConnector version="3.4.1">
+  <revision>1</revision>
+  <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
-    <properties class="com.mirth.connect.connectors.tcp.TcpReceiverProperties" version="3.4.1">
+    <properties class="com.mirth.connect.connectors.tcp.TcpReceiverProperties" version="3.4.2">
       <pluginProperties/>
-      <listenerConnectorProperties version="3.4.1">
+      <listenerConnectorProperties version="3.4.2">
         <host>0.0.0.0</host>
         <port>6671</port>
       </listenerConnectorProperties>
-      <sourceConnectorProperties version="3.4.1">
+      <sourceConnectorProperties version="3.4.2">
         <responseVariable>Auto-generate (After source transformer)</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
@@ -56,12 +56,12 @@
       <responseAddress></responseAddress>
       <responsePort></responsePort>
     </properties>
-    <transformer version="3.4.1">
+    <transformer version="3.4.2">
       <steps/>
       <inboundDataType>HL7V2</inboundDataType>
       <outboundDataType>HL7V2</outboundDataType>
-      <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
           <handleRepetitions>true</handleRepetitions>
           <handleSubcomponents>true</handleSubcomponents>
           <useStrictParser>false</useStrictParser>
@@ -70,16 +70,16 @@
           <segmentDelimiter>\r</segmentDelimiter>
           <convertLineBreaks>true</convertLineBreaks>
         </serializationProperties>
-        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
           <useStrictParser>false</useStrictParser>
           <useStrictValidation>false</useStrictValidation>
           <segmentDelimiter>\r</segmentDelimiter>
         </deserializationProperties>
-        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
           <splitType>MSH_Segment</splitType>
           <batchScript></batchScript>
         </batchProperties>
-        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
           <segmentDelimiter>\r</segmentDelimiter>
           <successfulACKCode>AA</successfulACKCode>
           <successfulACKMessage></successfulACKMessage>
@@ -90,7 +90,7 @@
           <msh15ACKAccept>false</msh15ACKAccept>
           <dateFormat>yyyyMMddHHmmss</dateFormat>
         </responseGenerationProperties>
-        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
           <successfulACKCode>AA,CA</successfulACKCode>
           <errorACKCode>AE,CE</errorACKCode>
           <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -99,8 +99,8 @@
           <originalIdMapVariable></originalIdMapVariable>
         </responseValidationProperties>
       </inboundProperties>
-      <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
           <handleRepetitions>true</handleRepetitions>
           <handleSubcomponents>true</handleSubcomponents>
           <useStrictParser>false</useStrictParser>
@@ -109,16 +109,16 @@
           <segmentDelimiter>\r</segmentDelimiter>
           <convertLineBreaks>true</convertLineBreaks>
         </serializationProperties>
-        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
           <useStrictParser>false</useStrictParser>
           <useStrictValidation>false</useStrictValidation>
           <segmentDelimiter>\r</segmentDelimiter>
         </deserializationProperties>
-        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
           <splitType>MSH_Segment</splitType>
           <batchScript></batchScript>
         </batchProperties>
-        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
           <segmentDelimiter>\r</segmentDelimiter>
           <successfulACKCode>AA</successfulACKCode>
           <successfulACKMessage></successfulACKMessage>
@@ -129,7 +129,7 @@
           <msh15ACKAccept>false</msh15ACKAccept>
           <dateFormat>yyyyMMddHHmmss</dateFormat>
         </responseGenerationProperties>
-        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
           <successfulACKCode>AA,CA</successfulACKCode>
           <errorACKCode>AE,CE</errorACKCode>
           <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -139,7 +139,7 @@
         </responseValidationProperties>
       </outboundProperties>
     </transformer>
-    <filter version="3.4.1">
+    <filter version="3.4.2">
       <rules/>
     </filter>
     <transportName>TCP Listener</transportName>
@@ -148,12 +148,12 @@
     <waitForPrevious>true</waitForPrevious>
   </sourceConnector>
   <destinationConnectors>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>1</metaDataId>
       <name>Destination 1</name>
-      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -175,12 +175,12 @@
 java.lang.Thread.sleep(2000);
 logger.info(&quot;Destination 1: end&quot;);</script>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -189,16 +189,16 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -209,7 +209,7 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -218,8 +218,8 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -228,16 +228,16 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -248,7 +248,7 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -258,12 +258,12 @@ logger.info(&quot;Destination 1: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -272,16 +272,16 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -292,7 +292,7 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -301,8 +301,8 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -311,16 +311,16 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -331,7 +331,7 @@ logger.info(&quot;Destination 1: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -341,7 +341,7 @@ logger.info(&quot;Destination 1: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>JavaScript Writer</transportName>
@@ -349,12 +349,12 @@ logger.info(&quot;Destination 1: end&quot;);</script>
       <enabled>true</enabled>
       <waitForPrevious>true</waitForPrevious>
     </connector>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>2</metaDataId>
       <name>Destination 2</name>
-      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -376,12 +376,12 @@ logger.info(&quot;Destination 1: end&quot;);</script>
 java.lang.Thread.sleep(1000);
 logger.info(&quot;Destination 2: end&quot;);</script>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -390,16 +390,16 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -410,7 +410,7 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -419,8 +419,8 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -429,16 +429,16 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -449,7 +449,7 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -459,12 +459,12 @@ logger.info(&quot;Destination 2: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -473,16 +473,16 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -493,7 +493,7 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -502,8 +502,8 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -512,16 +512,16 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -532,7 +532,7 @@ logger.info(&quot;Destination 2: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -542,7 +542,7 @@ logger.info(&quot;Destination 2: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>JavaScript Writer</transportName>
@@ -550,12 +550,12 @@ logger.info(&quot;Destination 2: end&quot;);</script>
       <enabled>true</enabled>
       <waitForPrevious>false</waitForPrevious>
     </connector>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>3</metaDataId>
       <name>Destination 3</name>
-      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -577,12 +577,12 @@ logger.info(&quot;Destination 2: end&quot;);</script>
 java.lang.Thread.sleep(500);
 logger.info(&quot;Destination 3: end&quot;);</script>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -591,16 +591,16 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -611,7 +611,7 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -620,8 +620,8 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -630,16 +630,16 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -650,7 +650,7 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -660,12 +660,12 @@ logger.info(&quot;Destination 3: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps/>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -674,16 +674,16 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -694,7 +694,7 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -703,8 +703,8 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.4.2">
             <handleRepetitions>true</handleRepetitions>
             <handleSubcomponents>true</handleSubcomponents>
             <useStrictParser>false</useStrictParser>
@@ -713,16 +713,16 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <segmentDelimiter>\r</segmentDelimiter>
             <convertLineBreaks>true</convertLineBreaks>
           </serializationProperties>
-          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.1">
+          <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.4.2">
             <useStrictParser>false</useStrictParser>
             <useStrictValidation>false</useStrictValidation>
             <segmentDelimiter>\r</segmentDelimiter>
           </deserializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.4.2">
             <splitType>MSH_Segment</splitType>
             <batchScript></batchScript>
           </batchProperties>
-          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.1">
+          <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.4.2">
             <segmentDelimiter>\r</segmentDelimiter>
             <successfulACKCode>AA</successfulACKCode>
             <successfulACKMessage></successfulACKMessage>
@@ -733,7 +733,7 @@ logger.info(&quot;Destination 3: end&quot;);</script>
             <msh15ACKAccept>false</msh15ACKAccept>
             <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
-          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.1">
+          <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.4.2">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
@@ -743,7 +743,7 @@ logger.info(&quot;Destination 3: end&quot;);</script>
           </responseValidationProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>JavaScript Writer</transportName>
@@ -763,7 +763,7 @@ return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
 // You only have access to the globalMap and globalChannelMap here to persist data
 return;</undeployScript>
-  <properties version="3.4.1">
+  <properties version="3.4.2">
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
     <messageStorageMode>DEVELOPMENT</messageStorageMode>
     <encryptData>false</encryptData>
@@ -785,7 +785,7 @@ return;</undeployScript>
         <mappingName>mirth_type</mappingName>
       </metaDataColumn>
     </metaDataColumns>
-    <attachmentProperties version="3.4.1">
+    <attachmentProperties version="3.4.2">
       <type>None</type>
       <properties/>
     </attachmentProperties>
