@@ -1,28 +1,28 @@
-<channel version="3.4.1">
+<channel version="3.4.2">
   <id>5d993fd0-eb76-46f0-a988-eb70120bf326</id>
   <nextMetaDataId>2</nextMetaDataId>
   <name>0011_http_xml_java</name>
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1475174485148</time>
-    <timezone>America/Cayenne</timezone>
+    <time>1494780810083</time>
+    <timezone>America/Montevideo</timezone>
   </lastModified>
-  <revision>11</revision>
-  <sourceConnector version="3.4.1">
+  <revision>1</revision>
+  <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
-    <properties class="com.mirth.connect.connectors.http.HttpReceiverProperties" version="3.4.1">
+    <properties class="com.mirth.connect.connectors.http.HttpReceiverProperties" version="3.4.2">
       <pluginProperties>
-        <com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties version="3.4.1">
+        <com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties version="3.4.2">
   <authType>NONE</authType>
         </com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties>
       </pluginProperties>
-      <listenerConnectorProperties version="3.4.1">
+      <listenerConnectorProperties version="3.4.2">
         <host>0.0.0.0</host>
         <port>6674</port>
       </listenerConnectorProperties>
-      <sourceConnectorProperties version="3.4.1">
+      <sourceConnectorProperties version="3.4.2">
         <responseVariable>transformed</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
@@ -57,7 +57,7 @@
       <timeout>0</timeout>
       <staticResources/>
     </properties>
-    <transformer version="3.4.1">
+    <transformer version="3.4.2">
       <steps>
         <step>
           <sequenceNumber>0</sequenceNumber>
@@ -155,11 +155,11 @@ bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
       <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>XML</inboundDataType>
       <outboundDataType>XML</outboundDataType>
-      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
           <stripNamespaces>true</stripNamespaces>
         </serializationProperties>
-        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
           <splitType>Element_Name</splitType>
           <elementName></elementName>
           <level>1</level>
@@ -167,11 +167,11 @@ bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
           <batchScript></batchScript>
         </batchProperties>
       </inboundProperties>
-      <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
           <stripNamespaces>true</stripNamespaces>
         </serializationProperties>
-        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
           <splitType>Element_Name</splitType>
           <elementName></elementName>
           <level>1</level>
@@ -180,7 +180,7 @@ bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
         </batchProperties>
       </outboundProperties>
     </transformer>
-    <filter version="3.4.1">
+    <filter version="3.4.2">
       <rules/>
     </filter>
     <transportName>HTTP Listener</transportName>
@@ -189,12 +189,12 @@ bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
     <waitForPrevious>true</waitForPrevious>
   </sourceConnector>
   <destinationConnectors>
-    <connector version="3.4.1">
+    <connector version="3.4.2">
       <metaDataId>1</metaDataId>
       <name>Destination 1</name>
-      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.1">
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.2">
         <pluginProperties/>
-        <destinationConnectorProperties version="3.4.1">
+        <destinationConnectorProperties version="3.4.2">
           <queueEnabled>false</queueEnabled>
           <sendFirst>false</sendFirst>
           <retryIntervalMillis>10000</retryIntervalMillis>
@@ -216,15 +216,15 @@ bnQ+DQo8L0h0dHBSZXF1ZXN0Pg0K</inboundTemplate>
 
 responseMap.put(&apos;transformed&apos;, connectorMessage.getEncodedData());</script>
       </properties>
-      <transformer version="3.4.1">
+      <transformer version="3.4.2">
         <steps/>
         <inboundDataType>XML</inboundDataType>
         <outboundDataType>XML</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
             <stripNamespaces>true</stripNamespaces>
           </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
             <splitType>Element_Name</splitType>
             <elementName></elementName>
             <level>1</level>
@@ -232,11 +232,11 @@ responseMap.put(&apos;transformed&apos;, connectorMessage.getEncodedData());</sc
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
             <stripNamespaces>true</stripNamespaces>
           </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
             <splitType>Element_Name</splitType>
             <elementName></elementName>
             <level>1</level>
@@ -245,15 +245,15 @@ responseMap.put(&apos;transformed&apos;, connectorMessage.getEncodedData());</sc
           </batchProperties>
         </outboundProperties>
       </transformer>
-      <responseTransformer version="3.4.1">
+      <responseTransformer version="3.4.2">
         <steps/>
         <inboundDataType>XML</inboundDataType>
         <outboundDataType>XML</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
             <stripNamespaces>true</stripNamespaces>
           </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
             <splitType>Element_Name</splitType>
             <elementName></elementName>
             <level>1</level>
@@ -261,11 +261,11 @@ responseMap.put(&apos;transformed&apos;, connectorMessage.getEncodedData());</sc
             <batchScript></batchScript>
           </batchProperties>
         </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.1">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.1">
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
             <stripNamespaces>true</stripNamespaces>
           </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.1">
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
             <splitType>Element_Name</splitType>
             <elementName></elementName>
             <level>1</level>
@@ -274,7 +274,7 @@ responseMap.put(&apos;transformed&apos;, connectorMessage.getEncodedData());</sc
           </batchProperties>
         </outboundProperties>
       </responseTransformer>
-      <filter version="3.4.1">
+      <filter version="3.4.2">
         <rules/>
       </filter>
       <transportName>JavaScript Writer</transportName>
@@ -294,7 +294,7 @@ return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
 // You only have access to the globalMap and globalChannelMap here to persist data
 return;</undeployScript>
-  <properties version="3.4.1">
+  <properties version="3.4.2">
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
     <messageStorageMode>DEVELOPMENT</messageStorageMode>
     <encryptData>false</encryptData>
@@ -316,7 +316,7 @@ return;</undeployScript>
         <mappingName>mirth_type</mappingName>
       </metaDataColumn>
     </metaDataColumns>
-    <attachmentProperties version="3.4.1">
+    <attachmentProperties version="3.4.2">
       <type>None</type>
       <properties/>
     </attachmentProperties>
