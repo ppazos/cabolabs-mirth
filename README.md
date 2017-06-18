@@ -1,6 +1,6 @@
 # cabolabs-mirth
 
-## (english)
+## (english)
 
 This project has activities for the Mirth Connect Interoperability Workshop designed by CaboLabs
 
