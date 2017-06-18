@@ -28,16 +28,6 @@ return;</string>
 
 logger.info(&quot;Global Deploy&quot;);
 
-return;</string>
-  </entry>
-  <entry>
-    <string>Preprocessor</string>
-    <string>// Modify the message variable below to pre process data
-// This script applies across all channels
-
-logger.info(&quot;Global Preprocessor&quot;);
-
-
 // UUID accessible from channels
 var uuid = UUIDGenerator.getUUID();
 globalMap.put(&apos;myUUID&apos;, &apos;hola_&apos;+uuid);
@@ -49,6 +39,14 @@ globalMap.put(&apos;destination_folder&apos;, &apos;/Users/apple/GitHub/cabolabs
 // Generic source folder for file readers
 globalMap.put(&apos;source_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0008_inbox/inbox&apos;);
 
+return;</string>
+  </entry>
+  <entry>
+    <string>Preprocessor</string>
+    <string>// Modify the message variable below to pre process data
+// This script applies across all channels
+
+logger.info(&quot;Global Preprocessor&quot;);
 
 return message;</string>
   </entry>
