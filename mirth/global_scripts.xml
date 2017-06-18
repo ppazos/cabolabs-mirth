@@ -11,6 +11,17 @@ logger.info(&quot;Global Undeploy&quot;);
 return;</string>
   </entry>
   <entry>
+    <string>Postprocessor</string>
+    <string>// This script executes once after a message has been processed
+// This script applies across all channels
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+// You have access to &quot;response&quot;, if returned from the channel postprocessor
+
+logger.info(&quot;Global Postprocessor&quot;);
+
+return;</string>
+  </entry>
+  <entry>
     <string>Deploy</string>
     <string>// This script executes once for each deploy or redeploy task
 // You only have access to the globalMap here to persist data
@@ -33,23 +44,12 @@ globalMap.put(&apos;myUUID&apos;, &apos;hola_&apos;+uuid);
 
 
 // Generic destination folder for file writers
-globalMap.put(&apos;destination_folder&apos;, &apos;C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\mirth_destinations&apos;);
+globalMap.put(&apos;destination_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0001_logger/destination&apos;);
 
 // Generic source folder for file readers
-globalMap.put(&apos;source_folder&apos;, &apos;C:\\Program Files\\Apache Software Foundation\\Apache2.2\\htdocs\\mirth_sources&apos;);
+globalMap.put(&apos;source_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0008_inbox/inbox&apos;);
 
 
 return message;</string>
-  </entry>
-  <entry>
-    <string>Postprocessor</string>
-    <string>// This script executes once after a message has been processed
-// This script applies across all channels
-// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
-// You have access to &quot;response&quot;, if returned from the channel postprocessor
-
-logger.info(&quot;Global Postprocessor&quot;);
-
-return;</string>
   </entry>
 </map>
