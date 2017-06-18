@@ -1,5 +1,34 @@
 # cabolabs-mirth
 
+## (english)
+
+This project has activities for the Mirth Connect Interoperability Workshop designed by CaboLabs
+
+https://cabolabs.com/en/training
+
+### Setup
+
+1. Global Scripts
+
+Import https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scripts.xml
+
+And set valid values for the source_folder and destination_folder variables.
+
+To configure the paths from Global Scripts on Windows, all the path separators should be "\\", like:
+
+C:\\Program Files\\Folder\\Subfolder
+
+
+2. Database
+
+Create a database "mirth_tests" in MySQL, and use the SQL script provided to create tables.
+
+https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables.sql
+
+
+
+## (español)
+
 Ejemplos de Mirth Connect con propósitos educativos.
 
 Creado y mantenido por www.CaboLabs.com
@@ -7,13 +36,19 @@ Creado y mantenido por www.CaboLabs.com
 
 ## Setup:
 
-1. Crear base de datos mirth_tests en MySQL
-2. Crear tablas (mirth/mysql_database_tables.sql)
+1. Scripts Globales
+
+Importar https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scripts.xml
+
+Establecer valores válidos para las variables source_folder y destination_folder.
+
+Para configurar rutas de Windows, todos los separadores deben ser "\\", como:
+
+C:\\Program Files\\Folder\\Subfolder
 
 
-## Ejecutar hl7v2x-client
+2. Base de datos
 
-    hl7v2xsend.bat ../hl7v2x/ADT_A03_ADT_A03.hl7 localhost 6661
-    
-    Debe modificar "localhost" por la IP donde esté corriendo el canal de Mirth que escuche MLLP,
-    y "6661" por el puerto donde escuche ese canal.
+Crear una base de datos "mirth_tests" en MySQL, y utilizar el SQL provisto en el proyecto para crear las tablas.
+
+https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables.sql
