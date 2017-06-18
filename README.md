@@ -29,9 +29,9 @@ https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables
 
 ## (español)
 
-Ejemplos de Mirth Connect con propósitos educativos.
+Proyecto de actividades para el Taller de Interoperabilidad con Mirth Connect, diseñado por CaboLabs
 
-Creado y mantenido por www.CaboLabs.com
+https://cabolabs.com/es/training
 
 
 ## Setup:
