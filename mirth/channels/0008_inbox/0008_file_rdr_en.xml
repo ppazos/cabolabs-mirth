@@ -1,14 +1,14 @@
 <channel version="3.4.2">
   <id>db852388-3138-40c2-9ead-384f4407cb9e</id>
   <nextMetaDataId>2</nextMetaDataId>
-  <name>0008_inbox_en</name>
+  <name>0008_file_rdr_en</name>
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1497767339083</time>
+    <time>1497825776783</time>
     <timezone>America/Montevideo</timezone>
   </lastModified>
-  <revision>10</revision>
+  <revision>11</revision>
   <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
