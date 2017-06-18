@@ -14,9 +14,9 @@ Import https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scripts
 
 And set valid values for the source_folder and destination_folder variables.
 
-To configure the paths from Global Scripts on Windows, all the path separators should be "\\", like:
+To configure the paths from Global Scripts on Windows, all the path separators should be "\\\\", like:
 
-C:\\Program Files\\Folder\\Subfolder
+C:\\\\Program Files\\\\Folder\\\\Subfolder
 
 
 2. Database
@@ -42,9 +42,9 @@ Importar https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scrip
 
 Establecer valores válidos para las variables source_folder y destination_folder.
 
-Para configurar rutas de Windows, todos los separadores deben ser "\\", como:
+Para configurar rutas de Windows, todos los separadores deben ser "\\\\", como:
 
-C:\\Program Files\\Folder\\Subfolder
+C:\\\\Program Files\\\\Folder\\\\Subfolder
 
 
 2. Base de datos
