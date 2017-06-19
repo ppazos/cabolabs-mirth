@@ -2,15 +2,16 @@
 
 ## (english)
 
-**0008_inbox_en.xml**
+**0008_file_rdr_en.xml**
 
 This Channel reads CSV files from the inbox folder, maps it's contents to variables and the
 Destination Connector just logs the variables out.
 
-This is the basic example of a file-based inbox. After the file is processed, data can be mapped
-to a XML or JSON message and sent to a desintation or stored in a database.
+This is the basic example of a file-based outbox. An app that can't send messages, writes files out,
+those files are read by Mirth, processed, and data can be mapped to a XML or JSON message and sent
+to a desintation or stored in a database.
 
-The inbox folder contains a couple of sample CSV files. After processed, those files will have
+The outbox folder contains a couple of sample CSV files. After processed, those files will have
 a .done extension. If you want to execute the Channel again just remove the .done
 
 
