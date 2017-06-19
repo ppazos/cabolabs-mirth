@@ -1,14 +1,14 @@
 <channel version="3.4.2">
   <id>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</id>
   <nextMetaDataId>8</nextMetaDataId>
-  <name>0016_EHRServer_client</name>
+  <name>0016_ehrserver_client</name>
   <description></description>
-  <enabled>true</enabled>
+  <enabled>false</enabled>
   <lastModified>
-    <time>1494221146166</time>
+    <time>1497847586730</time>
     <timezone>America/Montevideo</timezone>
   </lastModified>
-  <revision>7</revision>
+  <revision>9</revision>
   <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
