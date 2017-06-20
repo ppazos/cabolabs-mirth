@@ -37,7 +37,7 @@ globalMap.put(&apos;myUUID&apos;, &apos;hola_&apos;+uuid);
 globalMap.put(&apos;destination_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0001_logger/destination&apos;);
 
 // Generic source folder for file readers
-globalMap.put(&apos;source_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0008_inbox/outbox&apos;);
+globalMap.put(&apos;source_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0008_file_rdr/outbox&apos;);
 
 return;</string>
   </entry>
