@@ -1,12 +1,12 @@
 <channel version="3.4.2">
   <id>9e7ac5d5-16dd-426c-a118-f6863624e735</id>
   <nextMetaDataId>4</nextMetaDataId>
-  <name>0007_destinos_sincronicos</name>
+  <name>0007_sync_destinations</name>
   <description></description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1494213877226</time>
-    <timezone>America/Montevideo</timezone>
+    <time>1498189873769</time>
+    <timezone>America/Argentina/Buenos_Aires</timezone>
   </lastModified>
   <revision>1</revision>
   <sourceConnector version="3.4.2">

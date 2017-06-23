@@ -2,23 +2,22 @@
   <id>85381795-caed-4d43-a3e1-f2daa924d7ee</id>
   <nextMetaDataId>3</nextMetaDataId>
   <name>0002_variable_mappings_en</name>
-  <description>This Channel receives HL7 v2.x messages via MLLP on port 6663. Has Transformer steps that map message data to variables, and has two Destinations: one JS just logs the variables and the other
-DB Writer inserts the values of the variables into a database.
+  <description>This Channel receives HL7 v2.x messages via MLLP on port 6663. Has Transformer steps
+that map message data to variables, and has two Destinations: one JS just logs the
+variables and the other DB Writer inserts the values of the variables into a database.
 
-This activity is similar to 0008, but 0008 reads files instead of
-receiving messages, and do not writes on a database. But both show
-how to extract and map input data to variables.
+This activity is similar to 0008, but 0008 reads files instead of receiving messages, and 
+do not writes on a database. But both show how to extract and map input data to variables.
 
-Just to make it more interesting, the sex data mapper transform values from
-M / F to masculine / feminine, and the JS destination has a filter by that value:
-any other than masculine / feminine sex is filtered. On that case, data is not
-written to the database.</description>
+Just to make it more interesting, the sex data mapper transform values from M / F to 
+masculine / feminine, and the JS destination has a filter by that value: any other than 
+masculine / feminine sex is filtered. On that case, data is not written to the database.</description>
   <enabled>true</enabled>
   <lastModified>
-    <time>1497849936454</time>
-    <timezone>America/Montevideo</timezone>
+    <time>1498186788254</time>
+    <timezone>America/Argentina/Buenos_Aires</timezone>
   </lastModified>
-  <revision>6</revision>
+  <revision>2</revision>
   <sourceConnector version="3.4.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -686,7 +685,7 @@ try {
 	dbConn = DatabaseConnectionFactory.createDatabaseConnection(&apos;com.mysql.jdbc.Driver&apos;,&apos;jdbc:mysql://127.0.0.1:3306/mirth_tests&apos;,&apos;root&apos;,&apos;&apos;);
 
      // http://javadocs.mirthcorp.com/connect/3.1.0/user-api/com/mirth/connect/server/userutil/DatabaseConnection.html
-	var updatedRows = dbConn.executeUpdate(&quot;INSERT INTO pacientes (nombre, apellido, nacimiento, sexo) VALUES (&quot;+
+	var updatedRows = dbConn.executeUpdate(&quot;INSERT INTO patients (name, lastname, dob, sex) VALUES (&quot;+
 	&quot;&apos;&quot;+ $(&apos;name&apos;) +&quot;&apos;, &quot;+
 	&quot;&apos;&quot;+ $(&apos;lastname&apos;) +&quot;&apos;, &quot;+
 	&quot;&apos;&quot;+ $(&apos;dob&apos;) +&quot;&apos;, &quot;+ // llega en formato YYYYMMDD pero igual se guarda OK a YYYY-MM-DD, si no funciona, hay que hacer un formateo
