@@ -1,5 +1,18 @@
 # 0013_adt_to_json
 
+## (english)
+
+**0013_adt_to_json_en.xml**
+
+This Channel receives HL7 v2.x via MLLP on port 6685. The Source Transformer extracts some data and creates a JS object.
+The objects is serialized to a JSON string and forwarded as the message to the Destination. a JS Destination just logs
+the message.
+
+
+## (español)
+
+**0013_adt_to_json.xml**
+
 Este ejemplo recibe un mensaje HL7 v2.5 ADT_A04 por MLLP en el puerto 6685, 
 y lo transforma (en parte) en un mensaje JSON.
 
