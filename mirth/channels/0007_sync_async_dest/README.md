@@ -1,4 +1,4 @@
-# 0007 Sync/Async Destintaions
+# 0007 Sync/Async Destinations
 
 ## (english)
 
