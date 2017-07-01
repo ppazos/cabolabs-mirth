@@ -1,0 +1,219 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2017-07-01T22:04:00.134Z",
+	"__export_source": "insomnia.desktop.app:v5.0.20",
+	"resources": [
+		{
+			"_id": "wrk_d950501c66a84ad8a6c296bbf07e4123",
+			"parentId": null,
+			"modified": 1498946176555,
+			"created": 1494749862609,
+			"name": "Mirth Workshop",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_40976339a1aa49868a649f20a6594ad4",
+			"parentId": "wrk_d950501c66a84ad8a6c296bbf07e4123",
+			"modified": 1498946603066,
+			"created": 1498946603066,
+			"name": "Base Environment",
+			"data": {},
+			"_type": "environment"
+		},
+		{
+			"_id": "fld_c61d2634abc84060abce93460ce91285",
+			"parentId": "wrk_d950501c66a84ad8a6c296bbf07e4123",
+			"modified": 1498946176552,
+			"created": 1494749926983,
+			"name": "MIRTH",
+			"environment": {},
+			"metaSortKey": -1494749926983,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_7824f79e3b884deb9e851377a5c7961a",
+			"parentId": "fld_c61d2634abc84060abce93460ce91285",
+			"modified": 1498946176550,
+			"created": 1494749926963,
+			"url": "http://localhost:8686/router/",
+			"name": "0014_router_json",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n    \"destination\": \"H2\",\n    \"message\": {\n        \"patient\": {\n            \"name\": \"Pablo\"\n        }\n    }\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_58c8696020e14da696426ea76b7a9472"
+				}
+			],
+			"authentication": {
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1494749926963,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_1ab59a3a37684c55b90609302bb126af",
+			"parentId": "fld_c61d2634abc84060abce93460ce91285",
+			"modified": 1498946176549,
+			"created": 1494749926965,
+			"url": "http://localhost:6674/java/",
+			"name": "0011_http_xml_java",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/xml",
+				"text": "<mensaje>\n    <persona>\n        <nombre>Pablo</nombre>\n    </persona>\n</mensaje>"
+			},
+			"parameters": [
+				{
+					"name": "action",
+					"value": "upper",
+					"id": "pair_1fb13148b7ed44b09709ebf1b8d320f7"
+				}
+			],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/xml",
+					"id": "pair_be1170f8cedd4ff19b389fb86c0ea551"
+				}
+			],
+			"authentication": {
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1494749926965,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_6a222f8a8b7c4aa79561041d6773dbc3",
+			"parentId": "fld_c61d2634abc84060abce93460ce91285",
+			"modified": 1498946176548,
+			"created": 1494749926967,
+			"url": "http://localhost:1237/canalHttpCDA3/",
+			"name": "0004_http_cda_to_database",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/xml",
+				"text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<ClinicalDocument xmlns=\"urn:hl7-org:v3\" xmlns:voc=\"urn:hl7-org:v3/voc\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <typeId extension=\"POCD_HD000040\" root=\"2.16.840.1.113883.1.3\"/>\r\n  <id root=\"db734647-fc99-424c-a864-7e3cda82e703\"/>\r\n  <code code=\"34133-9\" codeSystem=\"2.16.840.1.113883.6.1\" displayName=\"Summarization of episode note\"/>\r\n  <title>Carné de Salud</title>\r\n  <effectiveTime value=\"20121224093000-0300\"/>\r\n  <confidentialityCode code=\"N\" codeSystem=\"2.16.840.1.113883.5.25\"/>\r\n  <languageCode code=\"es-UY\"/>\r\n  <recordTarget>\r\n    <patientRole>\r\n     <id extension=\"4116238-0\" root=\"2.16.858.1.858.68909\" />\r\n     <patient>\r\n      <name>\r\n       <given>Pablo</given>\r\n       <given>Federico</given>\r\n       <family>Pazos</family>\r\n       <family>Gutiérrez</family>\r\n      </name>\r\n      <administrativeGenderCode code=\"M\" codeSystem=\"2.16.840.1.113883.5.1\" />\r\n      <birthTime value=\"19811024\" />\r\n     </patient>\r\n    </patientRole>\r\n  </recordTarget>\r\n  <author> \r\n    <time value=\"20060823224352\"/> \r\n    <assignedAuthor> \r\n     <id extension=\"121008\" root=\"2.16.840.1.113883.19.5\"/> \r\n     <assignedPerson> \r\n      <name>\r\n       <prefix>Dr.</prefix>\r\n       <given>Christine</given> \r\n       <family>Curie</family> \r\n      </name> \r\n     </assignedPerson> \r\n     <representedOrganization> \r\n      <id extension=\"1254897\" root=\"2.16.840.1.113883.19.5\"/> \r\n      <name>AESP</name> \r\n     </representedOrganization> \r\n    </assignedAuthor>\r\n   </author>\r\n  <custodian>\r\n    <assignedCustodian> \r\n     <representedCustodianOrganization> \r\n      <id root=\"2.16.840.1.113883.19.5\"/> \r\n      <name>World University Hospital</name> \r\n      <telecom nullFlavor=\"NI\"/>\r\n      <addr nullFlavor=\"NI\"/>\r\n     </representedCustodianOrganization> \r\n    </assignedCustodian> \r\n  </custodian>\r\n  <relatedDocument typeCode=\"RPLC\">\r\n    <parentDocument>\r\n      <id root=\"1.3.182.3.1.1231232.37.1\" extension=\"23423423\"/>\r\n    </parentDocument>\r\n  </relatedDocument>\r\n  <component>\r\n    <nonXMLBody>\r\n      <text mediaType=\"application/pdf\" representation=\"B64\">e1xydGY...</text>\r\n    </nonXMLBody>\r\n  </component>\r\n</ClinicalDocument>"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/xml"
+				}
+			],
+			"authentication": {
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1494749926967,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_aa60d6db7c5c47418f1867bb079a0207",
+			"parentId": "fld_c61d2634abc84060abce93460ce91285",
+			"modified": 1498946176547,
+			"created": 1494749926981,
+			"url": "http://localhost:1235/canalHttp1235/",
+			"name": "0003_process_http_xml",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/xml",
+				"text": "<mensaje>\n    <persona>\n        <nombre>Pablo</nombre>\n    </persona>\n</mensaje>"
+			},
+			"parameters": [
+				{
+					"name": "parametro1",
+					"value": "fddg",
+					"id": "pair_6f8b51b95a0b42edae45c742eebe0416"
+				}
+			],
+			"headers": [
+				{
+					"name": "Authorization",
+					"value": "secret",
+					"id": "pair_3105359a5fe2463f9ef861f412ea44f6"
+				},
+				{
+					"name": "Content-Type",
+					"value": "application/xml",
+					"id": "pair_6c04e0e626ef452b87cf5bdcf168c7e1"
+				}
+			],
+			"authentication": {
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1494749926981,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_41523b15972b4bbd856c29d8f12e8d60",
+			"parentId": "fld_c61d2634abc84060abce93460ce91285",
+			"modified": 1498946176546,
+			"created": 1498945382470,
+			"url": "http://localhost:1235/canalHttp1235/",
+			"name": "0003_process_http_xml_en",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/xml",
+				"text": "<message>\n    <person>\n        <name>Pablo</name>\n    </person>\n</message>"
+			},
+			"parameters": [
+				{
+					"name": "param1",
+					"value": "dummy value",
+					"id": "pair_6f8b51b95a0b42edae45c742eebe0416"
+				}
+			],
+			"headers": [
+				{
+					"name": "Authorization",
+					"value": "secret",
+					"id": "pair_3105359a5fe2463f9ef861f412ea44f6"
+				},
+				{
+					"name": "Content-Type",
+					"value": "application/xml",
+					"id": "pair_6c04e0e626ef452b87cf5bdcf168c7e1"
+				}
+			],
+			"authentication": {
+				"username": "",
+				"password": ""
+			},
+			"metaSortKey": -1494749926974,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		}
+	]
+}

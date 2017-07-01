@@ -1,0 +1,613 @@
+<channel version="3.4.2">
+  <id>a7a9fdac-5685-4b52-8ef2-aa4281d20b92</id>
+  <nextMetaDataId>3</nextMetaDataId>
+  <name>0003_process_http_xml_en</name>
+  <description>Receives:&#xd;
+&#xd;
+&lt;mensaje&gt;&#xd;
+    &lt;persona&gt;&#xd;
+        &lt;nombre&gt;Pablo&lt;/nombre&gt;&#xd;
+    &lt;/persona&gt;&#xd;
+&lt;/mensaje&gt;&#xd;
+&#xd;
+Parameter: param1 (if empty, returns error)&#xd;
+&#xd;
+Header: Authorization&#xd;
+&#xd;
+&lt;HttpRequest&gt;&#xd;
+   &lt;RemoteAddress&gt;127.0.0.1&lt;/RemoteAddress&gt;&#xd;
+   &lt;RequestUrl&gt;http://localhost:1235/canalHttp1235/&lt;/RequestUrl&gt;&#xd;
+   &lt;Method&gt;POST&lt;/Method&gt;&#xd;
+   &lt;RequestPath&gt;parametro1=aaa&lt;/RequestPath&gt;&#xd;
+   &lt;RequestContextPath&gt;/canalHttp1235/&lt;/RequestContextPath&gt;&#xd;
+   &lt;Parameters&gt;&#xd;
+      &lt;parametro1&gt;aaa&lt;/parametro1&gt;&#xd;
+   &lt;/Parameters&gt;&#xd;
+   &lt;Header&gt;&#xd;
+      &lt;Accept-Language&gt;es,en-US;q=0.8,en;q=0.6&lt;/Accept-Language&gt;&#xd;
+      &lt;Authorization&gt;secret&lt;/Authorization&gt;&#xd;
+      &lt;Host&gt;localhost:1235&lt;/Host&gt;&#xd;
+      &lt;Content-Length&gt;80&lt;/Content-Length&gt;&#xd;
+      &lt;Accept-Encoding&gt;gzip, deflate&lt;/Accept-Encoding&gt;&#xd;
+      &lt;DNT&gt;1&lt;/DNT&gt;&#xd;
+      &lt;User-Agent&gt;Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36&lt;/User-Agent&gt;&#xd;
+      &lt;Origin&gt;chrome-extension://gmodihnfibbjdecbanmpmbmeffnmloel&lt;/Origin&gt;&#xd;
+      &lt;Connection&gt;keep-alive&lt;/Connection&gt;&#xd;
+      &lt;Content-Type&gt;application/xml&lt;/Content-Type&gt;&#xd;
+      &lt;Accept&gt;*/*&lt;/Accept&gt;&#xd;
+   &lt;/Header&gt;&#xd;
+   &lt;Content encoding=&quot;Base64&quot; multipart=&quot;no&quot;&gt;PG1lbnNhamU+CiAgICA8cGVyc29uYT4KICAgICAgICA8bm9tYnJlPlBhYmxvPC9ub21icmU+CiAg&amp;#13;&#xd;
+ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=&amp;#13;&#xd;
+   &lt;/Content&gt;&#xd;
+&lt;/HttpRequest&gt;&#xd;
+&#xd;
+</description>
+  <enabled>true</enabled>
+  <lastModified>
+    <time>1498946851533</time>
+    <timezone>America/Montevideo</timezone>
+  </lastModified>
+  <revision>6</revision>
+  <sourceConnector version="3.4.2">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.http.HttpReceiverProperties" version="3.4.2">
+      <pluginProperties>
+        <com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties version="3.4.2">
+  <authType>NONE</authType>
+        </com.mirth.connect.plugins.httpauth.NoneHttpAuthProperties>
+      </pluginProperties>
+      <listenerConnectorProperties version="3.4.2">
+        <host>0.0.0.0</host>
+        <port>1235</port>
+      </listenerConnectorProperties>
+      <sourceConnectorProperties version="3.4.2">
+        <responseVariable>Response</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+      <xmlBody>true</xmlBody>
+      <parseMultipart>false</parseMultipart>
+      <includeMetadata>true</includeMetadata>
+      <binaryMimeTypes>application/, image/, video/, audio/</binaryMimeTypes>
+      <binaryMimeTypesRegex>false</binaryMimeTypesRegex>
+      <responseContentType>text/plain</responseContentType>
+      <responseDataTypeBinary>false</responseDataTypeBinary>
+      <responseStatusCode></responseStatusCode>
+      <responseHeaders class="linked-hash-map">
+        <entry>
+          <string>state</string>
+          <list>
+            <string>${state}</string>
+          </list>
+        </entry>
+        <entry>
+          <string>Access-Control-Allow-Origin</string>
+          <list>
+            <string>*</string>
+          </list>
+        </entry>
+      </responseHeaders>
+      <charset>UTF-8</charset>
+      <contextPath>canalHttp1235</contextPath>
+      <timeout>0</timeout>
+      <staticResources/>
+    </properties>
+    <transformer version="3.4.2">
+      <steps>
+        <step>
+          <sequenceNumber>0</sequenceNumber>
+          <name>logger</name>
+          <script>logger.info(&apos;Transformer msg ...&apos;);
+logger.info(msg);
+
+logger.info(&apos;Channel map get &quot;state&quot; ...&apos;);
+logger.info(channelMap.get(&apos;state&apos;));
+
+logger.info(&apos;Param: param1&apos;);
+logger.info(msg[&apos;Parameters&apos;][&apos;param1&apos;]);
+
+logger.info(typeof msg[&apos;Parameters&apos;][&apos;param1&apos;]);
+
+logger.info(&apos;Header: Authorization&apos;);
+logger.info(msg[&apos;Header&apos;][&apos;Authorization&apos;]);</script>
+          <type>JavaScript</type>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>logger.info(&apos;Transformer msg ...&apos;);
+logger.info(msg);
+
+logger.info(&apos;Channel map get &quot;state&quot; ...&apos;);
+logger.info(channelMap.get(&apos;state&apos;));
+
+logger.info(&apos;Param: param1&apos;);
+logger.info(msg[&apos;Parameters&apos;][&apos;param1&apos;]);
+
+logger.info(typeof msg[&apos;Parameters&apos;][&apos;param1&apos;]);
+
+logger.info(&apos;Header: Authorization&apos;);
+logger.info(msg[&apos;Header&apos;][&apos;Authorization&apos;]);</string>
+            </entry>
+          </data>
+        </step>
+        <step>
+          <sequenceNumber>1</sequenceNumber>
+          <name>Extracts the XML from the base64 encoded HTTP Request Body</name>
+          <script>/* inbound message in HTTP Body when decoded:
+&lt;message&gt;
+    &lt;person&gt;
+        &lt;name&gt;Pablo&lt;/name&gt;
+    &lt;/person&gt;
+&lt;/message&gt;
+
+SerializerFactory.getSerializer(&apos;DELIMITED&apos;).toXML(message);
+*/
+
+// Get HTTP Request Body, base64 encoded
+var base64 = msg[&apos;Content&apos;].toString();
+
+// Decode base64
+var decoded = FileUtil.decode(base64);
+
+// Transform into a Java String
+var decodedAsString = Packages.java.lang.String(decoded);
+
+// Create XML object from XML String
+var xml = new XML(decodedAsString);
+
+logger.info(&apos;xml&apos;);
+logger.info(xml);
+logger.info(typeof xml); // xml
+
+logger.info(&apos;message[person][name]&apos;);
+logger.info(xml[&apos;person&apos;][&apos;name&apos;]);
+
+// Overwrite channel message with XML, that is forwarded to destinations
+msg = xml;</script>
+          <type>JavaScript</type>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>/* inbound message in HTTP Body when decoded:
+&lt;message&gt;
+    &lt;person&gt;
+        &lt;name&gt;Pablo&lt;/name&gt;
+    &lt;/person&gt;
+&lt;/message&gt;
+
+SerializerFactory.getSerializer(&apos;DELIMITED&apos;).toXML(message);
+*/
+
+// Get HTTP Request Body, base64 encoded
+var base64 = msg[&apos;Content&apos;].toString();
+
+// Decode base64
+var decoded = FileUtil.decode(base64);
+
+// Transform into a Java String
+var decodedAsString = Packages.java.lang.String(decoded);
+
+// Create XML object from XML String
+var xml = new XML(decodedAsString);
+
+logger.info(&apos;xml&apos;);
+logger.info(xml);
+logger.info(typeof xml); // xml
+
+logger.info(&apos;message[person][name]&apos;);
+logger.info(xml[&apos;person&apos;][&apos;name&apos;]);
+
+// Overwrite channel message with XML, that is forwarded to destinations
+msg = xml;</string>
+            </entry>
+          </data>
+        </step>
+      </steps>
+      <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0Pgo8UmVtb3RlQWRkcmVzcz4wOjA6MDowOjA6MDowOjE8L1JlbW90ZUFkZHJl
+c3M+CjxSZXF1ZXN0VXJsPmh0dHA6Ly9sb2NhbGhvc3Q6MTIzNS9jYW5hbEh0dHAxMjM1LzwvUmVx
+dWVzdFVybD4KPE1ldGhvZD5QT1NUPC9NZXRob2Q+CjxSZXF1ZXN0UGF0aD5wYXJhbWV0cm8xPWFz
+ZGY8L1JlcXVlc3RQYXRoPgo8UmVxdWVzdENvbnRleHRQYXRoPi9jYW5hbEh0dHAxMjM1LzwvUmVx
+dWVzdENvbnRleHRQYXRoPgo8UGFyYW1ldGVycz48cGFyYW0xPmFzZGY8L3BhcmFtMT48L1BhcmFt
+ZXRlcnM+CjxIZWFkZXI+CjxBdXRob3JpemF0aW9uPnNlY3JldDwvQXV0aG9yaXphdGlvbj4KPEFj
+Y2VwdD4qLyo8L0FjY2VwdD4KPFVzZXItQWdlbnQ+aW5zb21uaWEvNS4wLjIwPC9Vc2VyLUFnZW50
+Pgo8SG9zdD5sb2NhbGhvc3Q6MTIzNTwvSG9zdD4KPEFjY2VwdC1FbmNvZGluZz5kZWZsYXRlLCBn
+emlwPC9BY2NlcHQtRW5jb2Rpbmc+CjxDb250ZW50LUxlbmd0aD44MDwvQ29udGVudC1MZW5ndGg+
+CjxDb250ZW50LVR5cGU+YXBwbGljYXRpb24veG1sPC9Db250ZW50LVR5cGU+CjwvSGVhZGVyPgo8
+Q29udGVudCBlbmNvZGluZz0iQmFzZTY0IiBtdWx0aXBhcnQ9Im5vIj5QRzFsYm5OaGFtVStDaUFn
+SUNBOGNHVnljMjl1WVQ0S0lDQWdJQ0FnSUNBOGJtOXRZbkpsUGxCaFlteHZQQzl1YjIxaWNtVStD
+aUFnJiMxMzsKSUNBOEwzQmxjbk52Ym1FK0Nqd3ZiV1Z1YzJGcVpUND0mIzEzOwo8L0NvbnRlbnQ+
+CjwvSHR0cFJlcXVlc3Q+</inboundTemplate>
+      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundDataType>XML</inboundDataType>
+      <outboundDataType>XML</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+          <stripNamespaces>true</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+          <stripNamespaces>true</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+          <splitType>Element_Name</splitType>
+          <elementName></elementName>
+          <level>1</level>
+          <query></query>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.4.2">
+      <rules>
+        <rule>
+          <sequenceNumber>0</sequenceNumber>
+          <name>state = error by default</name>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>// This will be returned in the Response Header &apos;state&apos;
+var state = &quot;error&quot;;
+
+// This allows the reference to the value from Source &gt; Response Headers
+channelMap.put(&apos;state&apos;, state);
+
+// Sets the Response Body also to the state value from Source &gt; Response Settings &gt; Response
+// This could be an XML structure returnded.
+responseMap.put(&apos;Response&apos;, state);
+
+// Continue with next step of the filter
+return true;</string>
+            </entry>
+          </data>
+          <type>JavaScript</type>
+          <script>// This will be returned in the Response Header &apos;state&apos;
+var state = &quot;error&quot;;
+
+// This allows the reference to the value from Source &gt; Response Headers
+channelMap.put(&apos;state&apos;, state);
+
+// Sets the Response Body also to the state value from Source &gt; Response Settings &gt; Response
+// This could be an XML structure returnded.
+responseMap.put(&apos;Response&apos;, state);
+
+// Continue with next step of the filter
+return true;</script>
+          <operator>NONE</operator>
+        </rule>
+        <rule>
+          <sequenceNumber>1</sequenceNumber>
+          <name>Accept message if &quot;msg[&apos;Parameters&apos;][&apos;param1&apos;].toString()&quot; does not equal &apos;&apos; or null or undefined</name>
+          <data>
+            <entry>
+              <string>Field</string>
+              <string>msg[&apos;Parameters&apos;][&apos;param1&apos;].toString()</string>
+            </entry>
+            <entry>
+              <string>Name</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>OriginalField</string>
+              <string></string>
+            </entry>
+            <entry>
+              <string>Equals</string>
+              <string>0</string>
+            </entry>
+            <entry>
+              <string>Values</string>
+              <list>
+                <string>&apos;&apos;</string>
+                <string>null</string>
+                <string>undefined</string>
+              </list>
+            </entry>
+          </data>
+          <type>Rule Builder</type>
+          <script>if(msg[&apos;Parameters&apos;][&apos;param1&apos;].toString() != &apos;&apos; &amp;&amp; msg[&apos;Parameters&apos;][&apos;param1&apos;].toString() != null &amp;&amp; msg[&apos;Parameters&apos;][&apos;param1&apos;].toString() != undefined) {
+	return true;
+}
+return false;</script>
+          <operator>AND</operator>
+        </rule>
+        <rule>
+          <sequenceNumber>2</sequenceNumber>
+          <name>state = ok</name>
+          <data>
+            <entry>
+              <string>Script</string>
+              <string>// Similar to step 1, but if this is reached, step 2 didn&apos;t filtered the message, so it is OK.
+var state = &apos;ok&apos;;
+
+channelMap.put(&apos;state&apos;, state);
+
+responseMap.put(&apos;Response&apos;, state);
+
+return true;</string>
+            </entry>
+          </data>
+          <type>JavaScript</type>
+          <script>// Similar to step 1, but if this is reached, step 2 didn&apos;t filtered the message, so it is OK.
+var state = &apos;ok&apos;;
+
+channelMap.put(&apos;state&apos;, state);
+
+responseMap.put(&apos;Response&apos;, state);
+
+return true;</script>
+          <operator>AND</operator>
+        </rule>
+      </rules>
+    </filter>
+    <transportName>HTTP Listener</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.4.2">
+      <metaDataId>1</metaDataId>
+      <name>Destination 1</name>
+      <properties class="com.mirth.connect.connectors.file.FileDispatcherProperties" version="3.4.2">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.4.2">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+        </destinationConnectorProperties>
+        <scheme>FILE</scheme>
+        <host>${destination_folder}</host>
+        <outputPattern>0003_${date.get(&apos;yyyy-M-d H.m.s&apos;)}.txt</outputPattern>
+        <anonymous>true</anonymous>
+        <username>anonymous</username>
+        <password>anonymous</password>
+        <timeout>10000</timeout>
+        <secure>true</secure>
+        <passive>true</passive>
+        <validateConnection>true</validateConnection>
+        <outputAppend>true</outputAppend>
+        <errorOnExists>false</errorOnExists>
+        <temporary>false</temporary>
+        <binary>false</binary>
+        <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
+        <template>${message.encodedData}</template>
+      </properties>
+      <transformer version="3.4.2">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.4.2">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.4.2">
+        <rules/>
+      </filter>
+      <transportName>File Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+    <connector version="3.4.2">
+      <metaDataId>2</metaDataId>
+      <name>Destination 2</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.4.2">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.4.2">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+        </destinationConnectorProperties>
+        <script>responseMap.put(&apos;Response&apos;, $(&apos;state&apos;));
+</script>
+      </properties>
+      <transformer version="3.4.2">
+        <steps/>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.4.2">
+        <steps/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
+        <inboundDataType>XML</inboundDataType>
+        <outboundDataType>XML</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.4.2">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.4.2">
+            <stripNamespaces>true</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.4.2">
+            <splitType>Element_Name</splitType>
+            <elementName></elementName>
+            <level>1</level>
+            <query></query>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.4.2">
+        <rules/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.4.2">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <tags class="linked-hash-set"/>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.4.2">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <archiveEnabled>true</archiveEnabled>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <codeTemplateLibraries/>
+</channel>
