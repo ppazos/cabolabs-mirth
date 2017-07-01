@@ -1,5 +1,32 @@
 # 0003 Process HTTP XML
 
+## (english)
+
+**0003_process_http_xml_en.xml**
+
+1. Receives XML via HTTP on port 1235.
+
+HTTP Request Body:
+
+```
+<message>
+    <person>
+        <name>Pablo</name>
+    </person>
+</message>
+```
+
+2. Source Filter checks that "param1" parameter is not empty. Response is "error" if "param1" is empty.
+
+3. Base64 encoded message is extracted and decoded from request and forwarded to destinations.
+
+4. Destinations save on file and logs response.
+
+
+## (espa√±ol)
+
+**0003_process_http_xml.xml**
+
 Canal que recibe un pedido HTTP con:
 
 Cuerpo:
@@ -11,18 +38,18 @@ Cuerpo:
 </mensaje>
 ```
 
-Parametro: parametro1 (si es vacÌo falla el source filter y retorna un error)
+Parametro: parametro1 (si es vac√≠o falla el source filter y retorna un error)
 
 Header: Authorization
 
 
-## Pedido HTTP completo
+### Pedido HTTP completo
 
 Mirth transforma los pedidos HTTP en un XML procesable por E4X.
-Dentro del elemento "Content" est· nuestro mensaje codificado en base64 porque en el
+Dentro del elemento "Content" est√° nuestro mensaje codificado en base64 porque en el
 Source Connector tenemos como tipos binarios "application/, image/, video/, audio/"
 y application/ detecta application/xml como binario. El Source Transformer Step 2
-muestra cÛmo pasar de base64 al objeto XML.
+muestra c√≥mo pasar de base64 al objeto XML.
 
 Este es el XML a procesar:
 
