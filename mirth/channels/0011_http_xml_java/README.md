@@ -1,8 +1,21 @@
 # 0011_http_xml_java
 
-Ejemplo de ejecuciÛn de cÛdigo Java desde Mirth.
+## (english)
 
-El canal recibe un mensaje XML por HTTP, y en funciÛn de un par·metro "action" ejecuta una determinada acciÛn sobre los datos recibidos, y esa acciÛn est· implementada en cÛdigo Java como una librerÌa externa a Mirth Connnect.
+**0011_http_xml_java.xml**
+
+Modifies a XML message received via HTTP, using Java code, and returns the modified message.
+
+Java code: https://github.com/ppazos/cabolabs-mirth/tree/master/mirth/channels/0011_http_xml_java/java
+
+
+## (espa√±ol)
+
+**0011_http_xml_java.xml**
+
+Ejemplo de ejecuci√≥n de c√≥digo Java desde Mirth.
+
+El canal recibe un mensaje XML por HTTP, y en funci√≥n de un par√°metro "action" ejecuta una determinada acci√≥n sobre los datos recibidos, y esa acci√≥n est√° implementada en c√≥digo Java como una librer√≠a externa a Mirth Connnect.
 
 Ejemplo de mensaje XML:
 
