@@ -1,0 +1,47 @@
+<alertModel version="3.4.1">
+  <id>03319903-b90e-4b7f-b2a0-9b83afb6d0b7</id>
+  <name>alert filters</name>
+  <enabled>false</enabled>
+  <trigger class="defaultTrigger" version="3.4.1">
+    <alertChannels version="3.4.1">
+      <newChannelSource>false</newChannelSource>
+      <newChannelDestination>false</newChannelDestination>
+      <enabledChannels>
+        <string>ecca4f57-b74f-4de4-8ca9-29d7d8299824</string>
+      </enabledChannels>
+      <disabledChannels/>
+      <partialChannels/>
+    </alertChannels>
+    <errorEventTypes>
+      <errorEventType>ANY</errorEventType>
+    </errorEventTypes>
+    <regex>filter.*</regex>
+  </trigger>
+  <actionGroups>
+    <alertActionGroup version="3.4.1">
+      <actions>
+        <alertAction version="3.4.1">
+          <protocol>Email</protocol>
+          <recipient>pablo.swp@gmail.com</recipient>
+        </alertAction>
+      </actions>
+      <subject>filters</subject>
+      <template>${alertId}
+${alertName}
+${serverId}
+${globalMapVariable}
+${date}
+${systemTime}
+${error}
+${errorMessage}
+${errorType}
+${channelId}
+${channelName}
+${connectorName}
+${connectorType}
+${messageId}
+</template>
+    </alertActionGroup>
+  </actionGroups>
+  <properties/>
+</alertModel>

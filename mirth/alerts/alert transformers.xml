@@ -1,0 +1,48 @@
+<alertModel version="3.4.1">
+  <id>4945fe03-342d-4296-9a01-7abd9548cff8</id>
+  <name>alert transformers</name>
+  <enabled>false</enabled>
+  <trigger class="defaultTrigger" version="3.4.1">
+    <alertChannels version="3.4.1">
+      <newChannelSource>false</newChannelSource>
+      <newChannelDestination>false</newChannelDestination>
+      <enabledChannels>
+        <string>ecca4f57-b74f-4de4-8ca9-29d7d8299824</string>
+      </enabledChannels>
+      <disabledChannels/>
+      <partialChannels/>
+    </alertChannels>
+    <errorEventTypes>
+      <errorEventType>ANY</errorEventType>
+    </errorEventTypes>
+    <regex>transformer.*</regex>
+  </trigger>
+  <actionGroups>
+    <alertActionGroup version="3.4.1">
+      <actions>
+        <alertAction version="3.4.1">
+          <protocol>Email</protocol>
+          <recipient>pablo.swp@gmail.com</recipient>
+        </alertAction>
+      </actions>
+      <subject>Error transformer</subject>
+      <template>What pas?
+
+${alertId}
+${alertName}
+${serverId}
+${globalMapVariable}
+${date}
+${systemTime}
+${error}
+${errorMessage}
+${errorType}
+${channelId}
+${channelName}
+${connectorName}
+${connectorType}
+${messageId}</template>
+    </alertActionGroup>
+  </actionGroups>
+  <properties/>
+</alertModel>
