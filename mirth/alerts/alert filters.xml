@@ -1,9 +1,9 @@
-<alertModel version="3.4.1">
+<alertModel version="3.4.2">
   <id>03319903-b90e-4b7f-b2a0-9b83afb6d0b7</id>
   <name>alert filters</name>
-  <enabled>false</enabled>
-  <trigger class="defaultTrigger" version="3.4.1">
-    <alertChannels version="3.4.1">
+  <enabled>true</enabled>
+  <trigger class="defaultTrigger" version="3.4.2">
+    <alertChannels version="3.4.2">
       <newChannelSource>false</newChannelSource>
       <newChannelDestination>false</newChannelDestination>
       <enabledChannels>
@@ -18,9 +18,9 @@
     <regex>filter.*</regex>
   </trigger>
   <actionGroups>
-    <alertActionGroup version="3.4.1">
+    <alertActionGroup version="3.4.2">
       <actions>
-        <alertAction version="3.4.1">
+        <alertAction version="3.4.2">
           <protocol>Email</protocol>
           <recipient>pablo.swp@gmail.com</recipient>
         </alertAction>
