@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    =======================================================================================
+    EJEMPLO CDA (Informe de alta) Basado en el documento generado por HCECYL
+    
+    Versión 1.1    20080908  Alberto Sáez
+    Versión 1.0    20080829  Alberto Sáez.    
+    © SACYL, 2008
+    =======================================================================================
+-->
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:v3 file:xsd/CDA.xsd" classCode="DOCCLIN" moodCode="EVN"
+>
+    
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+    
+    <!-- Indicador de conformidad para la guía SACYL -->
+    <templateId root="2.16.840.1.113883.2.19.20.17.50.1"/>
+    
+    
+    <!-- Identificador único del documento (en la instancia del HCECYL del complejo hospitalario de Ávila) -->
+    <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.100.2.10.3" extension="2406538"/>
+    
+    <!-- Tipo de documento: informe de alta -->
+    <code code="28634-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"  displayName="Informe de alta"/>
+    <title>INFORME GENERAL DE ALTA</title>
+   <!-- Fecha de creación del documento -->
+    <effectiveTime value="200802221240"/>
+    <!-- Nivel de confidencialidad N: Normal -->
+    <confidentialityCode code="N"/>
+    
+    <!-- Identificador único del grupo documental (en la instancia del HCECYL del complejo hospitalario de Ávila) 
+           en este caso coincide con el id del documento
+    -->
+    <setId root="2.16.840.1.113883.2.19.20.17.40.5.50101.100.2.10.3" extension="2406538"/>
+    
+    <!-- Paciente al que se refiere el informe -->
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <!-- DNI -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13166779D"/>  
+            <!-- CIP SACYL -->
+            <id root="2.16.840.1.113883.2.19.20.17.10.1" extension="111111111111"/>
+            <!-- NHC en el HNSS de Ávila (se repite aquí por comodidad) -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.10" extension="145643"/>
+            
+            <!-- Dirección del paciente -->
+            <addr use="HP">
+                <!-- Provincia.-->
+                <state>Ávila</state>
+                <!-- Municipiov-->
+                <city>Ávila</city>                           
+                <!-- Localidad -->
+                <precinct >Ávila</precinct>                      
+                <!-- País -->                           
+                <country>ESPAÑA</country>
+                <!-- Código Postal-->
+                <postalCode>05003</postalCode>
+                <!-- Tipo de calle (Calle, plaza, etc. )-->
+                <streetNameType>Calle</streetNameType>
+                <!-- Nombre de la calle -->
+                <streetNameBase>De la Trinidad</streetNameBase>                     
+                <!-- Número de portal  -->
+                <houseNumber>28</houseNumber>
+                <!-- NDP del callejero -->
+                <censusTract>NDP</censusTract>
+                <!-- Escalera: si no hay, va en blanco -->
+                <additionalLocator/>
+                <!-- Bloque: si no hay, va en blanco -->
+                <additionalLocator/>
+                <!-- Piso: Si no hay, va en blanco -->
+                <additionalLocator>8</additionalLocator>
+                <!-- Puerta: Si no hay, va en blanco -->
+                <additionalLocator>A</additionalLocator>
+                <!-- Otros datos de la dirección: Si no hay, va en blanco -->
+                <additionalLocator></additionalLocator>
+            </addr>
+            <patient>
+                <name>
+                    <given>ALBERTO</given> <!-- Nombre -->
+                    <family>SÁEZ</family>  <!-- 1º Apellido -->
+                    <family>TORRES</family><!-- 2º Apellido -->
+                </name>
+                <administrativeGenderCode code="M"/>
+                <birthTime value="19571230"/>
+            </patient>
+            
+            <!-- Centro donde está siendo atendido el paciente (hospital o centro de salud -->
+            <providerOrganization>
+                <!-- Identificador del Comlejo hospitalario -->
+                <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101" />
+                <!-- Nombre del centro -->
+                <name>Hospial Nuestra Señora de Sonsoles</name>
+                <!-- Datos de contacto -->
+                <telecom value="tel:920355800"/>
+                <telecom value="tel:920358064"/>
+                <!-- Diereccíon de contacto -->
+                <addr>
+                    <streetAddressLine>Avda. Juan Carlos I, s/n</streetAddressLine>
+                    <city>Avila</city>
+                    <state>Avila</state>
+                    <postalCode>05071</postalCode>
+                </addr>
+            </providerOrganization>
+            
+        </patientRole>
+    </recordTarget>
+    
+    <!-- Autor del documento: el médico -->
+    
+    <author typeCode="AUT" contextControlCode="OP">
+        <time value="200802221240"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <!-- DNI del médico -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>Turanga</given>
+                    <family>Leela</family>
+                </name>
+            </assignedPerson>
+            
+            <!-- Departamento y hospital -->
+            <representedOrganization>
+                <!-- Identificador del servicio -->
+                <!-- Servicio en el hospital de ávila -->           
+                <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.30.1" extension="NF1"/>
+                <name>Neforlogía Consultas extenas</name>
+                <asOrganizationPartOf>
+                    <code code="NFR" codeSystem="2.16.840.1.113883.2.19.20.17.30.1" codeSystemName="Clasificación servicios SNS" />
+                    <wholeOrganization>
+                        <!-- Hospital de Ávila -->
+                        <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                        <!-- Nombre del centro hospitalario -->
+                        <name>Hospital Nuestra Señora de Sonsoles</name>
+                        <!-- Ubicación del centro -->
+                        <addr><state>Ávila</state></addr>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </representedOrganization>
+           
+        </assignedAuthor>
+    </author>
+    
+    <!-- Sistema de autoría (si el CDA ha sido generado nativamente)  -->
+    <author>
+        <time value="200802221240"/>
+        <assignedAuthor>
+            <!-- Instancia de HCECyL en el complejo de Ávila -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.100" extension="2"/>
+            <assignedAuthoringDevice>
+                <softwareName>HCECyL del Complejo Hospitalario de Ávila</softwareName>
+            </assignedAuthoringDevice>
+        </assignedAuthor>
+    </author>
+    
+    
+    <!-- Responsable de la custodia del documento (el hospital que la ha generado)-->
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                <name>Hospital Nuestra Señora de Sonsoles</name>
+                <telecom value="tel:920355800"/>
+                <addr><state>Ávila</state><postalCode>05003</postalCode></addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    
+    
+    
+    <!-- Persona que firma el documento (en este caso es el autor humano) -->
+    <legalAuthenticator>
+        <time value="200802221240"/>
+        <signatureCode code="N"/>
+        <assignedEntity>
+            <!-- DNI -->
+            <id root="1.3.6.1.4.1.19126.3" extension="13152398D"/>
+            <assignedPerson>
+                <name>
+                    <given>Turanga</given>
+                    <family>Saez Leeela</family>
+                </name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    
+    <!-- Episodio del que forma parte el informe -->
+    <componentOf>
+        <encompassingEncounter>
+            <!-- Número de episodio (de hospitalización) deL HIS del hospital de Ávila -->
+            <id root="2.16.840.1.113883.2.19.20.17.40.5.50101.100.1.10.2" extension="23345673456"/>
+            <effectiveTime>
+                <!-- Fecha de inicio del episodio -->
+                <low value="20080101"/>
+            </effectiveTime>
+            <location>
+                <healthCareFacility>
+                    <!--Edificio donde tiene lugar el episodio (edificio principal del complejo) -->
+                    <id root="2.16.840.1.113883.2.19.20.17.40.5" extension="50101"/>
+                </healthCareFacility>
+            </location>
+            
+        </encompassingEncounter>
+    </componentOf>
+ 
+ <!-- 
+     **********************************************************************************
+      *   CUERPO DEL DOCUMENTO
+     **********************************************************************************
+--> 
+     
+    <component typeCode="COMP" contextConductionInd="true">
+        
+      <structuredBody>
+         
+          <component>
+              <section>
+                  <title>DATOS DE LA HOSPITALIZACIÓN</title>
+                  <text>
+                      <table>
+                          <tbody>
+                              <tr><td>Fecha de Ingreso </td> <td>>22/02/2008 10:30</td>    </tr>
+                              <tr><td>Fecha del Alta</td> <td>>23/02/2008 14:20 </td>       </tr>
+                              <tr><td>Anamnesis</td> <td>>contenido de la anamnesis ......</td>       </tr>
+                          </tbody>
+                      </table>    
+                  </text>
+                  <entry>
+                      <observation classCode="OBS" moodCode="EVN">
+                          <!-- OID del dato clínico fecha de alta -->
+                          <code codeSystem="2.16.840.1.113883.2.19.20.17.34" code="fechaingreso"></code>
+                          <value xsi:type="TS" value="200802221030"/>
+                      </observation>
+                  </entry>
+                  <entry>
+                      <observation classCode="OBS" moodCode="EVN">
+                          <!-- OID del dato clínico fecha de alta -->
+                          <code codeSystem="2.16.840.1.113883.2.19.20.17.34" code="fechaalta"/>                                                   
+                          <value xsi:type="TS" value="200802231420"/>
+                      </observation>
+                  </entry>              
+                  <entry>                       
+                      <observation classCode="OBS" moodCode="EVN">
+                          <!-- OID del dato clínico  de anamnesis -->
+                          <code codeSystem="2.16.840.1.113883.2.19.20.17.34" code="anamnesis"></code>
+                          <effectiveTime value="200802221240"/>                          
+                          <value xsi:type="ST">contenido de la anamnesis ....... </value>
+                      </observation>
+                  </entry>
+                  <!-- Allerta -->
+                  <entry>
+                      <organizer classCode="CLUSTER" moodCode="EVN">
+                          <!-- Definición del organizador "ALERTA" Se podría usar templatid-->
+                          <code></code>
+                          <statusCode code="active"/>
+                          <!-- Componente; -->
+                          <component>  
+                              <observation classCode="OBS" moodCode="EVN">
+                              <code></code>
+                              </observation>
+                          </component>
+                          <component>  
+                              <observation classCode="OBS" moodCode="EVN">
+                                  <code></code>
+                              </observation>
+                          </component>
+                          
+                      </organizer>
+                      
+                  </entry>
+              </section>
+          </component>         
+      </structuredBody>
+    </component>
+</ClinicalDocument>
