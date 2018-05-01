@@ -1,8 +1,8 @@
-# 0008 File Reader Outbox
+# A03 File Reader Outbox
 
 ## (english)
 
-**0008_file_rdr_en.xml**
+**A03_file_rdr_en.xml**
 
 This Channel reads CSV files from the inbox folder, maps it's contents to variables and the
 Destination Connector just logs the variables out.
@@ -15,17 +15,17 @@ The outbox folder contains a couple of sample CSV files. After processed, those 
 a .done extension. If you want to execute the Channel again just remove the .done
 
 
-## (español)
+## (espaÃ±ol)
 
-**0008_bandeja_de_entrada_file.xml**
+**A03_bandeja_de_entrada_file.xml**
 
 Este canal lee archivos CSV desde la carpeta inbox, extrae sus datos a variables y muestra los
 valores de las variables en el conector destino.
 
 Este es un ejemplo simple de inbox con archivos. Luego de que el archivo es procesado, sus datos
-podrían usarse para generar mensajes XML o JSON y enviarlos a un destino, o para escribir en una
+podrï¿½an usarse para generar mensajes XML o JSON y enviarlos a un destino, o para escribir en una
 base de datos.
 
 La carpeta inbox contiene algunos archivos de ejemplo con resultados de laboratorio en formado CSV.
-Al ser procesados, el canal agregará la extensión .done. Para volver a ejecutar el canal, solo
-remueve la extensión .done de los archivos.
+Al ser procesados, el canal agregarï¿½ la extensiï¿½n .done. Para volver a ejecutar el canal, solo
+remueve la extensiï¿½n .done de los archivos.

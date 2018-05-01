@@ -1,8 +1,8 @@
-# 0001_logger
+# A01_logger
 
 ## (english)
 
-**0001_logger.xml**
+**A01_logger.xml**
 
 Channel that receives HL7 v2.x via MLLP on port 6661 and stores the message in a local folder.
 The message can be sent through HAPI Test Panel or using our hl7v2xsend command: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x-client
@@ -12,14 +12,14 @@ On each component of the channel and the Global Scripts, a log is executed, gene
 
 We'll check if the order of those messages is the same as the order we saw in the Mirth Connect intro of session 1.
 
-## (español)
+## (espaÃ±ol)
 
-**0001_logger.xml**
+**A01_logger.xml**
 
 Canal que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en una carpeta local.
 Los mensajes pueden ser enviados por HAPI Test Panel, o mediante nuestro comando hl7v2xsend: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x-client
-Aquí puedes encontrar mensajes de ejemplo: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x
+Aquï¿½ puedes encontrar mensajes de ejemplo: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x
 
-Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.
+Se hace un log en cada script, transformador y filtro para mostar el orden de ejecuciï¿½n de los mismos.
 
-Verificaremos en el Dashboard de Mirth Connect que los logs están en el orden que vismo en la clase 1.
+Verificaremos en el Dashboard de Mirth Connect que los logs estï¿½n en el orden que vismo en la clase 1.

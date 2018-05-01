@@ -1,8 +1,8 @@
-# 0005 Code Templates
+# A02 Code Templates
 
 ## (english)
 
-**0005_code_templates.xml**
+**A02_code_templates.xml**
 
 Channel that uses Code Templates with funtions that can be used in Filters and Transformers.
 
@@ -13,14 +13,14 @@ The steps to use Code Templates are:
 3. Use the function in Filters and Transformers (it will appear as a user defined function)
 
 
-## (español)
+## (espaÃ±ol)
 
-**0005_code_templates.xml**
+**A02_code_templates.xml**
 
-Canal que utiliza plantillas de código con funciones que serán utilizadas en filtros y transformadores.
+Canal que utiliza plantillas de cï¿½digo con funciones que serï¿½n utilizadas en filtros y transformadores.
 
-Los pasos para usar plantillas de código son:
+Los pasos para usar plantillas de cï¿½digo son:
 
-1. Definir la función como plantilla de código (code template)
-2. Definir la dependencia del canal a la librería donde está la función
-3. Utilizar la función en filtros y transformadores (aparecerá como función definida por el usuario)
+1. Definir la funciï¿½n como plantilla de cï¿½digo (code template)
+2. Definir la dependencia del canal a la librerï¿½a donde estï¿½ la funciï¿½n
+3. Utilizar la funciï¿½n en filtros y transformadores (aparecerï¿½ como funciï¿½n definida por el usuario)
