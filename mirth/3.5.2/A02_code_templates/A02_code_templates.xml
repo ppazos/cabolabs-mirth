@@ -6,7 +6,7 @@
 El cana recibe MLLP y guarda en un archivo.&#xd;
 La función definida en la plantilla de código es get_patient_data que crea un objeto javascript con esta estructura {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}&#xd;
 </description>
-  <revision>2</revision>
+  <revision>5</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -157,7 +157,6 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
         <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
           <name>prueba de plantillas de codigo</name>
           <sequenceNumber>0</sequenceNumber>
-          <operator>NONE</operator>
           <script>//logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
 //logger.info( $(&apos;myUUID&apos;) );
 
@@ -207,8 +206,8 @@ return es_adt(msg);</script>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
-        <host>${destination_folder}</host>
-        <outputPattern>1_${myUUID}.hl7</outputPattern>
+        <host>${dest_folder}</host>
+        <outputPattern>${UUID}.hl7</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
         <password>anonymous</password>
@@ -445,7 +444,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1524941270770</time>
+        <time>1525136020100</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
@@ -487,21 +486,21 @@ return;</undeployScript>
             </lastModified>
             <contextSet>
               <delegate>
-                <contextType>CHANNEL_ATTACHMENT</contextType>
-                <contextType>CHANNEL_POSTPROCESSOR</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>GLOBAL_UNDEPLOY</contextType>
-                <contextType>GLOBAL_PREPROCESSOR</contextType>
                 <contextType>CHANNEL_PREPROCESSOR</contextType>
-                <contextType>CHANNEL_DEPLOY</contextType>
-                <contextType>CHANNEL_BATCH</contextType>
-                <contextType>GLOBAL_DEPLOY</contextType>
-                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                <contextType>DESTINATION_DISPATCHER</contextType>
                 <contextType>GLOBAL_POSTPROCESSOR</contextType>
-                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -534,9 +533,9 @@ function get_patient_data(msg)
             <contextSet>
               <delegate>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
               </delegate>
             </contextSet>
@@ -562,9 +561,9 @@ function es_adt(msg)
             <contextSet>
               <delegate>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
               </delegate>
             </contextSet>
@@ -588,6 +587,7 @@ logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toSt
         <name>clase1</name>
         <channelIds>
           <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
+          <string>e66b9f0a-3ac2-42cf-a2b8-13887382e2c9</string>
           <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
         </channelIds>
         <backgroundColor>

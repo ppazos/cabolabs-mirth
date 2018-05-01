@@ -498,6 +498,8 @@ return;</undeployScript>
         <name>clase1</name>
         <channelIds>
           <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
+          <string>e66b9f0a-3ac2-42cf-a2b8-13887382e2c9</string>
+          <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
         </channelIds>
         <backgroundColor>
           <red>128</red>
