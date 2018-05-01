@@ -18,8 +18,8 @@ We'll check if the order of those messages is the same as the order we saw in th
 
 Canal que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en una carpeta local.
 Los mensajes pueden ser enviados por HAPI Test Panel, o mediante nuestro comando hl7v2xsend: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x-client
-Aqu� puedes encontrar mensajes de ejemplo: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x
+Aquí puedes encontrar mensajes de ejemplo: https://github.com/ppazos/cabolabs-mirth/tree/master/hl7v2x
 
-Se hace un log en cada script, transformador y filtro para mostar el orden de ejecuci�n de los mismos.
+Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.
 
-Verificaremos en el Dashboard de Mirth Connect que los logs est�n en el orden que vismo en la clase 1.
+Verificaremos en el Dashboard de Mirth Connect que los logs están en el orden que vismo en la clase 1.
