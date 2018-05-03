@@ -4,7 +4,7 @@
 
 **0007_async_destinations.xml**
 
-This channel receives HL7 v2.x via MLLP on port 6671. Does nothin to the message,
+This channel receives HL7 v2.x via MLLP on port 6671. Does nothing to the message,
 Has three different destinations that are executed in parallel and we measure the
 execution time and make some logs to understand this behavior.
 
@@ -18,7 +18,6 @@ execution time and make some logs to understand this behavior.
 
 
 ## (español)
-
 
 **0007_async_destinations.xml**
 

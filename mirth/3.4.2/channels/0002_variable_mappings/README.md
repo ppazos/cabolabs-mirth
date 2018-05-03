@@ -18,17 +18,17 @@ M / F to masculine / feminine, and the JS destination has a filter by that value
 any other than masculine / feminine sex is filtered.
 
 Test with HL7 v2.x messages that have the patient's DoB, no DoB will make the DB
-insert fail. Input data check can be easiliy implemented but the idea of this is
+insert fail. Input data check can be easily implemented but the idea of this is
 to make the simples example possible. After finishing the workshop you can add
 those checks when doing real implementations.
 
 
-## (español)
+## (espaï¿½ol)
 
 **0002_variable_mappings.xml**
 
 Recibe mensajes HL7 v2.x por MLLP, extrae datos de pacientes y los mapea a variables.
 
-Se agregó un destination filter para no dejar pasar los mensajes que tienen un valor de sexo inválido.
+Se agregï¿½ un destination filter para no dejar pasar los mensajes que tienen un valor de sexo invï¿½lido.
 
-Destination 2 es un Database Writer que está deshabilitado, para usarlo necesita instalar MySQL, crear la base de datos "mirth_tests" y la tabla "pacientes" según: https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables.sql
+Destination 2 es un Database Writer que estï¿½ deshabilitado, para usarlo necesita instalar MySQL, crear la base de datos "mirth_tests" y la tabla "pacientes" segï¿½n: https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables.sql
