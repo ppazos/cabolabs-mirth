@@ -3,7 +3,7 @@
   <nextMetaDataId>5</nextMetaDataId>
   <name>C02_http_cda_to_database</name>
   <description>Recibe un documento CDA por HTTP, extrae algunos datos a variables, y las guarda en la base de datos mirth_tests, en la tabla cda_logs.</description>
-  <revision>1</revision>
+  <revision>20</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -39,14 +39,7 @@
       <responseContentType>text/plain</responseContentType>
       <responseDataTypeBinary>false</responseDataTypeBinary>
       <responseStatusCode></responseStatusCode>
-      <responseHeaders class="linked-hash-map">
-        <entry>
-          <string>Access-Control-Allow-Origin</string>
-          <list>
-            <string>*</string>
-          </list>
-        </entry>
-      </responseHeaders>
+      <responseHeaders class="linked-hash-map"/>
       <charset>UTF-8</charset>
       <contextPath>canalHttpCDA3</contextPath>
       <timeout>0</timeout>
@@ -58,42 +51,16 @@
           <name>Extrae XML del request HTML</name>
           <sequenceNumber>0</sequenceNumber>
           <script>logger.info(&apos;Extrae CDA del Request HTTP ....&apos;);
-
-/*
-logger.info(msg[&apos;Parameters&apos;][&apos;mensaje&apos;]); // es un nodo de texto del XML de tipo xml
-
-// Paso a string el nodo de texto y lo convierto en un objeto XML
-// Desde aquí msg pasa a ser el CDA, permite que el siguiente paso Mapper extraiga el valor de msg
-msg = new XML(msg[&apos;Parameters&apos;][&apos;mensaje&apos;].toString());
-*/
-
-/*
-
-// El cuerpo del Request HTTP en XML viene codificado en base64
-// Esto decodifica y obtiene el objeto XML
-var base64 = msg[&apos;Content&apos;].toString();
-var decoded = FileUtil.decode(base64);
-var decodedAsString = Packages.java.lang.String(decoded);
-var mensajeXML = new XML(decodedAsString);
-
-logger.info(&apos;mensajeXML&apos;);
-logger.info(mensajeXML);
-logger.info(typeof mensajeXML); // xml
-*/
-
 logger.info(&quot;msg &quot; + msg);
 logger.info(&quot;content &quot; + msg[&apos;Content&apos;]);
 
-var mensajeXML = new XML(msg[&apos;Content&apos;].toString());
+// sobre-escribe el mensaje del canal
+msg = new XML(msg[&apos;Content&apos;].toString());
 
-logger.info(&quot;children &quot; + mensajeXML.children());
-logger.info(&quot;recordTarget &quot; + mensajeXML[&apos;recordTarget&apos;]);
-logger.info(&quot;typeId &quot; + mensajeXML[&apos;typeId&apos;]);
-logger.info(&quot;id &quot; + mensajeXML[&apos;id&apos;][&apos;@root&apos;]);
-
-// La salida del conector de entrada va a ser solo el XML del pedido HTTP
-// Esto es lo que entra a las destinations
-msg = mensajeXML;</script>
+logger.info(&quot;children &quot; + msg.children());
+logger.info(&quot;recordTarget &quot; + msg[&apos;recordTarget&apos;]);
+logger.info(&quot;typeId &quot; + msg[&apos;typeId&apos;]);
+logger.info(&quot;id &quot; + msg[&apos;id&apos;][&apos;@root&apos;]);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
         <com.mirth.connect.plugins.mapper.MapperStep>
           <name>nombre_paciente</name>
@@ -145,38 +112,31 @@ msg = mensajeXML;</script>
           <sequenceNumber>5</sequenceNumber>
           <script>// En el paso anterior la variable nombre_paciente se puso en el channelMap
 // Eeste código debería mostar el nombre del paciente en la consola de canales
+
 logger.info( channelMap.get(&apos;nombre_paciente&apos;) );
 logger.info( channelMap.get(&apos;id_paciente&apos;) );
 logger.info( channelMap.get(&apos;nombre_medico&apos;) );
 logger.info( channelMap.get(&apos;fecha_documento&apos;) );
 
-//channelMap.put(&apos;timestamp&apos;, new Date().toISOString()); // 2014-06-30T04:46:44.612Z
-//logger.info( &quot;ts: &quot;+ channelMap.get(&apos;timestamp&apos;) );
-
-// Parse no tira la fecha correcta porque el String no tiene la zona horaria con GMT-NNNN es solo -NNNN
-/*
-var intDateParsed = Date.parse(channelMap.get(&apos;fecha_documento&apos;)); // Date.parse( 20121224093000-0300 )
-logger.info( new Date(intDateParsed) );
-var dateString = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date(intDateParsed) ); // string, Date
-logger.info( &quot;date mysql: &quot;+ dateString ); // org.mozilla...NativeDate (javascript Date)
-*/
-
 // Transforma el string 2012-06-12 09:59:00 +0300 en un Date de Java:
-var formatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss Z&quot;); 
+var formatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss X&quot;);
 var date = formatter.parse( channelMap.get(&apos;fecha_documento&apos;) );
 
-logger.info( &quot;date java: &quot;+ date );
+//logger.info( &quot;date java: &quot;+ date );
 
+// Para guardar en MySQL llevamos la fecha con zona horaria -0300 a UTC (+0000).
+// Porque MySQL no guarda zonas horarias, y es fácil estandarizar todo a UTC.
 var mySQLFormatter = new java.text.SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+mySQLFormatter.setTimeZone(java.util.TimeZone.getTimeZone(&quot;UTC&quot;));
 var fecha_documento = mySQLFormatter.format( date );
 
-logger.info( &quot;date java mysql: &quot;+ fecha_documento );
-
+//logger.info( &quot;date java mysql: &quot;+ fecha_documento );
 channelMap.put(&apos;fecha_documento&apos;, fecha_documento); // Ahora con formato aceptado por MySQL
 
 
 // Timestamp con formato MySQL (fecha y horas actuales)
-var timestamp = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date() );
+//var timestamp = DateUtil.formatDate( &quot;yyyy-MM-dd HH:mm:ss&quot;, new Date() ); // Zona horaria implícita a la actual
+var timestamp = mySQLFormatter.format( new java.util.Date() ); // Con zona horaria UTC
 channelMap.put(&apos;timestamp&apos;, timestamp);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
       </elements>
@@ -492,7 +452,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525324185286</time>
+        <time>1525407642790</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
