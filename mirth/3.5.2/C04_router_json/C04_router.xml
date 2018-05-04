@@ -31,17 +31,30 @@
         </resourceIds>
         <queueBufferSize>1000</queueBufferSize>
       </sourceConnectorProperties>
-      <xmlBody>false</xmlBody>
-      <parseMultipart>true</parseMultipart>
-      <includeMetadata>false</includeMetadata>
-      <binaryMimeTypes></binaryMimeTypes>
-      <binaryMimeTypesRegex>true</binaryMimeTypesRegex>
-      <responseContentType>application/json</responseContentType>
+      <xmlBody>true</xmlBody>
+      <parseMultipart>false</parseMultipart>
+      <includeMetadata>true</includeMetadata>
+      <binaryMimeTypes>application/, image/, video/, audio/</binaryMimeTypes>
+      <binaryMimeTypesRegex>false</binaryMimeTypesRegex>
+      <responseContentType>text/plain</responseContentType>
       <responseDataTypeBinary>false</responseDataTypeBinary>
       <responseStatusCode></responseStatusCode>
-      <responseHeaders class="linked-hash-map"/>
+      <responseHeaders class="linked-hash-map">
+        <entry>
+          <string>estado</string>
+          <list>
+            <string>${estado}</string>
+          </list>
+        </entry>
+        <entry>
+          <string>Access-Control-Allow-Origin</string>
+          <list>
+            <string>*</string>
+          </list>
+        </entry>
+      </responseHeaders>
       <charset>UTF-8</charset>
-      <contextPath>router</contextPath>
+      <contextPath>canalHttp1235</contextPath>
       <timeout>0</timeout>
       <staticResources/>
     </properties>
