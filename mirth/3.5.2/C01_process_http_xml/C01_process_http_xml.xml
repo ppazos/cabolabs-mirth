@@ -38,13 +38,16 @@ Header: Authorization&#xd;
       &lt;Content-Type&gt;application/xml&lt;/Content-Type&gt;&#xd;
       &lt;Accept&gt;*/*&lt;/Accept&gt;&#xd;
    &lt;/Header&gt;&#xd;
-   &lt;Content encoding=&quot;Base64&quot; multipart=&quot;no&quot;&gt;PG1lbnNhamU+CiAgICA8cGVyc29uYT4KICAgICAgICA8bm9tYnJlPlBhYmxvPC9ub21icmU+CiAg&amp;#13;&#xd;
-ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=&amp;#13;&#xd;
+   &lt;Content&gt;&lt;mensaje&gt;&#xd;
+    &lt;persona&gt;&#xd;
+        &lt;nombre&gt;Pablo&lt;/nombre&gt;&#xd;
+    &lt;/persona&gt;&#xd;
+&lt;/mensaje&gt;&#xd;
    &lt;/Content&gt;&#xd;
 &lt;/HttpRequest&gt;&#xd;
 &#xd;
 </description>
-  <revision>2</revision>
+  <revision>20</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -75,9 +78,9 @@ ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=&amp;#13;&#xd;
       <xmlBody>true</xmlBody>
       <parseMultipart>false</parseMultipart>
       <includeMetadata>true</includeMetadata>
-      <binaryMimeTypes>application/, image/, video/, audio/</binaryMimeTypes>
+      <binaryMimeTypes></binaryMimeTypes>
       <binaryMimeTypesRegex>false</binaryMimeTypesRegex>
-      <responseContentType>text/plain</responseContentType>
+      <responseContentType>text/xml</responseContentType>
       <responseDataTypeBinary>false</responseDataTypeBinary>
       <responseStatusCode></responseStatusCode>
       <responseHeaders class="linked-hash-map">
@@ -85,12 +88,6 @@ ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=&amp;#13;&#xd;
           <string>estado</string>
           <list>
             <string>${estado}</string>
-          </list>
-        </entry>
-        <entry>
-          <string>Access-Control-Allow-Origin</string>
-          <list>
-            <string>*</string>
           </list>
         </entry>
       </responseHeaders>
@@ -133,56 +130,34 @@ globalChannelMap.put(&apos;estado&apos;, estado);
         <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
           <name>Extrae XML del request HTML</name>
           <sequenceNumber>1</sequenceNumber>
-          <script>/* mensajeXML en el cuerpo del request HTTP
-&lt;mensaje&gt;
-    &lt;persona&gt;
-        &lt;nombre&gt;Pablo&lt;/nombre&gt;
-    &lt;/persona&gt;
-&lt;/mensaje&gt;
+          <script>// Sobreescribe el mensaje que viene con metadata, solo con el contenido.
+msg = new XML(msg[&apos;Content&apos;].toString());
 
-SerializerFactory.getSerializer(&apos;DELIMITED&apos;).toXML(message);
-*/
-
-// El cuerpo del Request HTTP en XML viene codificado en base64
-// Esto decodifica y obtiene el objeto XML
-var base64 = msg[&apos;Content&apos;].toString();
-var decoded = FileUtil.decode(base64);
-var decodedAsString = Packages.java.lang.String(decoded);
-var mensajeXML = new XML(decodedAsString);
-
-logger.info(&apos;mensajeXML&apos;);
-logger.info(mensajeXML);
-logger.info(typeof mensajeXML); // xml
-
-logger.info(&apos;mensaje[persona][nombre]&apos;);
-logger.info(mensajeXML[&apos;persona&apos;][&apos;nombre&apos;]);
-
-/*
-logger.info(&apos;Mensaje XML extraido ...&apos;);
-logger.info(mensajeXML);
-logger.info(typeof mensajeXML);
-*/
-
-// La salida del conector de entrada va a ser solo el XML del pedido HTTP
-// Esto es lo que entra a las destinations
-msg = mensajeXML;</script>
+logger.info(&apos;msg[persona][nombre]&apos;);
+logger.info(msg[&apos;persona&apos;][&apos;nombre&apos;]);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
       </elements>
-      <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0PjxSZW1vdGVBZGRyZXNzPjA6MDowOjA6MDowOjA6MTwvUmVtb3RlQWRkcmVz
-cz48UmVxdWVzdFVybD5odHRwOi8vbG9jYWxob3N0OjEyMzUvY2FuYWxIdHRwMTIzNS88L1JlcXVl
-c3RVcmw+PE1ldGhvZD5QT1NUPC9NZXRob2Q+PFJlcXVlc3RQYXRoPnBhcmFtZXRybzE9YXNkZjwv
-UmVxdWVzdFBhdGg+PFJlcXVlc3RDb250ZXh0UGF0aD4vY2FuYWxIdHRwMTIzNS88L1JlcXVlc3RD
-b250ZXh0UGF0aD48UGFyYW1ldGVycz48cGFyYW1ldHJvMT5hc2RmPC9wYXJhbWV0cm8xPjwvUGFy
-YW1ldGVycz48SGVhZGVyPjxBdXRob3JpemF0aW9uPnNlY3JldDwvQXV0aG9yaXphdGlvbj48QWNj
-ZXB0PiovKjwvQWNjZXB0PjxVc2VyLUFnZW50Pmluc29tbmlhLzUuMC4yMDwvVXNlci1BZ2VudD48
-SG9zdD5sb2NhbGhvc3Q6MTIzNTwvSG9zdD48QWNjZXB0LUVuY29kaW5nPmRlZmxhdGUsIGd6aXA8
-L0FjY2VwdC1FbmNvZGluZz48Q29udGVudC1MZW5ndGg+ODA8L0NvbnRlbnQtTGVuZ3RoPjxDb250
-ZW50LVR5cGU+YXBwbGljYXRpb24veG1sPC9Db250ZW50LVR5cGU+PC9IZWFkZXI+PENvbnRlbnQg
-ZW5jb2Rpbmc9IkJhc2U2NCIgbXVsdGlwYXJ0PSJubyI+UEcxbGJuTmhhbVUrQ2lBZ0lDQThjR1Z5
-YzI5dVlUNEtJQ0FnSUNBZ0lDQThibTl0WW5KbFBsQmhZbXh2UEM5dWIyMWljbVUrQ2lBZyYjMTM7
-CklDQThMM0JsY25OdmJtRStDand2YldWdWMyRnFaVDQ9JiMxMzsKPC9Db250ZW50PjwvSHR0cFJl
-cXVlc3Q+</inboundTemplate>
-      <outboundTemplate encoding="base64"></outboundTemplate>
+      <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0PgogICA8UmVtb3RlQWRkcmVzcz4xMjcuMC4wLjE8L1JlbW90ZUFkZHJlc3M+
+CiAgIDxSZXF1ZXN0VXJsPmh0dHA6Ly9sb2NhbGhvc3Q6MTIzNS9jYW5hbEh0dHAxMjM1LzwvUmVx
+dWVzdFVybD4KICAgPE1ldGhvZD5QT1NUPC9NZXRob2Q+CiAgIDxSZXF1ZXN0UGF0aD5wYXJhbWV0
+cm8xPWFhYTwvUmVxdWVzdFBhdGg+CiAgIDxSZXF1ZXN0Q29udGV4dFBhdGg+L2NhbmFsSHR0cDEy
+MzUvPC9SZXF1ZXN0Q29udGV4dFBhdGg+CiAgIDxQYXJhbWV0ZXJzPgogICAgICA8cGFyYW1ldHJv
+MT5hYWE8L3BhcmFtZXRybzE+CiAgIDwvUGFyYW1ldGVycz4KICAgPEhlYWRlcj4KICAgICAgPEFj
+Y2VwdC1MYW5ndWFnZT5lcyxlbi1VUztxPTAuOCxlbjtxPTAuNjwvQWNjZXB0LUxhbmd1YWdlPgog
+ICAgICA8QXV0aG9yaXphdGlvbj5zZWNyZXQ8L0F1dGhvcml6YXRpb24+CiAgICAgIDxIb3N0Pmxv
+Y2FsaG9zdDoxMjM1PC9Ib3N0PgogICAgICA8Q29udGVudC1MZW5ndGg+ODA8L0NvbnRlbnQtTGVu
+Z3RoPgogICAgICA8QWNjZXB0LUVuY29kaW5nPmd6aXAsIGRlZmxhdGU8L0FjY2VwdC1FbmNvZGlu
+Zz4KICAgICAgPEROVD4xPC9ETlQ+CiAgICAgIDxVc2VyLUFnZW50Pk1vemlsbGEvNS4wIChXaW5k
+b3dzIE5UIDUuMSkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21l
+LzQ5LjAuMjYyMy4xMTIgU2FmYXJpLzUzNy4zNjwvVXNlci1BZ2VudD4KICAgICAgPE9yaWdpbj5j
+aHJvbWUtZXh0ZW5zaW9uOi8vZ21vZGlobmZpYmJqZGVjYmFubXBtYm1lZmZubWxvZWw8L09yaWdp
+bj4KICAgICAgPENvbm5lY3Rpb24+a2VlcC1hbGl2ZTwvQ29ubmVjdGlvbj4KICAgICAgPENvbnRl
+bnQtVHlwZT5hcHBsaWNhdGlvbi94bWw8L0NvbnRlbnQtVHlwZT4KICAgICAgPEFjY2VwdD4qLyo8
+L0FjY2VwdD4KICAgPC9IZWFkZXI+CiAgIDxDb250ZW50PjxtZW5zYWplPgogICAgPHBlcnNvbmE+
+CiAgICAgICAgPG5vbWJyZT5QYWJsbzwvbm9tYnJlPgogICAgPC9wZXJzb25hPgo8L21lbnNhamU+
+CiAgIDwvQ29udGVudD4KPC9IdHRwUmVxdWVzdD4KCg==</inboundTemplate>
+      <outboundTemplate encoding="base64">PG1lbnNhamU+CiAgICA8cGVyc29uYT4KICAgICAgICA8bm9tYnJlPlBhYmxvPC9ub21icmU+CiAg
+ICA8L3BlcnNvbmE+CjwvbWVuc2FqZT4=</outboundTemplate>
       <inboundDataType>XML</inboundDataType>
       <outboundDataType>XML</outboundDataType>
       <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.5.2">
@@ -215,7 +190,6 @@ cXVlc3Q+</inboundTemplate>
         <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
           <name>estado = error por defecto</name>
           <sequenceNumber>0</sequenceNumber>
-          <operator>NONE</operator>
           <script>var estado = &quot;error&quot;;
 
 // Deja el valor disponible para ponerlo en el header de la respuesta
@@ -224,7 +198,8 @@ channelMap.put(&apos;estado&apos;, estado);
 
 // Deja el valor disponible para la respuesta
 // Ver Source &gt; Response Settings &gt; Response
-responseMap.put(&apos;Response&apos;, estado);
+var respuesta = &apos;&lt;estado&gt;&apos;+ estado +&apos;&lt;/estado&gt;&apos;;
+responseMap.put(&apos;Response&apos;, respuesta);
 
 // El filtro debe retornar true para seguir ejecutando la siguiente regla
 return true;</script>
@@ -254,7 +229,8 @@ channelMap.put(&apos;estado&apos;, estado);
 
 // Deja el valor disponible para la respuesta
 // Ver Source &gt; Response Settings &gt; Response
-responseMap.put(&apos;Response&apos;, estado);
+var respuesta = &apos;&lt;estado&gt;&apos;+ estado +&apos;&lt;/estado&gt;&apos;;
+responseMap.put(&apos;Response&apos;, respuesta);
 
 // Sigue para ejecutar los filtros
 return true;</script>
@@ -293,7 +269,7 @@ return true;</script>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
         <host>${dest_folder}</host>
-        <outputPattern>0003_${date.get(&apos;yyyy-M-d H.m.s&apos;)}.txt</outputPattern>
+        <outputPattern>0003_${date.get(&quot;yyyy-MM-dd&apos;T&apos;HH.mm.ss&quot;)}.txt</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
         <password>anonymous</password>
@@ -374,101 +350,6 @@ return true;</script>
       <enabled>true</enabled>
       <waitForPrevious>true</waitForPrevious>
     </connector>
-    <connector version="3.5.2">
-      <metaDataId>2</metaDataId>
-      <name>Destination 2</name>
-      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.5.2">
-        <pluginProperties/>
-        <destinationConnectorProperties version="3.5.2">
-          <queueEnabled>false</queueEnabled>
-          <sendFirst>false</sendFirst>
-          <retryIntervalMillis>10000</retryIntervalMillis>
-          <regenerateTemplate>false</regenerateTemplate>
-          <retryCount>0</retryCount>
-          <rotate>false</rotate>
-          <includeFilterTransformer>false</includeFilterTransformer>
-          <threadCount>1</threadCount>
-          <validateResponse>false</validateResponse>
-          <resourceIds class="linked-hash-map">
-            <entry>
-              <string>Default Resource</string>
-              <string>[Default Resource]</string>
-            </entry>
-          </resourceIds>
-          <queueBufferSize>1000</queueBufferSize>
-          <reattachAttachments>true</reattachAttachments>
-        </destinationConnectorProperties>
-        <script>responseMap.put(&apos;Response&apos;, $(&apos;estado&apos;));
-</script>
-      </properties>
-      <transformer version="3.5.2">
-        <elements/>
-        <inboundDataType>XML</inboundDataType>
-        <outboundDataType>XML</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.5.2">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.5.2">
-            <stripNamespaces>true</stripNamespaces>
-          </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.5.2">
-            <splitType>Element_Name</splitType>
-            <elementName></elementName>
-            <level>1</level>
-            <query></query>
-            <batchScript></batchScript>
-          </batchProperties>
-        </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.5.2">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.5.2">
-            <stripNamespaces>true</stripNamespaces>
-          </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.5.2">
-            <splitType>Element_Name</splitType>
-            <elementName></elementName>
-            <level>1</level>
-            <query></query>
-            <batchScript></batchScript>
-          </batchProperties>
-        </outboundProperties>
-      </transformer>
-      <responseTransformer version="3.5.2">
-        <elements/>
-        <inboundTemplate encoding="base64"></inboundTemplate>
-        <outboundTemplate encoding="base64"></outboundTemplate>
-        <inboundDataType>XML</inboundDataType>
-        <outboundDataType>XML</outboundDataType>
-        <inboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.5.2">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.5.2">
-            <stripNamespaces>true</stripNamespaces>
-          </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.5.2">
-            <splitType>Element_Name</splitType>
-            <elementName></elementName>
-            <level>1</level>
-            <query></query>
-            <batchScript></batchScript>
-          </batchProperties>
-        </inboundProperties>
-        <outboundProperties class="com.mirth.connect.plugins.datatypes.xml.XMLDataTypeProperties" version="3.5.2">
-          <serializationProperties class="com.mirth.connect.plugins.datatypes.xml.XMLSerializationProperties" version="3.5.2">
-            <stripNamespaces>true</stripNamespaces>
-          </serializationProperties>
-          <batchProperties class="com.mirth.connect.plugins.datatypes.xml.XMLBatchProperties" version="3.5.2">
-            <splitType>Element_Name</splitType>
-            <elementName></elementName>
-            <level>1</level>
-            <query></query>
-            <batchScript></batchScript>
-          </batchProperties>
-        </outboundProperties>
-      </responseTransformer>
-      <filter version="3.5.2">
-        <elements/>
-      </filter>
-      <transportName>JavaScript Writer</transportName>
-      <mode>DESTINATION</mode>
-      <enabled>true</enabled>
-      <waitForPrevious>true</waitForPrevious>
-    </connector>
   </destinationConnectors>
   <preprocessingScript>// Modify the message variable below to pre process data
 return message;</preprocessingScript>
@@ -517,7 +398,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525324084065</time>
+        <time>1525403936852</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
