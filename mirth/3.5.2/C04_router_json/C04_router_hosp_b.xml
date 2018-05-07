@@ -3,7 +3,7 @@
   <nextMetaDataId>2</nextMetaDataId>
   <name>C04_router_hosp_b</name>
   <description></description>
-  <revision>1</revision>
+  <revision>2</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -128,7 +128,7 @@ return;</postprocessingScript>
   <deployScript>// This script executes once when the channel is deployed
 // You only have access to the globalMap and globalChannelMap here to persist data
 
-globalMap.put(&apos;0014_router_hosp_b&apos;, channelId);
+globalMap.put(&apos;C04_router_hosp_b&apos;, channelId);
 
 return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
@@ -170,13 +170,16 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525324449611</time>
+        <time>1525715070543</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
         <archiveEnabled>true</archiveEnabled>
       </pruningSettings>
     </metadata>
+    <dependentIds>
+      <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
+    </dependentIds>
     <channelTags>
       <channelTag>
         <id>1f8c51b5-a491-4e8c-926c-67452162aecc</id>
@@ -184,7 +187,7 @@ return;</undeployScript>
         <channelIds>
           <string>7b1ca6ce-6cd9-42a9-a9a0-4ce784ad33b2</string>
           <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
-          <string>a5f0676c-781d-4a84-8c1c-c27af8c0249e</string>
+          <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
           <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
           <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
           <string>27a3b726-9e18-4931-b370-96e4cc0b06fd</string>

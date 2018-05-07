@@ -1,9 +1,9 @@
 <channel version="3.5.2">
-  <id>a5f0676c-781d-4a84-8c1c-c27af8c0249e</id>
+  <id>6a740112-c252-4466-983d-3e3a5aacd376</id>
   <nextMetaDataId>2</nextMetaDataId>
-  <name>C04_router</name>
+  <name>C04_channel_router</name>
   <description></description>
-  <revision>2</revision>
+  <revision>7</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -31,95 +31,42 @@
         </resourceIds>
         <queueBufferSize>1000</queueBufferSize>
       </sourceConnectorProperties>
-      <xmlBody>true</xmlBody>
-      <parseMultipart>false</parseMultipart>
-      <includeMetadata>true</includeMetadata>
-      <binaryMimeTypes>application/, image/, video/, audio/</binaryMimeTypes>
+      <xmlBody>false</xmlBody>
+      <parseMultipart>true</parseMultipart>
+      <includeMetadata>false</includeMetadata>
+      <binaryMimeTypes></binaryMimeTypes>
       <binaryMimeTypesRegex>false</binaryMimeTypesRegex>
-      <responseContentType>text/plain</responseContentType>
+      <responseContentType>application/json</responseContentType>
       <responseDataTypeBinary>false</responseDataTypeBinary>
       <responseStatusCode></responseStatusCode>
-      <responseHeaders class="linked-hash-map">
-        <entry>
-          <string>estado</string>
-          <list>
-            <string>${estado}</string>
-          </list>
-        </entry>
-        <entry>
-          <string>Access-Control-Allow-Origin</string>
-          <list>
-            <string>*</string>
-          </list>
-        </entry>
-      </responseHeaders>
+      <responseHeaders class="linked-hash-map"/>
       <charset>UTF-8</charset>
-      <contextPath>canalHttp1235</contextPath>
+      <contextPath>router</contextPath>
       <timeout>0</timeout>
       <staticResources/>
     </properties>
     <transformer version="3.5.2">
       <elements>
-        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
-          <name>Router</name>
+        <com.mirth.connect.plugins.mapper.MapperStep>
+          <name>destination</name>
           <sequenceNumber>0</sequenceNumber>
-          <script>var msg_str = JSON.stringify( msg );
-
-if (msg[&apos;destination&apos;] == &quot;H1&quot;)
-{
-   logger.info(&quot;Rutea a Hospital A&quot;);
-   router.routeMessageByChannelId(globalMap.get(&apos;0014_router_hosp_a&apos;), msg_str);
-}
-else
-{
-   logger.info(&quot;Rutea a Hospital B&quot;);
-   router.routeMessageByChannelId(globalMap.get(&apos;0014_router_hosp_b&apos;), msg_str);
-}</script>
-        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+          <variable>destination</variable>
+          <mapping>msg[&apos;destination&apos;]</mapping>
+          <defaultValue></defaultValue>
+          <replacements/>
+          <scope>CHANNEL</scope>
+        </com.mirth.connect.plugins.mapper.MapperStep>
       </elements>
       <inboundTemplate encoding="base64">ewogICAgImRlc3RpbmF0aW9uIjogIkgxIiwKICAgICJtZXNzYWdlIjogewogICAgICAgICJwYXRp
 ZW50IjogewogICAgICAgICAgICAibmFtZSI6ICJQYWJsbyIKICAgICAgICB9CiAgICB9Cn0=</inboundTemplate>
       <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>JSON</inboundDataType>
       <outboundDataType>JSON</outboundDataType>
-      <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.5.2">
-        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2SerializationProperties" version="3.5.2">
-          <handleRepetitions>true</handleRepetitions>
-          <handleSubcomponents>true</handleSubcomponents>
-          <useStrictParser>false</useStrictParser>
-          <useStrictValidation>false</useStrictValidation>
-          <stripNamespaces>true</stripNamespaces>
-          <segmentDelimiter>\r</segmentDelimiter>
-          <convertLineBreaks>true</convertLineBreaks>
-        </serializationProperties>
-        <deserializationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DeserializationProperties" version="3.5.2">
-          <useStrictParser>false</useStrictParser>
-          <useStrictValidation>false</useStrictValidation>
-          <segmentDelimiter>\r</segmentDelimiter>
-        </deserializationProperties>
-        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2BatchProperties" version="3.5.2">
-          <splitType>MSH_Segment</splitType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.json.JSONDataTypeProperties" version="3.5.2">
+        <batchProperties class="com.mirth.connect.plugins.datatypes.json.JSONBatchProperties" version="3.5.2">
+          <splitType>JavaScript</splitType>
           <batchScript></batchScript>
         </batchProperties>
-        <responseGenerationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseGenerationProperties" version="3.5.2">
-          <segmentDelimiter>\r</segmentDelimiter>
-          <successfulACKCode>AA</successfulACKCode>
-          <successfulACKMessage></successfulACKMessage>
-          <errorACKCode>AE</errorACKCode>
-          <errorACKMessage>An Error Occurred Processing Message.</errorACKMessage>
-          <rejectedACKCode>AR</rejectedACKCode>
-          <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
-          <msh15ACKAccept>false</msh15ACKAccept>
-          <dateFormat>yyyyMMddHHmmss</dateFormat>
-        </responseGenerationProperties>
-        <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.5.2">
-          <successfulACKCode>AA,CA</successfulACKCode>
-          <errorACKCode>AE,CE</errorACKCode>
-          <rejectedACKCode>AR,CR</rejectedACKCode>
-          <validateMessageControlId>false</validateMessageControlId>
-          <originalMessageControlId>Destination_Encoded</originalMessageControlId>
-          <originalIdMapVariable></originalIdMapVariable>
-        </responseValidationProperties>
       </inboundProperties>
       <outboundProperties class="com.mirth.connect.plugins.datatypes.json.JSONDataTypeProperties" version="3.5.2">
         <batchProperties class="com.mirth.connect.plugins.datatypes.json.JSONBatchProperties" version="3.5.2">
@@ -140,7 +87,7 @@ ZW50IjogewogICAgICAgICAgICAibmFtZSI6ICJQYWJsbyIKICAgICAgICB9CiAgICB9Cn0=</inboun
     <connector version="3.5.2">
       <metaDataId>1</metaDataId>
       <name>Destination 1</name>
-      <properties class="com.mirth.connect.connectors.vm.VmDispatcherProperties" version="3.5.2">
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.5.2">
         <pluginProperties/>
         <destinationConnectorProperties version="3.5.2">
           <queueEnabled>false</queueEnabled>
@@ -162,9 +109,18 @@ ZW50IjogewogICAgICAgICAgICAibmFtZSI6ICJQYWJsbyIKICAgICAgICB9CiAgICB9Cn0=</inboun
           <queueBufferSize>1000</queueBufferSize>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
-        <channelId>none</channelId>
-        <channelTemplate>${message.encodedData}</channelTemplate>
-        <mapVariables/>
+        <script>var msg_str = connectorMessage.getEncodedData();
+
+if ($(&apos;destination&apos;) == &quot;H1&quot;)
+{
+   logger.info(&quot;Rutea a Hospital A&quot;);
+   router.routeMessageByChannelId(globalMap.get(&apos;C04_router_hosp_a&apos;), msg_str);
+}
+else
+{
+   logger.info(&quot;Rutea a Hospital B&quot;);
+   router.routeMessageByChannelId(globalMap.get(&apos;C04_router_hosp_b&apos;), msg_str);
+}</script>
       </properties>
       <transformer version="3.5.2">
         <elements/>
@@ -203,7 +159,7 @@ ZW50IjogewogICAgICAgICAgICAibmFtZSI6ICJQYWJsbyIKICAgICAgICB9CiAgICB9Cn0=</inboun
       <filter version="3.5.2">
         <elements/>
       </filter>
-      <transportName>Channel Writer</transportName>
+      <transportName>JavaScript Writer</transportName>
       <mode>DESTINATION</mode>
       <enabled>true</enabled>
       <waitForPrevious>true</waitForPrevious>
@@ -227,7 +183,7 @@ return;</undeployScript>
     <removeContentOnCompletion>false</removeContentOnCompletion>
     <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
     <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
-    <initialState>STOPPED</initialState>
+    <initialState>STARTED</initialState>
     <storeAttachments>false</storeAttachments>
     <metaDataColumns>
       <metaDataColumn>
@@ -256,13 +212,17 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525324394876</time>
+        <time>1525715348013</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
         <archiveEnabled>true</archiveEnabled>
       </pruningSettings>
     </metadata>
+    <dependencyIds>
+      <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
+      <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
+    </dependencyIds>
     <channelTags>
       <channelTag>
         <id>1f8c51b5-a491-4e8c-926c-67452162aecc</id>
@@ -270,7 +230,7 @@ return;</undeployScript>
         <channelIds>
           <string>7b1ca6ce-6cd9-42a9-a9a0-4ce784ad33b2</string>
           <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
-          <string>a5f0676c-781d-4a84-8c1c-c27af8c0249e</string>
+          <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
           <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
           <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
           <string>27a3b726-9e18-4931-b370-96e4cc0b06fd</string>
