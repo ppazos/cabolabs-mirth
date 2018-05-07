@@ -1,0 +1,41 @@
+<alertModel version="3.5.2">
+  <id>6b09f860-422e-46cd-9204-0b037e674a07</id>
+  <name>c06_alerts</name>
+  <enabled>true</enabled>
+  <trigger class="defaultTrigger" version="3.5.2">
+    <alertChannels version="3.5.2">
+      <newChannelSource>false</newChannelSource>
+      <newChannelDestination>false</newChannelDestination>
+      <enabledChannels>
+        <string>ed5070ab-daeb-49f5-8f31-c807006159e7</string>
+      </enabledChannels>
+      <disabledChannels/>
+      <partialChannels/>
+    </alertChannels>
+    <errorEventTypes>
+      <errorEventType>ANY</errorEventType>
+    </errorEventTypes>
+    <regex></regex>
+  </trigger>
+  <actionGroups>
+    <alertActionGroup version="3.5.2">
+      <actions>
+        <alertAction version="3.5.2">
+          <protocol>Email</protocol>
+          <recipient>curso-mirth@googlegroups.com</recipient>
+        </alertAction>
+      </actions>
+      <subject>C06 ALERTA! ${serverId} / ${channelId}</subject>
+      <template>Cuando: ${date}
+
+Conector: ${connectorName}
+
+Mensaje: ${messageId}
+
+Error: ${error} / ${errorType}
+
+${errorMessage}</template>
+    </alertActionGroup>
+  </actionGroups>
+  <properties/>
+</alertModel>
