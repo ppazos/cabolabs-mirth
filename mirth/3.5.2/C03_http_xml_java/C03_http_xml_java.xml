@@ -3,7 +3,7 @@
   <nextMetaDataId>2</nextMetaDataId>
   <name>C03_http_xml_java</name>
   <description></description>
-  <revision>1</revision>
+  <revision>6</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -39,14 +39,7 @@
       <responseContentType>text/plain</responseContentType>
       <responseDataTypeBinary>false</responseDataTypeBinary>
       <responseStatusCode></responseStatusCode>
-      <responseHeaders class="linked-hash-map">
-        <entry>
-          <string>Access-Control-Allow-Origin</string>
-          <list>
-            <string>*</string>
-          </list>
-        </entry>
-      </responseHeaders>
+      <responseHeaders class="linked-hash-map"/>
       <charset>UTF-8</charset>
       <contextPath>java</contextPath>
       <timeout>0</timeout>
@@ -57,9 +50,9 @@
         <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
           <name>Transformacion usando Java</name>
           <sequenceNumber>0</sequenceNumber>
-          <script>logger.info(msg);
+          <script>var action = msg[&apos;Parameters&apos;][&apos;action&apos;].toString()
 
-var action = msg[&apos;Parameters&apos;][&apos;action&apos;].toString()
+logger.info(&apos;action: &apos;+ action);
 
 // Extrae el mensaje del Request HTTP
 msg = new XML(msg[&apos;Content&apos;].toString());
@@ -80,14 +73,9 @@ msg[&apos;persona&apos;][&apos;nombre&apos;] = value;
 // Usando un servicio para obtener el largo, debe ser igual al largo
 if (msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length == Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;].toString()))
 {
-   logger.info(&apos;OK&apos;);
+   logger.info(&apos;largo de JS y Java son iguales&apos;);
 }
-else logger.info(&apos;ERROR&apos;);
-
-
-logger.info(&quot;length :&quot;+ msg[&apos;persona&apos;][&apos;nombre&apos;].toString().length);
-logger.info(&quot;servicio length :&quot;+ Packages.paquete.Servicio.size(msg[&apos;persona&apos;][&apos;nombre&apos;]));
-logger.info(msg);</script>
+else logger.info(&apos;largo de JS y Java NO son iguales&apos;);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
       </elements>
       <inboundTemplate encoding="base64">PEh0dHBSZXF1ZXN0Pg0KICAgIDxSZW1vdGVBZGRyZXNzPjE5Mi4xNjguMS4xMDc8L1JlbW90ZUFk
@@ -289,7 +277,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525324284912</time>
+        <time>1525713855637</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
