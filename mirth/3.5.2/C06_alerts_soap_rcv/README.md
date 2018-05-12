@@ -1,4 +1,4 @@
-# **C06_alerts_soap_rcv
+# C06_alerts_soap_rcv
 
 ## (english)
 
