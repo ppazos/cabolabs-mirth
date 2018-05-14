@@ -3,8 +3,8 @@
   <name>Clase 1</name>
   <revision>1</revision>
   <lastModified>
-    <time>1525280042015</time>
-    <timezone>America/Montevideo</timezone>
+    <time>1526151745288</time>
+    <timezone>America/Argentina/Buenos_Aires</timezone>
   </lastModified>
   <description></description>
   <channels>
@@ -15,7 +15,7 @@
       <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
 Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
-      <revision>4</revision>
+      <revision>2</revision>
       <sourceConnector version="3.5.2">
         <metaDataId>0</metaDataId>
         <name>sourceConnector</name>
@@ -164,10 +164,9 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
             <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
               <name>log</name>
               <sequenceNumber>0</sequenceNumber>
-              <operator>NONE</operator>
               <script>logger.info(&quot;Source Filter Step 1&quot;);
 
-logger.info(msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
+logger.info(&apos;Processing Code: &apos;+ msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
 
 return true;</script>
             </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
@@ -493,10 +492,10 @@ return;</undeployScript>
       </properties>
       <exportData>
         <metadata>
-          <enabled>false</enabled>
+          <enabled>true</enabled>
           <lastModified>
-            <time>1524941111969</time>
-            <timezone>America/Montevideo</timezone>
+            <time>1526334330209</time>
+            <timezone>America/Argentina/Buenos_Aires</timezone>
           </lastModified>
           <pruningSettings>
             <archiveEnabled>true</archiveEnabled>
@@ -530,7 +529,7 @@ return;</undeployScript>
 El cana recibe MLLP y guarda en un archivo.&#xd;
 La función definida en la plantilla de código es get_patient_data que crea un objeto javascript con esta estructura {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}&#xd;
 </description>
-      <revision>5</revision>
+      <revision>1</revision>
       <sourceConnector version="3.5.2">
         <metaDataId>0</metaDataId>
         <name>sourceConnector</name>
@@ -966,7 +965,7 @@ return;</undeployScript>
       </properties>
       <exportData>
         <metadata>
-          <enabled>false</enabled>
+          <enabled>true</enabled>
           <lastModified>
             <time>1525136020100</time>
             <timezone>America/Montevideo</timezone>
@@ -979,10 +978,10 @@ return;</undeployScript>
           <codeTemplateLibrary version="3.5.2">
             <id>f1c01445-3686-43cb-a275-448e5108c378</id>
             <name>Library 1</name>
-            <revision>2</revision>
+            <revision>1</revision>
             <lastModified>
-              <time>1525136199013</time>
-              <timezone>America/Montevideo</timezone>
+              <time>1526151743064</time>
+              <timezone>America/Argentina/Buenos_Aires</timezone>
             </lastModified>
             <description></description>
             <includeNewChannels>false</includeNewChannels>
@@ -1005,26 +1004,26 @@ return;</undeployScript>
                 <name>0. obtener datos del paciente de mensajes HL7 v2.x</name>
                 <revision>1</revision>
                 <lastModified>
-                  <time>1524941233556</time>
-                  <timezone>America/Montevideo</timezone>
+                  <time>1526151743214</time>
+                  <timezone>America/Argentina/Buenos_Aires</timezone>
                 </lastModified>
                 <contextSet>
                   <delegate>
-                    <contextType>GLOBAL_UNDEPLOY</contextType>
-                    <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                    <contextType>GLOBAL_DEPLOY</contextType>
-                    <contextType>CHANNEL_BATCH</contextType>
-                    <contextType>CHANNEL_POSTPROCESSOR</contextType>
-                    <contextType>CHANNEL_DEPLOY</contextType>
-                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                    <contextType>GLOBAL_POSTPROCESSOR</contextType>
-                    <contextType>CHANNEL_UNDEPLOY</contextType>
-                    <contextType>CHANNEL_PREPROCESSOR</contextType>
-                    <contextType>DESTINATION_DISPATCHER</contextType>
-                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                    <contextType>GLOBAL_PREPROCESSOR</contextType>
-                    <contextType>CHANNEL_ATTACHMENT</contextType>
                     <contextType>SOURCE_RECEIVER</contextType>
+                    <contextType>GLOBAL_PREPROCESSOR</contextType>
+                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                    <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                    <contextType>CHANNEL_ATTACHMENT</contextType>
+                    <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                    <contextType>CHANNEL_DEPLOY</contextType>
+                    <contextType>CHANNEL_PREPROCESSOR</contextType>
+                    <contextType>CHANNEL_UNDEPLOY</contextType>
+                    <contextType>GLOBAL_UNDEPLOY</contextType>
+                    <contextType>GLOBAL_DEPLOY</contextType>
+                    <contextType>DESTINATION_DISPATCHER</contextType>
+                    <contextType>CHANNEL_BATCH</contextType>
+                    <contextType>GLOBAL_POSTPROCESSOR</contextType>
                   </delegate>
                 </contextSet>
                 <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -1051,16 +1050,16 @@ function get_patient_data(msg)
                 <name>1. mensaje es ADT?</name>
                 <revision>1</revision>
                 <lastModified>
-                  <time>1524941233639</time>
-                  <timezone>America/Montevideo</timezone>
+                  <time>1526151743343</time>
+                  <timezone>America/Argentina/Buenos_Aires</timezone>
                 </lastModified>
                 <contextSet>
                   <delegate>
+                    <contextType>SOURCE_RECEIVER</contextType>
+                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                     <contextType>DESTINATION_DISPATCHER</contextType>
                     <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                    <contextType>SOURCE_RECEIVER</contextType>
                   </delegate>
                 </contextSet>
                 <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -1079,16 +1078,16 @@ function es_adt(msg)
                 <name>bloque de codigo</name>
                 <revision>1</revision>
                 <lastModified>
-                  <time>1524941233486</time>
-                  <timezone>America/Montevideo</timezone>
+                  <time>1526151743096</time>
+                  <timezone>America/Argentina/Buenos_Aires</timezone>
                 </lastModified>
                 <contextSet>
                   <delegate>
+                    <contextType>SOURCE_RECEIVER</contextType>
+                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                     <contextType>DESTINATION_DISPATCHER</contextType>
                     <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                    <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                    <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                    <contextType>SOURCE_RECEIVER</contextType>
                   </delegate>
                 </contextSet>
                 <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -1129,7 +1128,7 @@ logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toSt
       <nextMetaDataId>2</nextMetaDataId>
       <name>A03_bandeja_de_entrada_file</name>
       <description></description>
-      <revision>2</revision>
+      <revision>1</revision>
       <sourceConnector version="3.5.2">
         <metaDataId>0</metaDataId>
         <name>sourceConnector</name>
@@ -1571,7 +1570,7 @@ return;</undeployScript>
       </properties>
       <exportData>
         <metadata>
-          <enabled>false</enabled>
+          <enabled>true</enabled>
           <lastModified>
             <time>1524941358278</time>
             <timezone>America/Montevideo</timezone>

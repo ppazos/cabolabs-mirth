@@ -5,7 +5,7 @@
   <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
 Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
-  <revision>4</revision>
+  <revision>2</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -154,10 +154,9 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
         <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
           <name>log</name>
           <sequenceNumber>0</sequenceNumber>
-          <operator>NONE</operator>
           <script>logger.info(&quot;Source Filter Step 1&quot;);
 
-logger.info(msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
+logger.info(&apos;Processing Code: &apos;+ msg[&apos;MSH&apos;][&apos;MSH.11&apos;][&apos;MSH.11.1&apos;].toString()); // Processing code P o T
 
 return true;</script>
         </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
@@ -485,8 +484,8 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1524941111969</time>
-        <timezone>America/Montevideo</timezone>
+        <time>1526334330209</time>
+        <timezone>America/Argentina/Buenos_Aires</timezone>
       </lastModified>
       <pruningSettings>
         <archiveEnabled>true</archiveEnabled>
