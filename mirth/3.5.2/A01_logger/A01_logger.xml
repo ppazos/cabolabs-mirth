@@ -5,7 +5,7 @@
   <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
 Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
-  <revision>2</revision>
+  <revision>4</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -66,7 +66,16 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
           <script>logger.info(&quot;Source Transformer Step 2&quot;);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
       </elements>
-      <inboundTemplate encoding="base64"></inboundTemplate>
+      <inboundTemplate encoding="base64">TVNIfF5+XCZ8fHx8fDIwMTQwNzAyMTI1MTA3LjY3MS0wMzAwfHxBRFReQTAzXkFEVF9BMDN8NDAx
+fFR8Mi41CkVWTnxBMDN8MjAwMTAxMDEwMDAwMDB8fHxeS09PUEFeQk9XU0VSClBJRHwxfHwxMjM0
+NTY3ODl8MDEyMzQ1Njc4OV5BQV5eSlB8QlJPU15NQVJJT3x8MTk4NTAxMDEwMDAwMDB8TXx8fDEy
+MyBGQUtFIFNUUkVFVF5NQVJJTyBcVFwgTFVJR0kgQlJPUyBQTEFDRV5UT0FEU1RPT0wgS0lOR0RP
+TV5ORVNeQTFCMkMzXkpQXkhPTUVeXjEyMzR8MTIzNHwoNTU1KTU1NS0wMTIzXkhPTUVeSlA6MTIz
+NDU2N3x8fFN8TVNIfDEyMzQ1Njc4fHx8fHx8fDB8fHx8fE4KUFYxfDF8T3xBQkNEXkVGR0h8fHx8
+MTIzNDU2XkRJTk9eWU9TSEleXl5eXl5NU1JNXkNVUlJFTlReXl5ORUlHSEJPVVJIT09EIERSIE5C
+UnxeRE9HXkRVQ0tIVU5UXl5eXl5eXkNVUlJFTlR8fENSRHx8fHx8fHwxMjM0NTZeRElOT15ZT1NI
+SV5eXl5eXk1TUk1eQ1VSUkVOVF5eXk5FSUdIQk9VUkhPT0QgRFIgTkJSfEFPfDAxMjM0NTY3ODl8
+MXx8fHx8fHx8fHx8fHx8fHx8fHxNU0h8fEF8fHwyMDAxMDEwMTAwMDAwMA==</inboundTemplate>
       <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>HL7V2</inboundDataType>
       <outboundDataType>HL7V2</outboundDataType>
@@ -201,7 +210,7 @@ return true;</script>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
-        <host>${destination_folder}</host>
+        <host>${dest_folder}</host>
         <outputPattern>${message.messageId}.hl7</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
@@ -413,7 +422,6 @@ return &quot;MSH|^~\&amp;|IFENG||REGADT|MCM|20160729023454||ACK^A04^ACK|20160729
           <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
             <name>Log</name>
             <sequenceNumber>0</sequenceNumber>
-            <operator>NONE</operator>
             <script>logger.info(&quot;Destination 1 Filter&quot;);
 
 return true;</script>
@@ -484,7 +492,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1526334330209</time>
+        <time>1526421088207</time>
         <timezone>America/Argentina/Buenos_Aires</timezone>
       </lastModified>
       <pruningSettings>
