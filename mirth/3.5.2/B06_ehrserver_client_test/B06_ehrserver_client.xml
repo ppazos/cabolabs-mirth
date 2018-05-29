@@ -3,7 +3,7 @@
   <nextMetaDataId>8</nextMetaDataId>
   <name>B06_ehrserver_client</name>
   <description></description>
-  <revision>4</revision>
+  <revision>5</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -297,11 +297,16 @@ resp.ehrs.forEach( function(element, index, array) {
 
 logger.info(&apos;query results: &apos;+ msg);
 
-resp.results.forEach( function(compo, index, array) {
+for (ehr_uid in resp.results)
+{
+   logger.info(ehr_uid);
+   
+   resp.results[ehr_uid].forEach( function(compo, index, array) {
 
-   logger.info(compo.uid);
-   logger.info(compo.archetypeId);
-} );</script>
+      logger.info(compo.uid);
+      logger.info(compo.archetypeId);
+   } );
+}</script>
           </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
         </elements>
         <inboundTemplate encoding="base64"></inboundTemplate>
@@ -381,7 +386,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1525285173879</time>
+        <time>1527536293570</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
