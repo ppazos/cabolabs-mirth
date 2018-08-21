@@ -8,7 +8,7 @@ def response = client.send(SOAPAction:'') {
   body {
     'lns:acceptMessage' {
       // Se pasa xml como string porque el servicio de Mirth recibe string
-      arg0('<paciente><nombre>Pablo</nombre></paciente>')
+      arg0('<paciente><nombre></nombre></paciente>')
     }
   }
 }
