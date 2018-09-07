@@ -6,7 +6,7 @@
 El cana recibe MLLP y guarda en un archivo.&#xd;
 La función definida en la plantilla de código es get_patient_data que crea un objeto javascript con esta estructura {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}&#xd;
 </description>
-  <revision>5</revision>
+  <revision>6</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -55,7 +55,17 @@ La función definida en la plantilla de código es get_patient_data que crea un 
       <responsePort></responsePort>
     </properties>
     <transformer version="3.5.2">
-      <elements/>
+      <elements>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+          <sequenceNumber>0</sequenceNumber>
+          <script>// extraccion de datos del mensaje, se puede usar para cualquier mensaje
+var data = get_patient_data(msg);
+
+// procesamos los datos extraidos del mensaje...
+
+logger.info( JSON.stringify(data) ); // {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+      </elements>
       <inboundTemplate encoding="base64">TVNIfF5+XCZ8TUVTQV9PRnxYWVpfUkFESU9MT0dZfE1FU0FfSU18WFlaX0lNQUdFX01BTkFHRVJ8
 fHxPUk1eTzAxfDEwMDExMnxQfDIuMy4xDVBJRHx8fE00MDAwXl5eQURUMXx8S0lOR15NQVJUSU58
 fDE5NDUwODA0fE18fFdIfDgyIDAgSk9SSUUgQkxWRF5eQ0hJQ0FHT15JTF42MDUyM3x8fHx8fHwy
@@ -155,21 +165,10 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
     <filter version="3.5.2">
       <elements>
         <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
-          <name>prueba de plantillas de codigo</name>
-          <sequenceNumber>0</sequenceNumber>
-          <script>//logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );
-//logger.info( $(&apos;myUUID&apos;) );
-
-var data = get_patient_data(msg);
-logger.info( JSON.stringify(data) ); // {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}
-
-return true;</script>
-        </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
-        <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
           <name>es ADT?</name>
-          <sequenceNumber>1</sequenceNumber>
-          <operator>AND</operator>
+          <sequenceNumber>0</sequenceNumber>
           <script>// code template, verifica si el mensaje entrante es ADT y lo filtra si no lo es.
+// la funcion DEBE devolver un booleano.
 return es_adt(msg);</script>
         </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
       </elements>
@@ -442,9 +441,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
-        <time>1525136020100</time>
+        <time>1536278732972</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
@@ -455,21 +454,21 @@ return;</undeployScript>
       <codeTemplateLibrary version="3.5.2">
         <id>f1c01445-3686-43cb-a275-448e5108c378</id>
         <name>Library 1</name>
-        <revision>1</revision>
+        <revision>2</revision>
         <lastModified>
-          <time>1524941233450</time>
+          <time>1525136199013</time>
           <timezone>America/Montevideo</timezone>
         </lastModified>
         <description></description>
         <includeNewChannels>false</includeNewChannels>
         <enabledChannelIds>
-          <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
           <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
         </enabledChannelIds>
         <disabledChannelIds>
           <string>258d2c56-dd69-4a6c-ac7e-88c949857427</string>
           <string>7b1ca6ce-6cd9-42a9-a9a0-4ce784ad33b2</string>
           <string>0ec7ab6e-f548-426a-99f6-18858cefc2d5</string>
+          <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
           <string>27a3b726-9e18-4931-b370-96e4cc0b06fd</string>
           <string>472f9310-f575-4d60-b66a-97a0db44e4c2</string>
           <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
@@ -486,21 +485,21 @@ return;</undeployScript>
             </lastModified>
             <contextSet>
               <delegate>
-                <contextType>CHANNEL_PREPROCESSOR</contextType>
-                <contextType>GLOBAL_POSTPROCESSOR</contextType>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
                 <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
                 <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>GLOBAL_UNDEPLOY</contextType>
-                <contextType>CHANNEL_DEPLOY</contextType>
-                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>GLOBAL_POSTPROCESSOR</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>GLOBAL_PREPROCESSOR</contextType>
                 <contextType>CHANNEL_ATTACHMENT</contextType>
                 <contextType>GLOBAL_DEPLOY</contextType>
                 <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>CHANNEL_UNDEPLOY</contextType>
-                <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -535,8 +534,8 @@ function get_patient_data(msg)
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
                 <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -563,8 +562,8 @@ function es_adt(msg)
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
                 <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
