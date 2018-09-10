@@ -5,7 +5,7 @@
   <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
 Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
-  <revision>5</revision>
+  <revision>7</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -19,34 +19,30 @@ Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mens
         <responseVariable>ackresp</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
-        <firstResponse>true</firstResponse>
-        <processingThreads>5</processingThreads>
+        <firstResponse>false</firstResponse>
+        <processingThreads>0</processingThreads>
         <resourceIds class="linked-hash-map">
           <entry>
             <string>Default Resource</string>
             <string>[Default Resource]</string>
           </entry>
         </resourceIds>
-        <queueBufferSize>1000</queueBufferSize>
+        <queueBufferSize>0</queueBufferSize>
       </sourceConnectorProperties>
-      <transmissionModeProperties class="com.mirth.connect.plugins.mllpmode.MLLPModeProperties">
+      <transmissionModeProperties class="com.mirth.connect.model.transmission.framemode.FrameModeProperties">
         <pluginPointName>MLLP</pluginPointName>
         <startOfMessageBytes>0B</startOfMessageBytes>
         <endOfMessageBytes>1C0D</endOfMessageBytes>
-        <useMLLPv2>false</useMLLPv2>
-        <ackBytes>06</ackBytes>
-        <nackBytes>15</nackBytes>
-        <maxRetries>2</maxRetries>
       </transmissionModeProperties>
-      <serverMode>true</serverMode>
+      <serverMode>false</serverMode>
       <remoteAddress></remoteAddress>
       <remotePort></remotePort>
       <overrideLocalBinding>false</overrideLocalBinding>
-      <reconnectInterval>5000</reconnectInterval>
-      <receiveTimeout>0</receiveTimeout>
-      <bufferSize>65536</bufferSize>
-      <maxConnections>10</maxConnections>
-      <keepConnectionOpen>true</keepConnectionOpen>
+      <reconnectInterval></reconnectInterval>
+      <receiveTimeout></receiveTimeout>
+      <bufferSize></bufferSize>
+      <maxConnections></maxConnections>
+      <keepConnectionOpen>false</keepConnectionOpen>
       <dataTypeBinary>false</dataTypeBinary>
       <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
       <respondOnNewConnection>0</respondOnNewConnection>
@@ -202,7 +198,7 @@ return true;</script>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
-        <host>${destination_folder}</host>
+        <host>${dest_folder}</host>
         <outputPattern>${message.messageId}.hl7</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
@@ -414,7 +410,6 @@ return &quot;MSH|^~\&amp;|IFENG||REGADT|MCM|20160729023454||ACK^A04^ACK|20160729
           <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
             <name>Log</name>
             <sequenceNumber>0</sequenceNumber>
-            <operator>NONE</operator>
             <script>logger.info(&quot;Destination 1 Filter&quot;);
 
 return true;</script>
@@ -483,9 +478,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
-        <time>1536278495005</time>
+        <time>1536354848948</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
