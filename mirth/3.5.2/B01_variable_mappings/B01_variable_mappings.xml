@@ -5,7 +5,7 @@
   <description>Recibe mensajes HL7 v2.x por MLLP, extrae datos de pacientes y los mapea a variables.
 
 Tiene un desino Database Writer que está deshabilidato por defecto, donde se guardan los datos del paciente de cada mensaje en una tabla &quot;pacientes&quot;</description>
-  <revision>2</revision>
+  <revision>3</revision>
   <sourceConnector version="3.5.2">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -229,7 +229,7 @@ MHxBfHx8fHx8fHx8fHx8fHx8fHx8fEdFTkhPU3x8fHx8MTk5NTAxMTAxNDEw</inboundTemplate>
   <destinationConnectors>
     <connector version="3.5.2">
       <metaDataId>1</metaDataId>
-      <name>Destination 1</name>
+      <name>Destination 1 - logs</name>
       <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.5.2">
         <pluginProperties/>
         <destinationConnectorProperties version="3.5.2">
@@ -447,7 +447,7 @@ logger.info( $(&apos;sexo&apos;) );</script>
     </connector>
     <connector version="3.5.2">
       <metaDataId>2</metaDataId>
-      <name>Destination 2</name>
+      <name>Destination 2 - database</name>
       <properties class="com.mirth.connect.connectors.jdbc.DatabaseDispatcherProperties" version="3.5.2">
         <pluginProperties/>
         <destinationConnectorProperties version="3.5.2">
@@ -498,6 +498,8 @@ try {
       </properties>
       <transformer version="3.5.2">
         <elements/>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
         <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.5.2">
@@ -716,9 +718,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
-        <time>1525144344370</time>
+        <time>1536599410381</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
@@ -731,6 +733,13 @@ return;</undeployScript>
         <name>clase2</name>
         <channelIds>
           <string>0ec7ab6e-f548-426a-99f6-18858cefc2d5</string>
+          <string>517d4a5b-597c-46db-9f6b-d9799ca43ea6</string>
+          <string>375900e8-4214-4c96-a46f-2b4046514e9a</string>
+          <string>9e7ac5d5-16dd-426c-a118-f6863624e735</string>
+          <string>4eba1e2f-95cd-42c7-a326-2c392949658c</string>
+          <string>2f826fbf-f7bb-40b7-a2ff-64d367acc0ea</string>
+          <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
+          <string>5742662b-8601-4c45-910f-a772ee267945</string>
         </channelIds>
         <backgroundColor>
           <red>255</red>
