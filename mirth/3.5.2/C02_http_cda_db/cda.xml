@@ -22,32 +22,32 @@
      </patient>
     </patientRole>
   </recordTarget>
-  <author> 
-    <time value="20060823224352"/> 
-    <assignedAuthor> 
-     <id extension="121008" root="2.16.840.1.113883.19.5"/> 
-     <assignedPerson> 
+  <author>
+    <time value="20060823224352"/>
+    <assignedAuthor>
+     <id extension="121008" root="2.16.840.1.113883.19.5"/>
+     <assignedPerson>
       <name>
        <prefix>Dr.</prefix>
-       <given>Christine</given> 
-       <family>Curie</family> 
-      </name> 
-     </assignedPerson> 
-     <representedOrganization> 
-      <id extension="1254897" root="2.16.840.1.113883.19.5"/> 
-      <name>AESP</name> 
-     </representedOrganization> 
+       <given>Christine</given>
+       <family>Curie</family>
+      </name>
+     </assignedPerson>
+     <representedOrganization>
+      <id extension="1254897" root="2.16.840.1.113883.19.5"/>
+      <name>AESP</name>
+     </representedOrganization>
     </assignedAuthor>
    </author>
   <custodian>
-    <assignedCustodian> 
-     <representedCustodianOrganization> 
-      <id root="2.16.840.1.113883.19.5"/> 
-      <name>World University Hospital</name> 
+    <assignedCustodian>
+     <representedCustodianOrganization>
+      <id root="2.16.840.1.113883.19.5"/>
+      <name>World University Hospital</name>
       <telecom nullFlavor="NI"/>
       <addr nullFlavor="NI"/>
-     </representedCustodianOrganization> 
-    </assignedCustodian> 
+     </representedCustodianOrganization>
+    </assignedCustodian>
   </custodian>
   <relatedDocument typeCode="RPLC">
     <parentDocument>
