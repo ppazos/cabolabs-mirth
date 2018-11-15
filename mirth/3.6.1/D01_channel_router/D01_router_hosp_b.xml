@@ -1,7 +1,7 @@
 <channel version="3.6.1">
-  <id>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</id>
+  <id>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</id>
   <nextMetaDataId>2</nextMetaDataId>
-  <name>D02_router_hosp_a</name>
+  <name>D01_router_hosp_b</name>
   <description></description>
   <revision>4</revision>
   <sourceConnector version="3.6.1">
@@ -26,8 +26,6 @@
     </properties>
     <transformer version="3.6.1">
       <elements/>
-      <inboundTemplate encoding="base64"></inboundTemplate>
-      <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>HL7V3</inboundDataType>
       <outboundDataType>HL7V3</outboundDataType>
       <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.6.1">
@@ -83,12 +81,10 @@
           <queueBufferSize>1000</queueBufferSize>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
-        <script>logger.info(&quot;Hosp A &quot;+ connectorMessage.getEncodedData());</script>
+        <script>logger.info(&quot;Hosp B &quot;+ connectorMessage.getEncodedData());</script>
       </properties>
       <transformer version="3.6.1">
         <elements/>
-        <inboundTemplate encoding="base64"></inboundTemplate>
-        <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>HL7V3</inboundDataType>
         <outboundDataType>HL7V3</outboundDataType>
         <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.6.1">
@@ -150,7 +146,7 @@ return;</postprocessingScript>
   <deployScript>// This script executes once when the channel is deployed
 // You only have access to the globalMap and globalChannelMap here to persist data
 
-globalMap.put(&apos;D02_router_hosp_a&apos;, channelId);
+globalMap.put(&apos;D01_router_hosp_b&apos;, channelId);
 
 return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
@@ -192,7 +188,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1542304183610</time>
+        <time>1542315791475</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>

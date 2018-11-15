@@ -1,9 +1,9 @@
 <channel version="3.6.1">
   <id>6a740112-c252-4466-983d-3e3a5aacd376</id>
   <nextMetaDataId>2</nextMetaDataId>
-  <name>D02_channel_router</name>
+  <name>D01_channel_router</name>
   <description></description>
-  <revision>5</revision>
+  <revision>6</revision>
   <sourceConnector version="3.6.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -155,12 +155,12 @@ ICAgPC9ub25YTUxCb2R5PgogIDwvY29tcG9uZW50Pgo8L0NsaW5pY2FsRG9jdW1lbnQ+</inboundTem
 if ($(&apos;destination&apos;) == &quot;H1&quot;)
 {
    logger.info(&quot;Rutea a Hospital A&quot;);
-   router.routeMessageByChannelId(globalMap.get(&apos;D02_router_hosp_a&apos;), msg_str);
+   router.routeMessageByChannelId(globalMap.get(&apos;D01_router_hosp_a&apos;), msg_str);
 }
 else
 {
    logger.info(&quot;Rutea a Hospital B&quot;);
-   router.routeMessageByChannelId(globalMap.get(&apos;D02_router_hosp_b&apos;), msg_str);
+   router.routeMessageByChannelId(globalMap.get(&apos;D01_router_hosp_b&apos;), msg_str);
 }</script>
       </properties>
       <transformer version="3.6.1">
@@ -265,7 +265,7 @@ return;</undeployScript>
     <metadata>
       <enabled>true</enabled>
       <lastModified>
-        <time>1542303849484</time>
+        <time>1542315781989</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
