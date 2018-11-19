@@ -1,12 +1,11 @@
 <channel version="3.6.1">
-  <id>e09edc63-b8bc-47a8-9b45-3f72a82347ab</id>
+  <id>ddd4fb6b-0232-4af2-b32d-9022674322a0</id>
   <nextMetaDataId>2</nextMetaDataId>
-  <name>A02_code_templates</name>
-  <description>Canal de prueba que muestra la definición y uso de plantillas de código.&#xd;
-El cana recibe MLLP y guarda en un archivo.&#xd;
-La función definida en la plantilla de código es get_patient_data que crea un objeto javascript con esta estructura {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}&#xd;
-</description>
-  <revision>1</revision>
+  <name>A02_logger</name>
+  <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
+Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
+Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
+  <revision>5</revision>
   <sourceConnector version="3.6.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -14,13 +13,13 @@ La función definida en la plantilla de código es get_patient_data que crea un 
       <pluginProperties/>
       <listenerConnectorProperties version="3.6.1">
         <host>0.0.0.0</host>
-        <port>6662</port>
+        <port>6661</port>
       </listenerConnectorProperties>
       <sourceConnectorProperties version="3.6.1">
-        <responseVariable>Auto-generate (Destinations completed)</responseVariable>
+        <responseVariable>ackresp</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
-        <firstResponse>true</firstResponse>
+        <firstResponse>false</firstResponse>
         <processingThreads>5</processingThreads>
         <resourceIds class="linked-hash-map">
           <entry>
@@ -43,11 +42,11 @@ La función definida en la plantilla de código es get_patient_data que crea un 
       <remoteAddress></remoteAddress>
       <remotePort></remotePort>
       <overrideLocalBinding>false</overrideLocalBinding>
-      <reconnectInterval>5000</reconnectInterval>
+      <reconnectInterval></reconnectInterval>
       <receiveTimeout>0</receiveTimeout>
       <bufferSize>65536</bufferSize>
       <maxConnections>10</maxConnections>
-      <keepConnectionOpen>true</keepConnectionOpen>
+      <keepConnectionOpen>false</keepConnectionOpen>
       <dataTypeBinary>false</dataTypeBinary>
       <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
       <respondOnNewConnection>0</respondOnNewConnection>
@@ -57,29 +56,17 @@ La función definida en la plantilla de código es get_patient_data que crea un 
     <transformer version="3.6.1">
       <elements>
         <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+          <name>Log</name>
           <sequenceNumber>0</sequenceNumber>
-          <script>// extraccion de datos del mensaje, se puede usar para cualquier mensaje
-var data = get_patient_data(msg);
-
-// procesamos los datos extraidos del mensaje...
-
-logger.info( JSON.stringify(data) ); // {&quot;nacimiento&quot;:&quot;19560129&quot;,&quot;nombre&quot;:&quot;JAMES&quot;,&quot;apellido&quot;:&quot;MASSIE&quot;,&quot;sexo&quot;:&quot;M&quot;}</script>
+          <script>logger.info(&quot;Source Transformer Step 1&quot;);</script>
+        </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+          <name>Log 2</name>
+          <sequenceNumber>1</sequenceNumber>
+          <script>logger.info(&quot;Source Transformer Step 2&quot;);</script>
         </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
       </elements>
-      <inboundTemplate encoding="base64">TVNIfF5+XCZ8TUVTQV9PRnxYWVpfUkFESU9MT0dZfE1FU0FfSU18WFlaX0lNQUdFX01BTkFHRVJ8
-fHxPUk1eTzAxfDEwMDExMnxQfDIuMy4xDVBJRHx8fE00MDAwXl5eQURUMXx8S0lOR15NQVJUSU58
-fDE5NDUwODA0fE18fFdIfDgyIDAgSk9SSUUgQkxWRF5eQ0hJQ0FHT15JTF42MDUyM3x8fHx8fHwy
-MC05OC00MDAwDVBWMXx8RXxFRHx8fHwxMjM0XldFQVZFUl5USU1PVEhZXlBeXkRSfDUxMDFeTkVM
-TF5GIFJFREVSSUNLXlBeXkRSfHx8fHx8fHx8fHxWMTAwXl5eQURUMXx8fHx8fHx8fHx8fHx8fHx8
-fHx8fHx8fHwyMDAwMDgyMDExMDB8fHx8fHx8Vg1PUkN8Tld8QTEwMFpeTUVTQV9PUkRQTEN8QjEw
-MFpeTUVTQV9PUkRGSUx8fFNDfHwxXm9uY2VeXl5eU3x8MjAwMDA4MTYxNTEwfF5ST1NFV09PRF5S
-QU5ET0xQSHx8NzEwMV5FU1RSQURBXkpBSU1FXlBeXkRSfHwoMzE0KTU1NS0xMjEyfDIwMDAwODE2
-MTUxMHx8OTIyMjI5LTEwXklIRS1SQUReSUhFLUNPREUtMjMxDU9CUnwxfEExMDBaXk1FU0FfT1JE
-UExDfEIxMDBaXk1FU0FfT1JERklMfFAxXlByb2NlIGR1cmUgMV5FUkxfTUVTQV5YMV9BMV5TUCBB
-Y3Rpb24gSXRlbSBYMV9BMV5EU1NfTUVTQXx8fHx8fHx8fHh4eHx8UmFkaW9sb2d5Xl5eXlJ8NzEw
-MV5FUyBUUkFEQV5KQUlNRV5QXl5EUnx8WFI5OTk5OTl8UlAxMjM0NTZ8U1BTMTIzNDU2fHx8fE1S
-fHx8MV5vbmNlXl5eXlN8fHxXQUxLfHx8fHx8fHx8fHxBfHx8UlBfWDFeUlAgQWN0aW9uIEl0ZW0g
-UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplate>
+      <inboundTemplate encoding="base64"></inboundTemplate>
       <outboundTemplate encoding="base64"></outboundTemplate>
       <inboundDataType>HL7V2</inboundDataType>
       <outboundDataType>HL7V2</outboundDataType>
@@ -111,13 +98,13 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
           <rejectedACKCode>AR</rejectedACKCode>
           <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
           <msh15ACKAccept>false</msh15ACKAccept>
-          <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+          <dateFormat>yyyyMMddHHmmss</dateFormat>
         </responseGenerationProperties>
         <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
           <successfulACKCode>AA,CA</successfulACKCode>
           <errorACKCode>AE,CE</errorACKCode>
           <rejectedACKCode>AR,CR</rejectedACKCode>
-          <validateMessageControlId>true</validateMessageControlId>
+          <validateMessageControlId>false</validateMessageControlId>
           <originalMessageControlId>Destination_Encoded</originalMessageControlId>
           <originalIdMapVariable></originalIdMapVariable>
         </responseValidationProperties>
@@ -150,13 +137,13 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
           <rejectedACKCode>AR</rejectedACKCode>
           <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
           <msh15ACKAccept>false</msh15ACKAccept>
-          <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+          <dateFormat>yyyyMMddHHmmss</dateFormat>
         </responseGenerationProperties>
         <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
           <successfulACKCode>AA,CA</successfulACKCode>
           <errorACKCode>AE,CE</errorACKCode>
           <rejectedACKCode>AR,CR</rejectedACKCode>
-          <validateMessageControlId>true</validateMessageControlId>
+          <validateMessageControlId>false</validateMessageControlId>
           <originalMessageControlId>Destination_Encoded</originalMessageControlId>
           <originalIdMapVariable></originalIdMapVariable>
         </responseValidationProperties>
@@ -165,11 +152,19 @@ UlBfWDFeRFNTX01FU0ENWkRTfDEuMi4xXjEwMF5BcHBsaWNhdGlvbl5ESUNPTQ0=</inboundTemplat
     <filter version="3.6.1">
       <elements>
         <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
-          <name>es ADT?</name>
+          <name>log</name>
           <sequenceNumber>0</sequenceNumber>
-          <script>// code template, verifica si el mensaje entrante es ADT y lo filtra si no lo es.
-// la funcion DEBE devolver un booleano.
-return es_adt(msg);</script>
+          <script>logger.info(&quot;Source Filter Step 1&quot;);
+
+return true;</script>
+        </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
+        <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
+          <name>log 2</name>
+          <sequenceNumber>1</sequenceNumber>
+          <operator>AND</operator>
+          <script>logger.info(&quot;Source Filter Step 2&quot;);
+
+return true;</script>
         </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
       </elements>
     </filter>
@@ -193,7 +188,6 @@ return es_adt(msg);</script>
           <rotate>false</rotate>
           <includeFilterTransformer>false</includeFilterTransformer>
           <threadCount>1</threadCount>
-          <threadAssignmentVariable></threadAssignmentVariable>
           <validateResponse>false</validateResponse>
           <resourceIds class="linked-hash-map">
             <entry>
@@ -206,7 +200,7 @@ return es_adt(msg);</script>
         </destinationConnectorProperties>
         <scheme>FILE</scheme>
         <host>${dest_folder}</host>
-        <outputPattern>${UUID}.hl7</outputPattern>
+        <outputPattern>${message.messageId}.hl7</outputPattern>
         <anonymous>true</anonymous>
         <username>anonymous</username>
         <password>anonymous</password>
@@ -214,15 +208,27 @@ return es_adt(msg);</script>
         <secure>true</secure>
         <passive>true</passive>
         <validateConnection>true</validateConnection>
-        <outputAppend>false</outputAppend>
-        <errorOnExists>true</errorOnExists>
+        <outputAppend>true</outputAppend>
+        <errorOnExists>false</errorOnExists>
         <temporary>false</temporary>
         <binary>false</binary>
         <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
         <template>${message.encodedData}</template>
       </properties>
       <transformer version="3.6.1">
-        <elements/>
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+            <name>Log</name>
+            <sequenceNumber>0</sequenceNumber>
+            <script>logger.info(&quot;Destination 1 Transformer&quot;);
+
+// http://207.38.40.43/community/forums/showthread.php?p=44212
+var ackMessage = ACKGenerator.generateAckResponse(connectorMessage.getRawData(), &quot;AA&quot;, &quot;Message Successfully Received&quot;);
+responseMap.put(&quot;ackresp&quot;, ResponseFactory.getSentResponse(ackMessage));</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
         <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.6.1">
@@ -253,13 +259,13 @@ return es_adt(msg);</script>
             <rejectedACKCode>AR</rejectedACKCode>
             <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
             <msh15ACKAccept>false</msh15ACKAccept>
-            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+            <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
           <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
-            <validateMessageControlId>true</validateMessageControlId>
+            <validateMessageControlId>false</validateMessageControlId>
             <originalMessageControlId>Destination_Encoded</originalMessageControlId>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
@@ -292,20 +298,33 @@ return es_adt(msg);</script>
             <rejectedACKCode>AR</rejectedACKCode>
             <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
             <msh15ACKAccept>false</msh15ACKAccept>
-            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+            <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
           <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
-            <validateMessageControlId>true</validateMessageControlId>
+            <validateMessageControlId>false</validateMessageControlId>
             <originalMessageControlId>Destination_Encoded</originalMessageControlId>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </outboundProperties>
       </transformer>
       <responseTransformer version="3.6.1">
-        <elements/>
+        <elements>
+          <com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+            <name>Log</name>
+            <sequenceNumber>0</sequenceNumber>
+            <script>logger.info(&quot;Destination 1 Response Transformer&quot;);
+
+/*
+return &quot;MSH|^~\&amp;|IFENG||REGADT|MCM|20160729023454||ACK^A04^ACK|20160729023454|P|2.5\r&quot; +
+       &quot;MSA|AA|&quot;+ connectorMessage.getMessageId() +&quot;\r&quot;;
+*/</script>
+          </com.mirth.connect.plugins.javascriptstep.JavaScriptStep>
+        </elements>
+        <inboundTemplate encoding="base64"></inboundTemplate>
+        <outboundTemplate encoding="base64"></outboundTemplate>
         <inboundDataType>HL7V2</inboundDataType>
         <outboundDataType>HL7V2</outboundDataType>
         <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2DataTypeProperties" version="3.6.1">
@@ -336,13 +355,13 @@ return es_adt(msg);</script>
             <rejectedACKCode>AR</rejectedACKCode>
             <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
             <msh15ACKAccept>false</msh15ACKAccept>
-            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+            <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
           <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
-            <validateMessageControlId>true</validateMessageControlId>
+            <validateMessageControlId>false</validateMessageControlId>
             <originalMessageControlId>Destination_Encoded</originalMessageControlId>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
@@ -375,20 +394,28 @@ return es_adt(msg);</script>
             <rejectedACKCode>AR</rejectedACKCode>
             <rejectedACKMessage>Message Rejected.</rejectedACKMessage>
             <msh15ACKAccept>false</msh15ACKAccept>
-            <dateFormat>yyyyMMddHHmmss.SSS</dateFormat>
+            <dateFormat>yyyyMMddHHmmss</dateFormat>
           </responseGenerationProperties>
           <responseValidationProperties class="com.mirth.connect.plugins.datatypes.hl7v2.HL7v2ResponseValidationProperties" version="3.6.1">
             <successfulACKCode>AA,CA</successfulACKCode>
             <errorACKCode>AE,CE</errorACKCode>
             <rejectedACKCode>AR,CR</rejectedACKCode>
-            <validateMessageControlId>true</validateMessageControlId>
+            <validateMessageControlId>false</validateMessageControlId>
             <originalMessageControlId>Destination_Encoded</originalMessageControlId>
             <originalIdMapVariable></originalIdMapVariable>
           </responseValidationProperties>
         </outboundProperties>
       </responseTransformer>
       <filter version="3.6.1">
-        <elements/>
+        <elements>
+          <com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
+            <name>Log</name>
+            <sequenceNumber>0</sequenceNumber>
+            <script>logger.info(&quot;Destination 1 Filter&quot;);
+
+return true;</script>
+          </com.mirth.connect.plugins.javascriptrule.JavaScriptRule>
+        </elements>
       </filter>
       <transportName>File Writer</transportName>
       <mode>DESTINATION</mode>
@@ -397,15 +424,26 @@ return es_adt(msg);</script>
     </connector>
   </destinationConnectors>
   <preprocessingScript>// Modify the message variable below to pre process data
+
+logger.info(&quot;Channel Preprocessor&quot;);
+
 return message;</preprocessingScript>
   <postprocessingScript>// This script executes once after a message has been processed
 // Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+logger.info(&quot;Channel Postprocessor&quot;);
+
 return;</postprocessingScript>
   <deployScript>// This script executes once when the channel is deployed
 // You only have access to the globalMap and globalChannelMap here to persist data
+
+logger.info(&quot;Channel Deploy&quot;);
+
 return;</deployScript>
   <undeployScript>// This script executes once when the channel is undeployed
 // You only have access to the globalMap and globalChannelMap here to persist data
+
+logger.info(&quot;Channel Undeploy&quot;);
+
 return;</undeployScript>
   <properties version="3.6.1">
     <clearGlobalChannelMap>true</clearGlobalChannelMap>
@@ -443,151 +481,19 @@ return;</undeployScript>
     <metadata>
       <enabled>false</enabled>
       <lastModified>
-        <time>1542166992366</time>
+        <time>1542592194420</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
         <archiveEnabled>true</archiveEnabled>
       </pruningSettings>
     </metadata>
-    <codeTemplateLibraries>
-      <codeTemplateLibrary version="3.6.1">
-        <id>f1c01445-3686-43cb-a275-448e5108c378</id>
-        <name>Library 1</name>
-        <revision>1</revision>
-        <lastModified>
-          <time>1542166971034</time>
-          <timezone>America/Montevideo</timezone>
-        </lastModified>
-        <description></description>
-        <includeNewChannels>false</includeNewChannels>
-        <enabledChannelIds>
-          <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
-        </enabledChannelIds>
-        <disabledChannelIds>
-          <string>258d2c56-dd69-4a6c-ac7e-88c949857427</string>
-          <string>7b1ca6ce-6cd9-42a9-a9a0-4ce784ad33b2</string>
-          <string>0ec7ab6e-f548-426a-99f6-18858cefc2d5</string>
-          <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
-          <string>27a3b726-9e18-4931-b370-96e4cc0b06fd</string>
-          <string>472f9310-f575-4d60-b66a-97a0db44e4c2</string>
-          <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
-          <string>cd829682-d3b1-45be-8a86-6b3f719d19e9</string>
-        </disabledChannelIds>
-        <codeTemplates>
-          <codeTemplate version="3.6.1">
-            <id>90f1418a-4597-488b-a7cc-ff14fe7d800a</id>
-            <name>0. obtener datos del paciente de mensajes HL7 v2.x</name>
-            <revision>1</revision>
-            <lastModified>
-              <time>1542166971095</time>
-              <timezone>America/Montevideo</timezone>
-            </lastModified>
-            <contextSet>
-              <delegate>
-                <contextType>CHANNEL_ATTACHMENT</contextType>
-                <contextType>CHANNEL_DEPLOY</contextType>
-                <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>GLOBAL_PREPROCESSOR</contextType>
-                <contextType>CHANNEL_BATCH</contextType>
-                <contextType>CHANNEL_PREPROCESSOR</contextType>
-                <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>GLOBAL_UNDEPLOY</contextType>
-                <contextType>GLOBAL_POSTPROCESSOR</contextType>
-                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-                <contextType>GLOBAL_DEPLOY</contextType>
-                <contextType>CHANNEL_POSTPROCESSOR</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>CHANNEL_UNDEPLOY</contextType>
-              </delegate>
-            </contextSet>
-            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
-              <type>FUNCTION</type>
-              <code>/**
- * Obtiene un objeto con los datos del paciente extraidos de un mensaje HL7 v2.x
- */
-function get_patient_data(msg)
-{
-    var data = {};
-
-    data.nacimiento = msg[&apos;PID&apos;][&apos;PID.7&apos;][&apos;PID.7.1&apos;].toString();
-    data.nombre = msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.2&apos;].toString();
-    data.apellido = msg[&apos;PID&apos;][&apos;PID.5&apos;][&apos;PID.5.1&apos;].toString();
-    data.sexo = msg[&apos;PID&apos;][&apos;PID.8&apos;][&apos;PID.8.1&apos;].toString();
-
-    return data;
-}
-</code>
-            </properties>
-          </codeTemplate>
-          <codeTemplate version="3.6.1">
-            <id>64cff6b1-b015-4396-909b-d62c05a1114b</id>
-            <name>1. mensaje es ADT?</name>
-            <revision>1</revision>
-            <lastModified>
-              <time>1542166971130</time>
-              <timezone>America/Montevideo</timezone>
-            </lastModified>
-            <contextSet>
-              <delegate>
-                <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-              </delegate>
-            </contextSet>
-            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
-              <type>FUNCTION</type>
-              <code>/**
- * Devuelve true si el mensaje es ADT, false si no. Se utilizará en filtros.
- */
-function es_adt(msg)
-{
-   return msg[&apos;MSH&apos;][&apos;MSH.9&apos;][&apos;MSH.9.1&apos;].toString() == &quot;ADT&quot;;
-}</code>
-            </properties>
-          </codeTemplate>
-          <codeTemplate version="3.6.1">
-            <id>2f2605a1-60a7-4eb3-997e-0130761b85c7</id>
-            <name>bloque de codigo</name>
-            <revision>1</revision>
-            <lastModified>
-              <time>1542166971054</time>
-              <timezone>America/Montevideo</timezone>
-            </lastModified>
-            <contextSet>
-              <delegate>
-                <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
-                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
-              </delegate>
-            </contextSet>
-            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
-              <type>DRAG_AND_DROP_CODE</type>
-              <code>/**
-
-log del identificador del mensaje HL7 v2.x
-
-*/
-
-logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toString() );</code>
-            </properties>
-          </codeTemplate>
-        </codeTemplates>
-      </codeTemplateLibrary>
-    </codeTemplateLibraries>
     <channelTags>
       <channelTag>
         <id>6c66594e-da27-48d8-8a80-20be20889738</id>
         <name>clase1</name>
         <channelIds>
           <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
-          <string>e66b9f0a-3ac2-42cf-a2b8-13887382e2c9</string>
-          <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
         </channelIds>
         <backgroundColor>
           <red>128</red>
