@@ -190,7 +190,7 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
         <time>1542315767941</time>
         <timezone>America/Montevideo</timezone>
@@ -210,6 +210,7 @@ return;</undeployScript>
           <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
           <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
           <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
+          <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
         </channelIds>
         <backgroundColor>
           <red>0</red>

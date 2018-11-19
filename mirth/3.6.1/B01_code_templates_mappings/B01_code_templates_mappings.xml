@@ -31,7 +31,7 @@ Los destinos solo muestran en la consola el mensaje recibido.</description>
         <responseVariable>Auto-generate (Destinations completed)</responseVariable>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
-        <firstResponse>true</firstResponse>
+        <firstResponse>false</firstResponse>
         <processingThreads>5</processingThreads>
         <resourceIds class="linked-hash-map">
           <entry>
@@ -54,11 +54,11 @@ Los destinos solo muestran en la consola el mensaje recibido.</description>
       <remoteAddress></remoteAddress>
       <remotePort></remotePort>
       <overrideLocalBinding>false</overrideLocalBinding>
-      <reconnectInterval>5000</reconnectInterval>
+      <reconnectInterval></reconnectInterval>
       <receiveTimeout>0</receiveTimeout>
       <bufferSize>65536</bufferSize>
       <maxConnections>10</maxConnections>
-      <keepConnectionOpen>true</keepConnectionOpen>
+      <keepConnectionOpen>false</keepConnectionOpen>
       <dataTypeBinary>false</dataTypeBinary>
       <charsetEncoding>DEFAULT_ENCODING</charsetEncoding>
       <respondOnNewConnection>0</respondOnNewConnection>
@@ -391,7 +391,7 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
         <time>1542222380960</time>
         <timezone>America/Montevideo</timezone>
@@ -435,21 +435,21 @@ return;</undeployScript>
             </lastModified>
             <contextSet>
               <delegate>
-                <contextType>CHANNEL_PREPROCESSOR</contextType>
-                <contextType>CHANNEL_DEPLOY</contextType>
-                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>CHANNEL_POSTPROCESSOR</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>CHANNEL_BATCH</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
                 <contextType>GLOBAL_POSTPROCESSOR</contextType>
-                <contextType>CHANNEL_POSTPROCESSOR</contextType>
-                <contextType>GLOBAL_UNDEPLOY</contextType>
-                <contextType>DESTINATION_DISPATCHER</contextType>
-                <contextType>GLOBAL_DEPLOY</contextType>
-                <contextType>CHANNEL_ATTACHMENT</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
-                <contextType>CHANNEL_BATCH</contextType>
-                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
                 <contextType>GLOBAL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_DEPLOY</contextType>
+                <contextType>GLOBAL_DEPLOY</contextType>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>CHANNEL_ATTACHMENT</contextType>
+                <contextType>CHANNEL_PREPROCESSOR</contextType>
+                <contextType>CHANNEL_UNDEPLOY</contextType>
+                <contextType>GLOBAL_UNDEPLOY</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -481,11 +481,11 @@ function get_patient_data(msg)
             </lastModified>
             <contextSet>
               <delegate>
-                <contextType>DESTINATION_DISPATCHER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -509,11 +509,11 @@ function es_adt(msg)
             </lastModified>
             <contextSet>
               <delegate>
-                <contextType>DESTINATION_DISPATCHER</contextType>
                 <contextType>SOURCE_RECEIVER</contextType>
-                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
                 <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
                 <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
               </delegate>
             </contextSet>
             <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
@@ -539,12 +539,9 @@ logger.info( msg[&apos;MSH&apos;][&apos;MSH.10&apos;][&apos;MSH.10.1&apos;].toSt
           <string>517d4a5b-597c-46db-9f6b-d9799ca43ea6</string>
           <string>375900e8-4214-4c96-a46f-2b4046514e9a</string>
           <string>9e7ac5d5-16dd-426c-a118-f6863624e735</string>
-          <string>4eba1e2f-95cd-42c7-a326-2c392949658c</string>
           <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
           <string>e6f606b4-632a-4dee-be41-10f7fdaff59b</string>
-          <string>2f826fbf-f7bb-40b7-a2ff-64d367acc0ea</string>
           <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
-          <string>5742662b-8601-4c45-910f-a772ee267945</string>
         </channelIds>
         <backgroundColor>
           <red>255</red>

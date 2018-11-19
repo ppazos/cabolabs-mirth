@@ -22,7 +22,7 @@ Ref: https://dcm4che.atlassian.net/wiki/display/d2/dcmsnd</description>
         <respondAfterProcessing>true</respondAfterProcessing>
         <processBatch>false</processBatch>
         <firstResponse>false</firstResponse>
-        <processingThreads>5</processingThreads>
+        <processingThreads>1</processingThreads>
         <resourceIds class="linked-hash-map">
           <entry>
             <string>Default Resource</string>
@@ -31,27 +31,27 @@ Ref: https://dcm4che.atlassian.net/wiki/display/d2/dcmsnd</description>
         </resourceIds>
         <queueBufferSize>1000</queueBufferSize>
       </sourceConnectorProperties>
-      <applicationEntity>AEMIRTH</applicationEntity>
+      <applicationEntity></applicationEntity>
       <localHost></localHost>
       <localPort></localPort>
       <localApplicationEntity></localApplicationEntity>
-      <soCloseDelay>50</soCloseDelay>
-      <releaseTo>5</releaseTo>
-      <requestTo>5</requestTo>
-      <idleTo>60</idleTo>
-      <reaper>10</reaper>
-      <rspDelay>0</rspDelay>
+      <soCloseDelay></soCloseDelay>
+      <releaseTo></releaseTo>
+      <requestTo></requestTo>
+      <idleTo></idleTo>
+      <reaper></reaper>
+      <rspDelay></rspDelay>
       <pdv1>false</pdv1>
-      <sndpdulen>16</sndpdulen>
-      <rcvpdulen>16</rcvpdulen>
-      <async>0</async>
+      <sndpdulen></sndpdulen>
+      <rcvpdulen></rcvpdulen>
+      <async></async>
       <bigEndian>false</bigEndian>
-      <bufSize>1</bufSize>
+      <bufSize></bufSize>
       <defts>false</defts>
       <dest></dest>
       <nativeData>false</nativeData>
-      <sorcvbuf>0</sorcvbuf>
-      <sosndbuf>0</sosndbuf>
+      <sorcvbuf></sorcvbuf>
+      <sosndbuf></sosndbuf>
       <tcpDelay>true</tcpDelay>
       <keyPW></keyPW>
       <keyStore></keyStore>
@@ -746,7 +746,7 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
         <time>1542319168846</time>
         <timezone>America/Montevideo</timezone>
