@@ -8,15 +8,15 @@ https://cabolabs.com/en/training
 
 ### Setup
 
-1. Global Scripts
+1. Global Scripts and Configuration Map
 
-Import https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scripts.xml
+Import from https://github.com/ppazos/cabolabs-mirth/tree/master/mirth/3.6.1/A01_global_scripts_conf_map
 
-And set valid values for the source_folder and destination_folder variables.
+And set valid paths on the source_folder and dest_folder variables on your Configuration Map.
 
 To configure the paths from Global Scripts on Windows, all the path separators should be "\\\\", like:
 
-C:\\\\Program Files\\\\Folder\\\\Subfolder
+C:\\\\Folder\\\\Folder\\\\Subfolder
 
 
 2. Database
@@ -36,15 +36,15 @@ https://cabolabs.com/es/training
 
 ## Setup:
 
-1. Scripts Globales
+1. Scripts Globales y Configuration Map
 
-Importar https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/global_scripts.xml
+Importar desde https://github.com/ppazos/cabolabs-mirth/tree/master/mirth/3.6.1/A01_global_scripts_conf_map
 
-Establecer valores válidos para las variables source_folder y destination_folder.
+Establecer rutas válidos para las variables source_folder y dest_folder en el Configuration Map.
 
 Para configurar rutas de Windows, todos los separadores deben ser "\\\\", como:
 
-C:\\\\Program Files\\\\Folder\\\\Subfolder
+C:\\\\Folder\\\\Folder\\\\Subfolder
 
 
 2. Base de datos
