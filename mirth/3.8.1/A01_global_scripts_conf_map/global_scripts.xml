@@ -1,0 +1,50 @@
+<map>
+  <entry>
+    <string>Undeploy</string>
+    <string>// This script executes once for each deploy, undeploy, or redeploy task
+// if at least one channel was undeployed
+// You only have access to the globalMap here to persist data
+
+logger.info(&quot;Global Undeploy&quot;);
+
+
+return;</string>
+  </entry>
+  <entry>
+    <string>Postprocessor</string>
+    <string>// This script executes once after a message has been processed
+// This script applies across all channels
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+// You have access to &quot;response&quot;, if returned from the channel postprocessor
+
+logger.info(&quot;Global Postprocessor&quot;);
+
+return;</string>
+  </entry>
+  <entry>
+    <string>Deploy</string>
+    <string>// This script executes once for each deploy or redeploy task
+// You only have access to the globalMap here to persist data
+
+logger.info(&quot;Global Deploy&quot;);
+
+/*
+// Generic destination folder for file writers
+globalMap.put(&apos;destination_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0001_logger/destination&apos;);
+
+// Generic source folder for file readers
+globalMap.put(&apos;source_folder&apos;, &apos;/Users/apple/GitHub/cabolabs-mirth/mirth/channels/0008_file_rdr/outbox&apos;);
+*/
+
+return;</string>
+  </entry>
+  <entry>
+    <string>Preprocessor</string>
+    <string>// Modify the message variable below to pre process data
+// This script applies across all channels
+
+logger.info(&quot;Global Preprocessor&quot;);
+
+return message;</string>
+  </entry>
+</map>
