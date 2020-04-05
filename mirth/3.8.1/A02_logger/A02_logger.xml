@@ -5,7 +5,7 @@
   <description>Canal simple que recibe HL7 v2.x por MLLP en el puerto 6661 y lo guarda en un directorio.&#xd;
 Se hace un log en cada script, transformador y filtro para mostar el orden de ejecución de los mismos.&#xd;
 Los mensajes pueden ser enviados por HAPI Test Panel, no importa el tipo de mensaje.</description>
-  <revision>1</revision>
+  <revision>2</revision>
   <sourceConnector version="3.8.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -461,7 +461,7 @@ return;</undeployScript>
     <removeContentOnCompletion>false</removeContentOnCompletion>
     <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
     <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
-    <initialState>STOPPED</initialState>
+    <initialState>STARTED</initialState>
     <storeAttachments>false</storeAttachments>
     <metaDataColumns>
       <metaDataColumn>
@@ -490,7 +490,7 @@ return;</undeployScript>
     <metadata>
       <enabled>false</enabled>
       <lastModified>
-        <time>1586112425463</time>
+        <time>1586120553547</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>

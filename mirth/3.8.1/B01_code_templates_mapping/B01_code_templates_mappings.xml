@@ -17,7 +17,7 @@ ADT_A03_ADT_A03.hl7 (tiene processing id T)&#xd;
 ADT_A04_ADT_A01.hl7 (tiene processing id P)&#xd;
 &#xd;
 Los destinos solo muestran en la consola el mensaje recibido.</description>
-  <revision>1</revision>
+  <revision>2</revision>
   <sourceConnector version="3.8.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -370,7 +370,7 @@ return;</undeployScript>
     <removeContentOnCompletion>false</removeContentOnCompletion>
     <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
     <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
-    <initialState>STOPPED</initialState>
+    <initialState>STARTED</initialState>
     <storeAttachments>false</storeAttachments>
     <metaDataColumns>
       <metaDataColumn>
@@ -399,7 +399,7 @@ return;</undeployScript>
     <metadata>
       <enabled>false</enabled>
       <lastModified>
-        <time>1586112643182</time>
+        <time>1586120564210</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>

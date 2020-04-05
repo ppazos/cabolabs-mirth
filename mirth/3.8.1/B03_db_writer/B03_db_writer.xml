@@ -5,7 +5,7 @@
   <description>Recibe mensajes HL7 v2.x por MLLP, extrae datos de pacientes con transformadores mapper y escribe los datos en una base de datos.
 
 Tiene un destino Database Writer donde se guardan los datos del paciente de cada mensaje en una tabla &quot;pacientes&quot; de la base de datos &quot;mirth_tests&quot;, dentro de MySQL corriendo en localhost:3306.</description>
-  <revision>1</revision>
+  <revision>4</revision>
   <sourceConnector version="3.8.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -479,13 +479,13 @@ logger.info( $(&apos;sexo&apos;) );</script>
         </destinationConnectorProperties>
         <driver>com.mysql.jdbc.Driver</driver>
         <url>jdbc:mysql://127.0.0.1:3306/mirth_tests</url>
-        <username>root</username>
-        <password>toor</password>
+        <username></username>
+        <password></password>
         <query>var dbConn;
 
 try {
 	// http://javadocs.mirthcorp.com/connect/3.1.0/user-api/com/mirth/connect/server/userutil/DatabaseConnectionFactory.html
-	dbConn = DatabaseConnectionFactory.createDatabaseConnection(&apos;com.mysql.jdbc.Driver&apos;,&apos;jdbc:mysql://127.0.0.1:3306/mirth_tests&apos;,&apos;root&apos;,&apos;toor&apos;);
+	dbConn = DatabaseConnectionFactory.createDatabaseConnection(&apos;com.mysql.jdbc.Driver&apos;,&apos;jdbc:mysql://127.0.0.1:3306/mirth_tests&apos;,&apos;user&apos;,&apos;user123!&apos;);
 
      // http://javadocs.mirthcorp.com/connect/3.1.0/user-api/com/mirth/connect/server/userutil/DatabaseConnection.html
 	var updatedRows = dbConn.executeUpdate(&quot;INSERT INTO pacientes (nombre, apellido, nacimiento, sexo) VALUES (&quot;+
@@ -698,7 +698,7 @@ return;</undeployScript>
     <removeContentOnCompletion>false</removeContentOnCompletion>
     <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
     <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
-    <initialState>STOPPED</initialState>
+    <initialState>STARTED</initialState>
     <storeAttachments>false</storeAttachments>
     <metaDataColumns>
       <metaDataColumn>
@@ -725,9 +725,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>true</enabled>
+      <enabled>false</enabled>
       <lastModified>
-        <time>1586112671708</time>
+        <time>1586120980963</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
