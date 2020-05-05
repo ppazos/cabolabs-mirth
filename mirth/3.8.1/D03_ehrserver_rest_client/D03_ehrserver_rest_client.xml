@@ -389,7 +389,7 @@ return;</undeployScript>
     <metadata>
       <enabled>false</enabled>
       <lastModified>
-        <time>1586117352121</time>
+        <time>1588721778033</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
@@ -410,25 +410,6 @@ return;</undeployScript>
         <backgroundColor>
           <red>0</red>
           <green>255</green>
-          <blue>0</blue>
-          <alpha>255</alpha>
-        </backgroundColor>
-      </channelTag>
-      <channelTag>
-        <id>ae17732c-874d-4c3c-9795-d3fa41c2b3e9</id>
-        <name>clase2</name>
-        <channelIds>
-          <string>0ec7ab6e-f548-426a-99f6-18858cefc2d5</string>
-          <string>517d4a5b-597c-46db-9f6b-d9799ca43ea6</string>
-          <string>375900e8-4214-4c96-a46f-2b4046514e9a</string>
-          <string>9e7ac5d5-16dd-426c-a118-f6863624e735</string>
-          <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
-          <string>e6f606b4-632a-4dee-be41-10f7fdaff59b</string>
-          <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
-        </channelIds>
-        <backgroundColor>
-          <red>255</red>
-          <green>0</green>
           <blue>0</blue>
           <alpha>255</alpha>
         </backgroundColor>
