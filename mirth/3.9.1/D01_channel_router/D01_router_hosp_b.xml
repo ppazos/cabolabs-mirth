@@ -1,0 +1,243 @@
+<channel version="3.9.1">
+  <id>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</id>
+  <nextMetaDataId>2</nextMetaDataId>
+  <name>D01_router_hosp_b</name>
+  <description></description>
+  <revision>1</revision>
+  <sourceConnector version="3.9.1">
+    <metaDataId>0</metaDataId>
+    <name>sourceConnector</name>
+    <properties class="com.mirth.connect.connectors.vm.VmReceiverProperties" version="3.9.1">
+      <pluginProperties/>
+      <sourceConnectorProperties version="3.9.1">
+        <responseVariable>None</responseVariable>
+        <respondAfterProcessing>true</respondAfterProcessing>
+        <processBatch>false</processBatch>
+        <firstResponse>false</firstResponse>
+        <processingThreads>1</processingThreads>
+        <resourceIds class="linked-hash-map">
+          <entry>
+            <string>Default Resource</string>
+            <string>[Default Resource]</string>
+          </entry>
+        </resourceIds>
+        <queueBufferSize>1000</queueBufferSize>
+      </sourceConnectorProperties>
+    </properties>
+    <transformer version="3.9.1">
+      <elements/>
+      <inboundDataType>HL7V3</inboundDataType>
+      <outboundDataType>HL7V3</outboundDataType>
+      <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+          <stripNamespaces>false</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </inboundProperties>
+      <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+        <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+          <stripNamespaces>false</stripNamespaces>
+        </serializationProperties>
+        <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+          <splitType>JavaScript</splitType>
+          <batchScript></batchScript>
+        </batchProperties>
+      </outboundProperties>
+    </transformer>
+    <filter version="3.9.1">
+      <elements/>
+    </filter>
+    <transportName>Channel Reader</transportName>
+    <mode>SOURCE</mode>
+    <enabled>true</enabled>
+    <waitForPrevious>true</waitForPrevious>
+  </sourceConnector>
+  <destinationConnectors>
+    <connector version="3.9.1">
+      <metaDataId>1</metaDataId>
+      <name>Destination 1</name>
+      <properties class="com.mirth.connect.connectors.js.JavaScriptDispatcherProperties" version="3.9.1">
+        <pluginProperties/>
+        <destinationConnectorProperties version="3.9.1">
+          <queueEnabled>false</queueEnabled>
+          <sendFirst>false</sendFirst>
+          <retryIntervalMillis>10000</retryIntervalMillis>
+          <regenerateTemplate>false</regenerateTemplate>
+          <retryCount>0</retryCount>
+          <rotate>false</rotate>
+          <includeFilterTransformer>false</includeFilterTransformer>
+          <threadCount>1</threadCount>
+          <threadAssignmentVariable></threadAssignmentVariable>
+          <validateResponse>false</validateResponse>
+          <resourceIds class="linked-hash-map">
+            <entry>
+              <string>Default Resource</string>
+              <string>[Default Resource]</string>
+            </entry>
+          </resourceIds>
+          <queueBufferSize>1000</queueBufferSize>
+          <reattachAttachments>true</reattachAttachments>
+        </destinationConnectorProperties>
+        <script>logger.info(&quot;Hosp B &quot;+ connectorMessage.getEncodedData());</script>
+      </properties>
+      <transformer version="3.9.1">
+        <elements/>
+        <inboundDataType>HL7V3</inboundDataType>
+        <outboundDataType>HL7V3</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </transformer>
+      <responseTransformer version="3.9.1">
+        <elements/>
+        <inboundDataType>HL7V3</inboundDataType>
+        <outboundDataType>HL7V3</outboundDataType>
+        <inboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </inboundProperties>
+        <outboundProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3DataTypeProperties" version="3.9.1">
+          <serializationProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3SerializationProperties" version="3.9.1">
+            <stripNamespaces>false</stripNamespaces>
+          </serializationProperties>
+          <batchProperties class="com.mirth.connect.plugins.datatypes.hl7v3.HL7V3BatchProperties" version="3.9.1">
+            <splitType>JavaScript</splitType>
+            <batchScript></batchScript>
+          </batchProperties>
+        </outboundProperties>
+      </responseTransformer>
+      <filter version="3.9.1">
+        <elements/>
+      </filter>
+      <transportName>JavaScript Writer</transportName>
+      <mode>DESTINATION</mode>
+      <enabled>true</enabled>
+      <waitForPrevious>true</waitForPrevious>
+    </connector>
+  </destinationConnectors>
+  <preprocessingScript>// Modify the message variable below to pre process data
+return message;</preprocessingScript>
+  <postprocessingScript>// This script executes once after a message has been processed
+// Responses returned from here will be stored as &quot;Postprocessor&quot; in the response map
+return;</postprocessingScript>
+  <deployScript>// This script executes once when the channel is deployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+
+globalMap.put(&apos;D01_router_hosp_b&apos;, channelId);
+
+return;</deployScript>
+  <undeployScript>// This script executes once when the channel is undeployed
+// You only have access to the globalMap and globalChannelMap here to persist data
+return;</undeployScript>
+  <properties version="3.9.1">
+    <clearGlobalChannelMap>true</clearGlobalChannelMap>
+    <messageStorageMode>DEVELOPMENT</messageStorageMode>
+    <encryptData>false</encryptData>
+    <removeContentOnCompletion>false</removeContentOnCompletion>
+    <removeOnlyFilteredOnCompletion>false</removeOnlyFilteredOnCompletion>
+    <removeAttachmentsOnCompletion>false</removeAttachmentsOnCompletion>
+    <initialState>STARTED</initialState>
+    <storeAttachments>false</storeAttachments>
+    <metaDataColumns>
+      <metaDataColumn>
+        <name>SOURCE</name>
+        <type>STRING</type>
+        <mappingName>mirth_source</mappingName>
+      </metaDataColumn>
+      <metaDataColumn>
+        <name>TYPE</name>
+        <type>STRING</type>
+        <mappingName>mirth_type</mappingName>
+      </metaDataColumn>
+    </metaDataColumns>
+    <attachmentProperties version="3.9.1">
+      <type>None</type>
+      <properties/>
+    </attachmentProperties>
+    <resourceIds class="linked-hash-map">
+      <entry>
+        <string>Default Resource</string>
+        <string>[Default Resource]</string>
+      </entry>
+    </resourceIds>
+  </properties>
+  <exportData>
+    <metadata>
+      <enabled>false</enabled>
+      <lastModified>
+        <time>1607888405342</time>
+        <timezone>America/Montevideo</timezone>
+      </lastModified>
+      <pruningSettings>
+        <archiveEnabled>true</archiveEnabled>
+      </pruningSettings>
+    </metadata>
+    <dependentIds>
+      <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
+    </dependentIds>
+    <channelTags>
+      <channelTag>
+        <id>509f91c6-7db9-4ed0-a67d-3fd796787f20</id>
+        <name>clase 4</name>
+        <channelIds>
+          <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
+          <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
+          <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
+          <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
+          <string>b16b0f5f-55a5-41b3-96c3-cbe40c8d8853</string>
+        </channelIds>
+        <backgroundColor>
+          <red>0</red>
+          <green>255</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </backgroundColor>
+      </channelTag>
+      <channelTag>
+        <id>1f8c51b5-a491-4e8c-926c-67452162aecc</id>
+        <name>clase3</name>
+        <channelIds>
+          <string>7b1ca6ce-6cd9-42a9-a9a0-4ce784ad33b2</string>
+          <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
+          <string>a5f0676c-781d-4a84-8c1c-c27af8c0249e</string>
+          <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
+          <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
+          <string>27a3b726-9e18-4931-b370-96e4cc0b06fd</string>
+          <string>cc582321-7225-448d-bc1c-e23cfbe1467c</string>
+          <string>4eba1e2f-95cd-42c7-a326-2c392949658c</string>
+          <string>7a7a6b46-d621-44b1-8863-945cb40f2237</string>
+          <string>5d993fd0-eb76-46f0-a988-eb70120bf326</string>
+        </channelIds>
+        <backgroundColor>
+          <red>255</red>
+          <green>255</green>
+          <blue>0</blue>
+          <alpha>255</alpha>
+        </backgroundColor>
+      </channelTag>
+    </channelTags>
+  </exportData>
+</channel>
