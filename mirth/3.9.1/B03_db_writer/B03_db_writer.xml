@@ -4,8 +4,10 @@
   <name>B03_db_writer</name>
   <description>Recibe mensajes HL7 v2.x por MLLP, extrae datos de pacientes con transformadores mapper y escribe los datos en una base de datos.
 
-Tiene un destino Database Writer donde se guardan los datos del paciente de cada mensaje en una tabla &quot;pacientes&quot; de la base de datos &quot;mirth_tests&quot;, dentro de MySQL corriendo en localhost:3306.</description>
-  <revision>1</revision>
+Tiene un destino Database Writer donde se guardan los datos del paciente de cada mensaje en una tabla &quot;pacientes&quot; de la base de datos &quot;mirth_tests&quot;, dentro de MySQL corriendo en localhost:3306.
+
+Para crear la base de datos y la tabla que usaremos ver: https://github.com/ppazos/cabolabs-mirth/blob/master/mirth/mysql_database_tables.sql</description>
+  <revision>4</revision>
   <sourceConnector version="3.9.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -477,7 +479,7 @@ logger.info( $(&apos;sexo&apos;) );</script>
           <queueBufferSize>1000</queueBufferSize>
           <reattachAttachments>true</reattachAttachments>
         </destinationConnectorProperties>
-        <driver>com.mysql.jdbc.Driver</driver>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
         <url>jdbc:mysql://127.0.0.1:3306/mirth_tests</url>
         <username></username>
         <password></password>
@@ -485,7 +487,7 @@ logger.info( $(&apos;sexo&apos;) );</script>
 
 try {
 	// http://javadocs.mirthcorp.com/connect/3.1.0/user-api/com/mirth/connect/server/userutil/DatabaseConnectionFactory.html
-	dbConn = DatabaseConnectionFactory.createDatabaseConnection(&apos;com.mysql.jdbc.Driver&apos;,&apos;jdbc:mysql://127.0.0.1:3306/mirth_tests&apos;,&apos;user&apos;,&apos;user123!&apos;);
+	dbConn = DatabaseConnectionFactory.createDatabaseConnection(&apos;com.mysql.cj.jdbc.Driver&apos;,&apos;jdbc:mysql://127.0.0.1:3306/mirth_tests&apos;,&apos;user&apos;,&apos;user1234&apos;);
 
      // http://javadocs.mirthcorp.com/connect/3.1.0/user-api/com/mirth/connect/server/userutil/DatabaseConnection.html
 	var updatedRows = dbConn.executeUpdate(&quot;INSERT INTO pacientes (nombre, apellido, nacimiento, sexo) VALUES (&quot;+
@@ -725,9 +727,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>false</enabled>
+      <enabled>true</enabled>
       <lastModified>
-        <time>1607047566160</time>
+        <time>1610998180781</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>

@@ -397,15 +397,110 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>false</enabled>
+      <enabled>true</enabled>
       <lastModified>
-        <time>1607047493117</time>
+        <time>1610988303642</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>
         <archiveEnabled>true</archiveEnabled>
       </pruningSettings>
     </metadata>
+    <codeTemplateLibraries>
+      <codeTemplateLibrary version="3.9.1">
+        <id>ba3a05a5-8ee4-4066-a30e-1802050dcf5f</id>
+        <name>lib</name>
+        <revision>4</revision>
+        <lastModified>
+          <time>1610988626674</time>
+          <timezone>America/Montevideo</timezone>
+        </lastModified>
+        <description></description>
+        <includeNewChannels>false</includeNewChannels>
+        <enabledChannelIds>
+          <string>e09edc63-b8bc-47a8-9b45-3f72a82347ab</string>
+        </enabledChannelIds>
+        <disabledChannelIds>
+          <string>ab4e805c-b106-4c52-9ec8-2b55f4f0e10a</string>
+          <string>ddd4fb6b-0232-4af2-b32d-9022674322a0</string>
+          <string>6a740112-c252-4466-983d-3e3a5aacd376</string>
+          <string>cc582321-7225-448d-bc1c-e23cfbe1467c</string>
+          <string>e6f606b4-632a-4dee-be41-10f7fdaff59b</string>
+          <string>7a7a6b46-d621-44b1-8863-945cb40f2237</string>
+          <string>5d993fd0-eb76-46f0-a988-eb70120bf326</string>
+          <string>0ec7ab6e-f548-426a-99f6-18858cefc2d5</string>
+          <string>517d4a5b-597c-46db-9f6b-d9799ca43ea6</string>
+          <string>2de13d52-355c-481a-bd2f-9c43d7ff7d0c</string>
+          <string>5fd774e9-87cb-4c4b-b8d9-fde00809daca</string>
+          <string>4eba1e2f-95cd-42c7-a326-2c392949658c</string>
+        </disabledChannelIds>
+        <codeTemplates>
+          <codeTemplate version="3.9.1">
+            <id>0c5f011e-ce1a-4db3-9d82-f73e9c5cd997</id>
+            <name>0. obtener datos del paciente de mensajes HL7 v2.x</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1610988608218</time>
+              <timezone>America/Montevideo</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+ * Obtiene un objeto con los datos del paciente extraidos de un mensaje HL7 v2.x
+ */
+function get_patient_data(msg)
+{
+    var data = {};
+
+    data.nacimiento = msg[&quot;PID&quot;][&quot;PID.7&quot;][&quot;PID.7.1&quot;].toString();
+    data.nombre = msg[&quot;PID&quot;][&quot;PID.5&quot;][&quot;PID.5.2&quot;].toString();
+    data.apellido = msg[&quot;PID&quot;][&quot;PID.5&quot;][&quot;PID.5.1&quot;].toString();
+    data.sexo = msg[&quot;PID&quot;][&quot;PID.8&quot;][&quot;PID.8.1&quot;].toString();
+
+    return data;
+}</code>
+            </properties>
+          </codeTemplate>
+          <codeTemplate version="3.9.1">
+            <id>1dcef1b4-f977-4ee8-9568-b224aadf4671</id>
+            <name>1. mensaje es ADT?</name>
+            <revision>1</revision>
+            <lastModified>
+              <time>1610988608362</time>
+              <timezone>America/Montevideo</timezone>
+            </lastModified>
+            <contextSet>
+              <delegate>
+                <contextType>SOURCE_FILTER_TRANSFORMER</contextType>
+                <contextType>DESTINATION_FILTER_TRANSFORMER</contextType>
+                <contextType>SOURCE_RECEIVER</contextType>
+                <contextType>DESTINATION_DISPATCHER</contextType>
+                <contextType>DESTINATION_RESPONSE_TRANSFORMER</contextType>
+              </delegate>
+            </contextSet>
+            <properties class="com.mirth.connect.model.codetemplates.BasicCodeTemplateProperties">
+              <type>FUNCTION</type>
+              <code>/**
+ * Devuelve true si el mensaje es ADT, false si no. Se utilizará en filtros.
+ */
+function es_adt(msg)
+{
+   return msg[&quot;MSH&quot;][&quot;MSH.9&quot;][&quot;MSH.9.1&quot;].toString() == &quot;ADT&quot;;
+}</code>
+            </properties>
+          </codeTemplate>
+        </codeTemplates>
+      </codeTemplateLibrary>
+    </codeTemplateLibraries>
     <channelTags>
       <channelTag>
         <id>ae17732c-874d-4c3c-9795-d3fa41c2b3e9</id>

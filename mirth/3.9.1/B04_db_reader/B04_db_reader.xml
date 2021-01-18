@@ -14,7 +14,7 @@ El resultado que se muestra en el destino JavaScript Writer es el registro leido
     &lt;procesado&gt;0&lt;/procesado&gt;
     &lt;sexo&gt;masculino&lt;/sexo&gt;
 &lt;/result&gt; </description>
-  <revision>1</revision>
+  <revision>3</revision>
   <sourceConnector version="3.9.1">
     <metaDataId>0</metaDataId>
     <name>sourceConnector</name>
@@ -61,10 +61,10 @@ El resultado que se muestra en el destino JavaScript Writer es el registro leido
         </resourceIds>
         <queueBufferSize>1000</queueBufferSize>
       </sourceConnectorProperties>
-      <driver>com.mysql.jdbc.Driver</driver>
+      <driver>com.mysql.cj.jdbc.Driver</driver>
       <url>jdbc:mysql://localhost:3306/mirth_tests</url>
       <username>user</username>
-      <password>user123!</password>
+      <password>user1234</password>
       <select>SELECT id, nombre, apellido, nacimiento, sexo, procesado
 FROM pacientes
 WHERE procesado = 0
@@ -267,9 +267,9 @@ return;</undeployScript>
   </properties>
   <exportData>
     <metadata>
-      <enabled>false</enabled>
+      <enabled>true</enabled>
       <lastModified>
-        <time>1607047600791</time>
+        <time>1610998711725</time>
         <timezone>America/Montevideo</timezone>
       </lastModified>
       <pruningSettings>

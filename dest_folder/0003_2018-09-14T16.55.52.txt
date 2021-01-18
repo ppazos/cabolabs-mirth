@@ -1,1 +1,0 @@
-<mensaje><persona><nombre>Pablo</nombre></persona></mensaje>
