@@ -1,9 +1,9 @@
-<alertModel version="3.9.1">
+<alertModel version="4.4.0">
   <id>0d1001d3-184c-47ea-bd55-571b25a5506b</id>
   <name>C03_test_alert</name>
   <enabled>true</enabled>
-  <trigger class="defaultTrigger" version="3.9.1">
-    <alertChannels version="3.9.1">
+  <trigger class="defaultTrigger" version="4.4.0">
+    <alertChannels version="4.4.0">
       <newChannelSource>false</newChannelSource>
       <newChannelDestination>false</newChannelDestination>
       <enabledChannels>
@@ -18,9 +18,9 @@
     <regex></regex>
   </trigger>
   <actionGroups>
-    <alertActionGroup version="3.9.1">
+    <alertActionGroup version="4.4.0">
       <actions>
-        <alertAction version="3.9.1">
+        <alertAction version="4.4.0">
           <protocol>Email</protocol>
           <recipient>curso-mirth@googlegroups.com</recipient>
         </alertAction>
